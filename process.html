@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our Process — Sekhon Biotech</title>
+<meta name="description" content="How Sekhon Biotech produces five million disease-free G-0 mini-tubers — from tissue culture through aeroponics and coco peat to field-ready seed." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --leaf:#0f3a2e;--leaf-deep:#061812;--moss:#345e4a;
+    --wheat:#d9c79a;--cream:#f4efe6;--paper:#fbf8f1;
+    --ink:#0d1612;--accent:#b85431;
+    --line:rgba(13,22,18,.1);--line-mid:rgba(13,22,18,.15);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  /* ── nav ── */
+  nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(251,248,241,.94);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1400px;margin:0 auto;
+    padding:18px 40px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .logo img{height:44px;width:auto;display:block}
+  .back-link{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--leaf-deep);transition:gap .2s;
+  }
+  .back-link:hover{gap:12px}
+
+  /* ── page header ── */
+  .page-header{
+    background:var(--leaf-deep);color:var(--cream);
+    padding:72px 40px 60px;
+  }
+  .page-header-inner{max-width:1200px;margin:0 auto}
+  .page-eyebrow{
+    font-size:11px;letter-spacing:.25em;text-transform:uppercase;
+    color:var(--wheat);font-weight:600;margin-bottom:20px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .page-eyebrow::before{content:"";width:32px;height:1px;background:var(--wheat)}
+  .page-header h1{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(36px,5vw,72px);
+    line-height:.96;letter-spacing:-.03em;margin-bottom:20px;
+  }
+  .page-header h1 em{font-style:italic;color:var(--wheat);font-weight:300}
+  .page-header p{font-size:16px;opacity:.68;max-width:520px;line-height:1.7}
+
+  /* ── process wrapper ── */
+  .process-wrap{
+    max-width:1200px;margin:0 auto;
+    padding:60px 40px 100px;
+  }
+
+  /* ── stage nav tabs ── */
+  .stage-nav{
+    display:flex;
+    flex-wrap:wrap;
+    border:1px solid var(--line-mid);
+    margin-bottom:3px;
+  }
+  .snav-btn{
+    flex:1;
+    min-width:180px;
+    padding:28px 24px;
+    background:var(--cream);
+    border:none;
+    border-right:1px solid var(--line-mid);
+    cursor:pointer;
+    text-align:left;
+    position:relative;
+    transition:background .22s, color .22s;
+  }
+  .snav-btn:last-child{border-right:0}
+  .snav-btn:hover:not(.active){background:rgba(15,58,46,.05)}
+  .snav-btn.active{
+    background:var(--leaf-deep);
+    color:var(--cream);
+  }
+  /* active indicator bar at top */
+  .snav-btn.active::before{
+    content:'';
+    position:absolute;top:0;left:0;right:0;height:3px;
+    background:var(--accent);
+  }
+  /* flow arrow on right edge */
+  .snav-btn:not(:last-child)::after{
+    content:'';
+    position:absolute;
+    right:-9px;top:50%;
+    transform:translateY(-50%);
+    width:0;height:0;
+    border-top:8px solid transparent;
+    border-bottom:8px solid transparent;
+    border-left:9px solid var(--line-mid);
+    z-index:2;
+  }
+  .snav-num{
+    display:block;
+    font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:600;color:var(--accent);
+    margin-bottom:7px;
+  }
+  .snav-btn.active .snav-num{color:var(--wheat)}
+  .snav-name{
+    display:block;
+    font-family:'Fraunces',serif;font-weight:500;
+    font-size:19px;letter-spacing:-.01em;
+    color:var(--leaf-deep);
+    line-height:1.1;margin-bottom:7px;
+  }
+  .snav-btn.active .snav-name{color:var(--cream)}
+  .snav-sum{
+    display:block;font-size:12px;
+    color:#888;line-height:1.5;
+  }
+  .snav-btn.active .snav-sum{color:rgba(244,239,230,.65)}
+
+  /* ── content panels ── */
+  .stage-panels{
+    border:1px solid var(--line-mid);
+  }
+  .stage-panel{
+    display:none;
+    padding:52px 48px;
+    animation:fadeIn .25s ease;
+  }
+  .stage-panel.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+  /* ── shared content styles ── */
+  .panel-grid{
+    display:grid;
+    grid-template-columns:1fr 1.1fr;
+    gap:56px;
+    align-items:start;
+  }
+  .tl-desc{
+    font-size:15px;color:#444;line-height:1.8;margin-bottom:26px;
+  }
+  .adv-label{
+    font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+    font-weight:600;color:#bbb;margin-bottom:14px;
+  }
+  .adv-list{display:flex;flex-direction:column;gap:9px}
+  .adv-item{
+    display:flex;align-items:flex-start;gap:10px;
+    font-size:13.5px;color:#555;line-height:1.5;
+  }
+  .adv-item::before{
+    content:'';flex-shrink:0;width:16px;height:16px;margin-top:1px;
+    background:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%230f3a2e' stroke-width='2.5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;
+  }
+  .panel-photo{
+    aspect-ratio:4/3;overflow:hidden;background:var(--cream);
+  }
+  .panel-photo img{
+    width:100%;height:100%;object-fit:cover;
+    filter:contrast(1.05) saturate(1.05);
+    transition:transform .7s ease;
+  }
+  .panel-photo:hover img{transform:scale(1.03)}
+
+  /* ── Stage 02 pathway split ── */
+  .tl-split{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:2px;
+  }
+  .pathway{background:var(--cream);overflow:hidden}
+  .pathway-photo{aspect-ratio:16/10;overflow:hidden}
+  .pathway-photo img{
+    width:100%;height:100%;object-fit:cover;
+    filter:contrast(1.05) saturate(1.05);
+    transition:transform .6s ease;
+  }
+  .pathway:hover .pathway-photo img{transform:scale(1.04)}
+  .pathway-body{padding:28px 30px 32px}
+  .pathway-tag{
+    display:inline-block;padding:3px 10px;margin-bottom:14px;
+    font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+    background:var(--leaf-deep);color:var(--wheat);
+  }
+  .pathway-name{
+    font-family:'Fraunces',serif;font-weight:500;font-size:22px;
+    letter-spacing:-.015em;color:var(--leaf-deep);
+    margin-bottom:10px;line-height:1.05;
+  }
+  .pathway-desc{font-size:13.5px;color:#444;line-height:1.75;margin-bottom:20px}
+
+  /* ── Stage 03 stats bar ── */
+  .stats-bar{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:1px;background:var(--line-mid);
+    border:1px solid var(--line-mid);
+    margin-bottom:36px;
+  }
+  .stat-block{
+    background:var(--paper);
+    padding:26px 28px;text-align:center;
+  }
+  .stat-num{
+    font-family:'Fraunces',serif;font-style:italic;
+    font-size:40px;color:var(--leaf-deep);letter-spacing:-.02em;
+    line-height:1;display:block;margin-bottom:6px;
+  }
+  .stat-lbl{
+    font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+    font-weight:600;color:#aaa;
+  }
+
+  /* ── Stage 04 generation flow ── */
+  .gen-flow{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:1px;background:var(--line-mid);
+    border:1px solid var(--line-mid);
+    margin-bottom:36px;
+  }
+  .gen-step{
+    background:var(--paper);padding:22px 18px;text-align:center;
+    position:relative;
+  }
+  .gen-step:not(:last-child)::after{
+    content:'→';
+    position:absolute;right:-12px;top:50%;transform:translateY(-50%);
+    color:var(--line-mid);font-size:16px;z-index:1;
+  }
+  .gen-badge{
+    font-family:'Fraunces',serif;font-style:italic;
+    font-size:26px;color:var(--accent);display:block;margin-bottom:5px;
+  }
+  .gen-name{font-size:11px;font-weight:600;color:var(--leaf-deep);display:block;margin-bottom:3px}
+  .gen-sub{font-size:11px;color:#aaa}
+
+  /* stage 03 & 04 text layout */
+  .panel-text-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:48px;align-items:start;
+  }
+
+  /* ── footer ── */
+  .foot-strip{
+    background:var(--leaf-deep);color:var(--cream);
+    padding:26px 40px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  }
+  .foot-strip p{font-size:13px;opacity:.6}
+  .foot-strip a{font-size:13px;opacity:.6;transition:opacity .2s}
+  .foot-strip a:hover{opacity:1}
+
+  /* ── responsive ── */
+  @media(max-width:900px){
+    .panel-grid{grid-template-columns:1fr;gap:36px}
+    .panel-text-grid{grid-template-columns:1fr;gap:28px}
+    .gen-flow{grid-template-columns:repeat(2,1fr)}
+    .gen-step:nth-child(2)::after{display:none}
+    .gen-step:nth-child(4)::after{display:none}
+    .stage-panel{padding:40px 32px}
+  }
+  @media(max-width:700px){
+    .tl-split{grid-template-columns:1fr}
+    .stats-bar{grid-template-columns:repeat(3,1fr)}
+    .snav-btn{min-width:140px}
+    .snav-btn:not(:last-child)::after{display:none}
+  }
+  @media(max-width:560px){
+    .process-wrap{padding:40px 20px 80px}
+    .page-header{padding:52px 24px 44px}
+    .nav-inner{padding:16px 20px}
+    .stage-panel{padding:28px 20px}
+    .gen-flow{grid-template-columns:1fr 1fr}
+    .gen-step::after{display:none}
+    .snav-btn{padding:20px 18px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="https://sekhonbiotech.com/wp-content/uploads/2021/07/logo2x-new.png" alt="Sekhon Biotech" />
+    </a>
+    <a href="index.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to home
+    </a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="page-eyebrow">How we grow</div>
+    <h1>From plantlet to <em>field-ready seed.</em></h1>
+    <p>Our integrated process compresses years out of conventional seed potato multiplication — without ever compromising on disease-free, traceable quality.</p>
+  </div>
+</div>
+
+<div class="process-wrap">
+
+  <!-- ── Stage navigation ── -->
+  <div class="stage-nav" role="tablist">
+
+    <button class="snav-btn active" data-stage="1" role="tab" aria-selected="true">
+      <span class="snav-num">Stage 01</span>
+      <span class="snav-name">Tissue Culture</span>
+      <span class="snav-sum">Virus-indexed plantlets from sterile lab conditions.</span>
+    </button>
+
+    <button class="snav-btn" data-stage="2" role="tab" aria-selected="false">
+      <span class="snav-num">Stage 02</span>
+      <span class="snav-name">Two Pathways</span>
+      <span class="snav-sum">Coco peat &amp; aeroponics — two routes, one standard.</span>
+    </button>
+
+    <button class="snav-btn" data-stage="3" role="tab" aria-selected="false">
+      <span class="snav-num">Stage 03</span>
+      <span class="snav-name">G-0 Mini-Tuber</span>
+      <span class="snav-sum">5M+ certified mini-tubers harvested every year.</span>
+    </button>
+
+    <button class="snav-btn" data-stage="4" role="tab" aria-selected="false">
+      <span class="snav-num">Stage 04</span>
+      <span class="snav-name">Field-Ready Seed</span>
+      <span class="snav-sum">Certified seed delivered to growers across India.</span>
+    </button>
+
+  </div>
+
+  <!-- ── Content panels ── -->
+  <div class="stage-panels">
+
+    <!-- Panel 01: Tissue Culture -->
+    <div class="stage-panel active" data-panel="1">
+      <div class="panel-grid">
+        <div>
+          <p class="tl-desc">Every variety begins as a single, virus-indexed mother plant selected for genetic purity. Under sterile lab conditions, a tiny explant multiplies into thousands of genetically identical, pathogen-free plantlets — the most rigorous starting point in seed potato science.</p>
+          <div class="adv-label">Advantages</div>
+          <ul class="adv-list">
+            <li class="adv-item">Complete elimination of systemic viruses, bacteria and fungi</li>
+            <li class="adv-item">Genetic uniformity across every plantlet in the batch</li>
+            <li class="adv-item">Year-round production independent of season</li>
+            <li class="adv-item">Full traceability to a single certified mother plant</li>
+            <li class="adv-item">CPRI Shimla-accredited protocols at every step</li>
+          </ul>
+        </div>
+        <div class="panel-photo">
+          <img src="TissueCulture_edited.jpg" alt="Tissue culture laboratory" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 02: Two Pathways -->
+    <div class="stage-panel" data-panel="2">
+      <div class="tl-split">
+        <div class="pathway">
+          <div class="pathway-photo">
+            <img src="CocoP_edited.jpg" alt="Coco peat greenhouse rows" />
+          </div>
+          <div class="pathway-body">
+            <span class="pathway-tag">02 — A &nbsp; Coco Peat</span>
+            <h4 class="pathway-name">Coco Peat</h4>
+            <p class="pathway-desc">Plantlets are transplanted into coconut fibre substrate inside climate-controlled greenhouses. The natural medium provides exceptional aeration, moisture retention, and a pathogen-free root zone — a gentle bridge from sterile lab to field-scale production.</p>
+            <div class="adv-label">Advantages</div>
+            <ul class="adv-list">
+              <li class="adv-item">Pathogen-free, sustainable substrate</li>
+              <li class="adv-item">Superior water retention and aeration</li>
+              <li class="adv-item">Stress-free transition from tissue culture</li>
+              <li class="adv-item">Higher plantlet survival rates</li>
+            </ul>
+          </div>
+        </div>
+        <div class="pathway">
+          <div class="pathway-photo">
+            <img src="Tuber_edited.jpg" alt="Aeroponic mini-tubers" />
+          </div>
+          <div class="pathway-body">
+            <span class="pathway-tag">02 — B &nbsp; Aeroponics</span>
+            <h4 class="pathway-name">Aeroponics</h4>
+            <p class="pathway-desc">Plantlets are suspended in soilless aeroponic chambers developed with CPRI Shimla. Roots hang freely and receive a continuous fine mist of nutrient solution — accelerating mini-tuber formation at a rate impossible in conventional soil systems, with zero soil-borne disease risk.</p>
+            <div class="adv-label">Advantages</div>
+            <ul class="adv-list">
+              <li class="adv-item">5–10× more mini-tubers per plant</li>
+              <li class="adv-item">Zero soil contact — no soil-borne disease</li>
+              <li class="adv-item">Precise real-time nutrient delivery</li>
+              <li class="adv-item">Up to 5 million mini-tubers annually</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 03: G-0 Mini-Tuber -->
+    <div class="stage-panel" data-panel="3">
+      <div class="stats-bar">
+        <div class="stat-block">
+          <span class="stat-num">5M+</span>
+          <span class="stat-lbl">Mini-tubers / year</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-num">12</span>
+          <span class="stat-lbl">Varieties as G-0</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-num">G-0</span>
+          <span class="stat-lbl">Highest purity grade</span>
+        </div>
+      </div>
+      <div class="panel-text-grid">
+        <p class="tl-desc" style="margin-bottom:0">Both production pathways converge at the same output — small, dense, disease-free G-0 mini-tubers. Each carries the full genetic profile of its parent variety, produced under conditions that guarantee zero viral, bacterial, or fungal contamination. These are the foundation of our entire seed multiplication chain.</p>
+        <div>
+          <div class="adv-label">Advantages</div>
+          <ul class="adv-list">
+            <li class="adv-item">Certified pathogen-free with lot-level traceability</li>
+            <li class="adv-item">High vigour and uniform dormancy across the batch</li>
+            <li class="adv-item">Suitable for direct multiplication or cold storage</li>
+            <li class="adv-item">Fewer field generations needed before commercial planting</li>
+            <li class="adv-item">Available across all 12 varieties in our catalog</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel 04: Field-Ready Seed -->
+    <div class="stage-panel" data-panel="4">
+      <div class="gen-flow">
+        <div class="gen-step">
+          <span class="gen-badge">G-0</span>
+          <span class="gen-name">Mini-Tuber</span>
+          <span class="gen-sub">Lab origin</span>
+        </div>
+        <div class="gen-step">
+          <span class="gen-badge">G-1</span>
+          <span class="gen-name">First Generation</span>
+          <span class="gen-sub">Controlled plots</span>
+        </div>
+        <div class="gen-step">
+          <span class="gen-badge">G-2</span>
+          <span class="gen-name">Second Generation</span>
+          <span class="gen-sub">Certified volume</span>
+        </div>
+        <div class="gen-step">
+          <span class="gen-badge">G-3</span>
+          <span class="gen-name">Commercial Seed</span>
+          <span class="gen-sub">Delivered to farmers</span>
+        </div>
+      </div>
+      <div class="panel-text-grid">
+        <p class="tl-desc" style="margin-bottom:0">G-0 mini-tubers are multiplied through a tightly controlled number of field generations to produce certified planting material at commercial scale. By starting from a disease-free G-0 foundation, we compress the conventional chain — delivering seed that performs consistently from the first planting, season after season.</p>
+        <div>
+          <div class="adv-label">Advantages</div>
+          <ul class="adv-list">
+            <li class="adv-item">Fewer field generations means higher quality at commercial scale</li>
+            <li class="adv-item">Lower degeneration risk than uncertified local seed</li>
+            <li class="adv-item">Consistent yield and uniformity season after season</li>
+            <li class="adv-item">Supplied across 10+ states throughout India</li>
+            <li class="adv-item">Backed by 20+ years of field performance data</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end stage-panels -->
+
+</div><!-- end process-wrap -->
+
+<div class="foot-strip">
+  <p>© 2026 Sekhon Biotech Pvt. Ltd.</p>
+  <a href="varieties.html">View our varieties →</a>
+</div>
+
+<script>
+  const btns   = document.querySelectorAll('.snav-btn');
+  const panels = document.querySelectorAll('.stage-panel');
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.stage;
+
+      btns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      panels.forEach(p => p.classList.remove('active'));
+
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      document.querySelector(`.stage-panel[data-panel="${target}"]`).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

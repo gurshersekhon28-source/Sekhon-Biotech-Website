@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Careers — Sekhon Biotech</title>
+<meta name="description" content="Join Sekhon Biotech — an agri-biotech company producing disease-free seed potatoes in the Shivalik foothills of Punjab. Explore open roles." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --leaf:#0f3a2e;--leaf-deep:#061812;--moss:#345e4a;
+    --wheat:#d9c79a;--cream:#f4efe6;--paper:#fbf8f1;
+    --ink:#0d1612;--accent:#b85431;--accent-soft:#d97b52;
+    --line:rgba(13,22,18,.1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  button,input,textarea,select{font-family:inherit}
+
+  /* ── nav ── */
+  nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(251,248,241,.92);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{max-width:1400px;margin:0 auto;padding:20px 40px;display:flex;justify-content:space-between;align-items:center}
+  .logo img{height:48px;width:auto;display:block}
+  .back-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--leaf-deep);transition:gap .2s}
+  .back-link:hover{gap:4px}
+
+  /* ── hero ── */
+  .hero{
+    position:relative;min-height:72vh;
+    display:flex;align-items:flex-end;overflow:hidden;
+    background:var(--leaf-deep);
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    background-image:url('DSC04232.JPG');
+    background-size:cover;background-position:center 30%;
+    filter:saturate(.8) contrast(1.05) brightness(.7);
+  }
+  .hero-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(6,24,18,.3) 0%,rgba(6,24,18,.15) 40%,rgba(6,24,18,.88) 100%);
+  }
+  .hero-content{position:relative;max-width:1400px;width:100%;margin:0 auto;padding:40px 40px 60px;color:var(--cream)}
+  .hero-eyebrow{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--wheat);font-weight:600;margin-bottom:22px;display:flex;align-items:center;gap:14px}
+  .hero-eyebrow::before{content:"";width:32px;height:1px;background:var(--wheat)}
+  .hero h1{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(40px,6vw,96px);line-height:.95;letter-spacing:-.03em;margin-bottom:28px}
+  .hero h1 em{font-style:italic;color:var(--wheat);font-weight:300}
+  .hero-lede{font-size:17px;opacity:.82;max-width:580px;line-height:1.65;margin-bottom:36px}
+  .hero-cta{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--wheat);color:var(--leaf-deep);
+    padding:14px 26px;font-size:13px;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;
+    transition:background .2s;
+  }
+  .hero-cta:hover{background:var(--cream)}
+  .hero-cta svg{transition:transform .2s}
+  .hero-cta:hover svg{transform:translateY(3px)}
+
+  /* ── why us ── */
+  .why{padding:120px 40px;background:var(--paper)}
+  .why-inner{max-width:1400px;margin:0 auto}
+  .section-eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--moss);font-weight:600;margin-bottom:28px;display:flex;align-items:center;gap:14px}
+  .section-eyebrow::before{content:"";width:32px;height:1px;background:var(--moss)}
+  .why-head{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:80px}
+  .why-head h2{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(38px,5vw,64px);line-height:1.02;letter-spacing:-.025em;color:var(--leaf-deep)}
+  .why-head h2 em{font-style:italic;color:var(--accent)}
+  .why-head p{font-size:17px;color:#444;line-height:1.75}
+  .why-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+  .pillar{padding:44px 36px 44px 0;border-right:1px solid var(--line);position:relative}
+  .pillar:last-child{border-right:none;padding-right:0}
+  .pillar:not(:first-child){padding-left:36px}
+  .pillar::before{content:"";position:absolute;top:-1px;left:0;width:40px;height:3px;background:var(--accent)}
+  .pillar:not(:first-child)::before{left:36px}
+  .pillar-icon{width:48px;height:48px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;color:var(--leaf);margin-bottom:22px}
+  .pillar h3{font-family:'Fraunces',serif;font-weight:500;font-size:22px;color:var(--leaf-deep);margin-bottom:12px;letter-spacing:-.01em}
+  .pillar p{font-size:14.5px;color:#555;line-height:1.65}
+
+  /* ── open roles ── */
+  .roles{padding:0 40px 120px;background:var(--paper)}
+  .roles-inner{max-width:1400px;margin:0 auto}
+  .roles-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:48px;flex-wrap:wrap;gap:20px}
+  .roles-head h2{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(36px,4.5vw,56px);line-height:1;letter-spacing:-.025em;color:var(--leaf-deep)}
+  .roles-head h2 em{font-style:italic;color:var(--accent)}
+  .roles-head p{font-size:14px;color:#777;max-width:300px;text-align:right;line-height:1.6}
+  .role-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+  .role-item{
+    display:grid;grid-template-columns:1fr auto;gap:32px;
+    align-items:center;
+    padding:32px 0;
+    border-bottom:1px solid var(--line);
+    transition:padding-left .25s;
+    cursor:pointer;
+  }
+  .role-item:hover{padding-left:12px}
+  .role-dept{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px}
+  .role-title{font-family:'Fraunces',serif;font-weight:500;font-size:26px;color:var(--leaf-deep);letter-spacing:-.01em;margin-bottom:6px}
+  .role-meta{font-size:13px;color:#777;display:flex;gap:18px;flex-wrap:wrap}
+  .role-meta span{display:flex;align-items:center;gap:5px}
+  .role-apply{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 20px;border:1px solid var(--leaf-deep);
+    font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--leaf-deep);white-space:nowrap;
+    transition:background .2s,color .2s;
+    flex-shrink:0;
+  }
+  .role-item:hover .role-apply{background:var(--leaf-deep);color:var(--cream)}
+  .role-apply svg{transition:transform .2s}
+  .role-item:hover .role-apply svg{transform:translateX(3px)}
+
+  /* ── culture strip ── */
+  .culture{
+    background:var(--cream);
+    padding:120px 40px;
+  }
+  .culture-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+  .culture-img{aspect-ratio:4/3;overflow:hidden}
+  .culture-img img{width:100%;height:100%;object-fit:cover;filter:contrast(1.1) saturate(1.2)}
+  .culture h2{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(36px,4.5vw,58px);line-height:1.02;letter-spacing:-.025em;color:var(--leaf-deep);margin-bottom:24px}
+  .culture h2 em{font-style:italic;color:var(--accent)}
+  .culture p{font-size:16px;color:#444;line-height:1.75;margin-bottom:20px}
+  .culture-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:44px;border-top:1px solid var(--line);padding-top:36px}
+  .c-stat{padding:0 24px 0 0;border-right:1px solid var(--line)}
+  .c-stat:last-child{border-right:none;padding-right:0}
+  .c-stat:not(:first-child){padding-left:24px}
+  .c-stat-val{font-family:'Fraunces',serif;font-weight:400;font-size:36px;color:var(--leaf-deep);line-height:1;letter-spacing:-.02em}
+  .c-stat-val sup{font-size:18px;color:var(--accent);vertical-align:super}
+  .c-stat-cap{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#777;font-weight:500;margin-top:6px}
+
+  /* ── application form ── */
+  .apply{
+    background:var(--leaf-deep);color:var(--cream);
+    padding:120px 40px;position:relative;overflow:hidden;
+  }
+  .apply::before{
+    content:"";position:absolute;inset:0;
+    background-image:url('Image.PNG');
+    background-size:cover;background-position:center;
+    opacity:.06;
+  }
+  .apply-inner{position:relative;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:100px;align-items:start}
+  .apply-left h2{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(38px,5vw,68px);line-height:1;letter-spacing:-.03em;margin-bottom:24px}
+  .apply-left h2 em{font-style:italic;color:var(--wheat)}
+  .apply-left p{font-size:16px;opacity:.78;line-height:1.7;margin-bottom:32px;max-width:440px}
+  .apply-contact{display:flex;flex-direction:column;gap:14px}
+  .apply-contact a{font-size:14px;opacity:.78;display:flex;align-items:center;gap:10px;transition:opacity .2s}
+  .apply-contact a:hover{opacity:1;color:var(--wheat)}
+
+  .form-card{background:rgba(244,239,230,.05);border:1px solid rgba(244,239,230,.14);padding:48px}
+  .form-card h3{font-family:'Fraunces',serif;font-weight:500;font-size:26px;margin-bottom:32px;letter-spacing:-.01em}
+  .form-group{margin-bottom:22px}
+  .form-group label{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--wheat);font-weight:600;margin-bottom:8px}
+  .form-group input,
+  .form-group select,
+  .form-group textarea{
+    width:100%;background:rgba(244,239,230,.07);
+    border:1px solid rgba(244,239,230,.18);
+    color:var(--cream);
+    padding:13px 16px;font-size:14px;
+    outline:none;
+    transition:border-color .2s;
+    -webkit-appearance:none;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder{color:rgba(244,239,230,.4)}
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus{border-color:var(--wheat)}
+  .form-group select{cursor:pointer;color:var(--cream)}
+  .form-group select option{background:var(--leaf-deep);color:var(--cream)}
+  .form-group textarea{resize:vertical;min-height:110px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .file-label{
+    display:flex;align-items:center;gap:10px;
+    background:rgba(244,239,230,.07);border:1px dashed rgba(244,239,230,.25);
+    padding:14px 16px;cursor:pointer;font-size:13px;opacity:.7;
+    transition:border-color .2s,opacity .2s;
+  }
+  .file-label:hover{border-color:var(--wheat);opacity:1}
+  input[type="file"]{display:none}
+  .submit-btn{
+    width:100%;background:var(--wheat);color:var(--leaf-deep);
+    padding:16px;font-size:13px;font-weight:700;
+    letter-spacing:.08em;text-transform:uppercase;
+    border:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    margin-top:8px;transition:background .2s;
+  }
+  .submit-btn:hover{background:var(--cream)}
+  .submit-btn svg{transition:transform .2s}
+  .submit-btn:hover svg{transform:translateX(3px)}
+  .form-note{font-size:12px;opacity:.5;margin-top:16px;line-height:1.6}
+
+  /* ── footer strip ── */
+  .foot-strip{
+    background:var(--leaf-deep);color:var(--cream);
+    border-top:1px solid rgba(255,255,255,.08);
+    padding:28px 40px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  }
+  .foot-strip p{font-size:13px;opacity:.6}
+  .foot-strip a{font-size:13px;opacity:.6;transition:opacity .2s}
+  .foot-strip a:hover{opacity:1}
+
+  /* ── responsive ── */
+  @media(max-width:1100px){
+    .why-head,.culture-inner,.apply-inner{grid-template-columns:1fr;gap:50px}
+    .why-head p{max-width:600px}
+    .roles-head p{text-align:left}
+    .why-pillars{grid-template-columns:1fr 1fr}
+    .pillar:nth-child(2){border-right:none}
+    .pillar:nth-child(3){border-right:none;padding-left:0;padding-right:0;border-top:1px solid var(--line);padding-top:44px}
+    .pillar:nth-child(3)::before{display:none}
+  }
+  @media(max-width:700px){
+    .hero-content,.why,.roles,.culture,.apply{padding-left:24px;padding-right:24px}
+    .nav-inner{padding:16px 24px}
+    .why-pillars{grid-template-columns:1fr}
+    .pillar{border-right:none;padding-left:0!important;padding-right:0!important;border-top:1px solid var(--line);padding-top:36px!important}
+    .pillar:first-child{border-top:none;padding-top:0!important}
+    .pillar::before{left:0!important}
+    .form-row{grid-template-columns:1fr}
+    .role-item{grid-template-columns:1fr}
+    .culture-stats{grid-template-columns:1fr 1fr}
+    .form-card{padding:32px 24px}
+    .foot-strip{padding:20px 24px}
+  }
+</style>
+</head>
+<body>
+
+<!-- nav -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="https://sekhonbiotech.com/wp-content/uploads/2021/07/logo2x-new.png" alt="Sekhon Biotech" />
+    </a>
+    <a href="index.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to home
+    </a>
+  </div>
+</nav>
+
+<!-- hero -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Careers at Sekhon Biotech</div>
+    <h1>Grow with us.<br><em>Root something real.</em></h1>
+    <p class="hero-lede">We are a small, focused team doing work that matters — feeding India with better seed. If you care about agriculture, science, and getting your hands dirty in the right way, you belong here.</p>
+    <a href="#apply" class="hero-cta">See open roles
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </div>
+</header>
+
+<!-- why sekhon biotech -->
+<section class="why">
+  <div class="why-inner">
+    <div class="why-head">
+      <div>
+        <div class="section-eyebrow">Why Sekhon Biotech</div>
+        <h2>Work that <em>feeds</em><br>a nation.</h2>
+      </div>
+      <p>Every mini-tuber we produce ends up in a farmer's field. That chain of consequence is short, visible, and real — and it shapes everything about how we work and who we hire.</p>
+    </div>
+    <div class="why-pillars">
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"/></svg>
+        </div>
+        <h3>Science you can see</h3>
+        <p>Our tissue culture lab and CPRI-designed aeroponic tunnels are where the work actually happens. No abstract deliverables — you see your output harvested, counted, and shipped to farmers across India.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>20 years of stability</h3>
+        <p>We have been operating for over two decades through every cycle the agricultural sector has thrown at us. We don't chase trends — we build deep, long-term capability and reward people who do the same.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>A team, not a number</h3>
+        <p>We are a lean, hands-on team where your contribution is visible and your voice is heard. You will work closely with leadership, institutional partners like CPRI Shimla, and growers across ten states.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- open roles -->
+<section class="roles" id="apply">
+  <div class="roles-inner">
+    <div class="roles-head">
+      <div>
+        <div class="section-eyebrow">Open positions</div>
+        <h2>Where we <em>need you.</em></h2>
+      </div>
+      <p>Based in SBS Nagar, Punjab. Shortlisted candidates will be contacted within 10 working days.</p>
+    </div>
+    <div class="role-list">
+
+      <div class="role-item">
+        <div>
+          <div class="role-dept">Laboratory</div>
+          <div class="role-title">Tissue Culture Technician</div>
+          <div class="role-meta">
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>SBS Nagar, Punjab</span>
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Full-time</span>
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>1–3 yrs experience</span>
+          </div>
+        </div>
+        <a href="#application-form" class="role-apply">Apply now <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="role-item">
+        <div>
+          <div class="role-dept">Operations</div>
+          <div class="role-title">Aeroponics &amp; Greenhouse Technician</div>
+          <div class="role-meta">
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>SBS Nagar, Punjab</span>
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Full-time</span>
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>2+ yrs experience</span>
+          </div>
+        </div>
+        <a href="#application-form" class="role-apply">Apply now <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="role-item">
+        <div>
+          <div class="role-dept">Quality Assurance</div>
+          <div class="role-title">Seed Quality &amp; Certification Officer</div>
+          <div class="role-meta">
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>SBS Nagar, Punjab</span>
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Full-time</span>
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>3+ yrs experience</span>
+          </div>
+        </div>
+        <a href="#application-form" class="role-apply">Apply now <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="role-item">
+        <div>
+          <div class="role-dept">Sales &amp; Supply</div>
+          <div class="role-title">Seed Sales Executive — North India</div>
+          <div class="role-meta">
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Field-based, Punjab / UP / HP</span>
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Full-time</span>
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>2+ yrs agri sales</span>
+          </div>
+        </div>
+        <a href="#application-form" class="role-apply">Apply now <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+
+      <div class="role-item">
+        <div>
+          <div class="role-dept">Field Operations</div>
+          <div class="role-title">Field Agronomist</div>
+          <div class="role-meta">
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>SBS Nagar + field travel</span>
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Full-time</span>
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>B.Sc. Agriculture</span>
+          </div>
+        </div>
+        <a href="#application-form" class="role-apply">Apply now <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- culture section -->
+<section class="culture">
+  <div class="culture-inner">
+    <div class="culture-img">
+      <img src="DSC04232.JPG" alt="Sekhon Biotech team at work" loading="lazy" />
+    </div>
+    <div>
+      <div class="section-eyebrow">Life here</div>
+      <h2>Serious work,<br><em>grounded people.</em></h2>
+      <p>We are based in the Shivalik foothills of Punjab — one of India's most naturally suited regions for seed potato production. It is a place of work, of open land, and of real seasons. We like it that way.</p>
+      <p>Our team is small enough that everyone's contribution shapes the outcome of the season. We collaborate closely with the Central Potato Research Institute, Shimla, and supply growers and state corporations across more than ten states.</p>
+      <div class="culture-stats">
+        <div class="c-stat">
+          <div class="c-stat-val">20<sup>+</sup></div>
+          <div class="c-stat-cap">Years established</div>
+        </div>
+        <div class="c-stat">
+          <div class="c-stat-val">5M</div>
+          <div class="c-stat-cap">Tubers / season</div>
+        </div>
+        <div class="c-stat">
+          <div class="c-stat-val">10<sup>+</sup></div>
+          <div class="c-stat-cap">States served</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- application form -->
+<section class="apply" id="application-form">
+  <div class="apply-inner">
+    <div class="apply-left">
+      <h2>Let's <em>talk.</em></h2>
+      <p>Send us your details and we'll be in touch within 10 working days. Even if none of the listed roles match, we welcome open applications from people who believe in what we are building.</p>
+    </div>
+
+    <div class="form-card">
+      <h3>Apply now</h3>
+      <div id="formSuccess" style="display:none;padding:40px 24px;text-align:center">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--wheat)" stroke-width="1.5" style="margin:0 auto 20px"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5"/></svg>
+        <p style="font-family:'Fraunces',serif;font-size:24px;margin-bottom:12px;color:var(--cream)">Application received.</p>
+        <p style="font-size:14px;opacity:.7;line-height:1.6">We review every application personally and will be in touch within 10 working days.</p>
+      </div>
+      <form id="careerForm" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY" />
+        <input type="hidden" name="subject" value="New Career Application — Sekhon Biotech" />
+        <input type="hidden" name="from_name" value="Sekhon Biotech Careers" />
+        <input type="hidden" name="replyto" id="replyto" value="" />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First name</label>
+            <input type="text" id="fname" name="fname" placeholder="Gurpreet" required />
+          </div>
+          <div class="form-group">
+            <label for="lname">Last name</label>
+            <input type="text" id="lname" name="lname" placeholder="Singh" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" />
+        </div>
+        <div class="form-group">
+          <label for="role">Role you're applying for</label>
+          <select id="role" name="role" required>
+            <option value="" disabled selected>Select a position</option>
+            <option>Tissue Culture Technician</option>
+            <option>Aeroponics &amp; Greenhouse Technician</option>
+            <option>Seed Quality &amp; Certification Officer</option>
+            <option>Seed Sales Executive — North India</option>
+            <option>Field Agronomist</option>
+            <option>Open application</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Tell us about yourself</label>
+          <textarea id="message" name="message" placeholder="A brief introduction — your background, why Sekhon Biotech, and what you'd bring to the team."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Resume / CV</label>
+          <label class="file-label" for="resume">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <span id="fileLabel">Upload PDF or Word doc — max 5 MB</span>
+          </label>
+          <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" />
+        </div>
+        <button type="submit" class="submit-btn">Send application
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <p class="form-note">We review every application personally. You'll hear back within 10 working days.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<div class="foot-strip">
+  <p>© 2026 Sekhon Biotech Pvt. Ltd. All rights reserved.</p>
+  <a href="index.html">← Back to home</a>
+</div>
+
+<script>
+  // file input label update
+  document.getElementById('resume').addEventListener('change', function() {
+    const label = document.getElementById('fileLabel');
+    label.textContent = this.files[0] ? this.files[0].name : 'Upload PDF or Word doc — max 5 MB';
+  });
+
+  // scroll "Apply now" role links into form and pre-select
+  document.querySelectorAll('.role-apply').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const roleTitle = link.closest('.role-item').querySelector('.role-title').textContent;
+      const select = document.getElementById('role');
+      for (let opt of select.options) {
+        if (opt.text.includes(roleTitle.split('—')[0].trim())) { opt.selected = true; break; }
+      }
+      document.getElementById('application-form').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // keep _replyto in sync with email field
+  document.getElementById('email').addEventListener('input', function() {
+    document.getElementById('replyto').value = this.value;
+  });
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.submit-btn');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        btn.textContent = 'Something went wrong — try again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Network error — try again';
+      btn.disabled = false;
+    }
+  }
+</script>
+</body>
+</html>

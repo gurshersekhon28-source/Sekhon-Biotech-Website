@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sekhon Biotech — World-class seed potatoes from Punjab</title>
+<meta name="description" content="Sekhon Biotech is an agri-biotech company producing five million tissue-culture mini-tubers annually using aeroponics technology developed with CPRI Shimla." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --leaf:#0f3a2e;
+    --leaf-deep:#061812;
+    --moss:#345e4a;
+    --soil:#5a4632;
+    --wheat:#d9c79a;
+    --cream:#f4efe6;
+    --paper:#fbf8f1;
+    --ink:#0d1612;
+    --accent:#b85431;
+    --accent-soft:#d97b52;
+    --line:rgba(13,22,18,.1);
+    --line-strong:rgba(13,22,18,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+  /* ─── utility bar ─── */
+  .util{
+    background:var(--leaf-deep);
+    color:var(--cream);
+    font-size:12px;
+    letter-spacing:.04em;
+  }
+  .util-inner{
+    max-width:1400px;margin:0 auto;
+    padding:9px 40px;
+    display:flex;justify-content:space-between;align-items:center;gap:24px;
+    flex-wrap:wrap;
+  }
+  .util a{opacity:.8;transition:opacity .2s}
+  .util a:hover{opacity:1}
+  .util-left{display:flex;gap:22px;align-items:center}
+  .pulse{
+    width:7px;height:7px;border-radius:50%;
+    background:#7ec59a;
+    box-shadow:0 0 0 0 rgba(126,197,154,.7);
+    animation:pulse 2s infinite;
+    display:inline-block;margin-right:8px;vertical-align:middle;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(126,197,154,.5)}
+    70%{box-shadow:0 0 0 8px rgba(126,197,154,0)}
+    100%{box-shadow:0 0 0 0 rgba(126,197,154,0)}
+  }
+
+  /* ─── nav ─── */
+  nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(251,248,241,.92);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1400px;margin:0 auto;
+    padding:20px 40px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .logo{display:flex;align-items:center}
+  .logo img{height:48px;width:auto;display:block}
+  .nav-links{display:flex;gap:36px;align-items:center;list-style:none}
+  .nav-links > li > a, .nav-links > li > .has-drop{
+    font-size:14px;font-weight:500;
+    position:relative;
+    transition:color .2s;
+    display:flex;align-items:center;gap:6px;
+    cursor:pointer;
+  }
+  .nav-links > li > a::after{
+    content:"";position:absolute;left:0;bottom:-6px;
+    width:0;height:1.5px;background:var(--leaf);
+    transition:width .3s ease;
+  }
+  .nav-links > li > a:hover::after{width:100%}
+  .has-drop svg{transition:transform .2s}
+  .has-drop:hover svg{transform:rotate(180deg)}
+
+  /* mega menu */
+  .mega{
+    position:absolute;
+    top:100%;left:0;right:0;
+    background:var(--paper);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:40px;
+    opacity:0;visibility:hidden;
+    transform:translateY(-8px);
+    transition:opacity .25s, transform .25s, visibility .25s;
+    z-index:99;
+  }
+  .nav-item-drop:hover .mega{
+    opacity:1;visibility:visible;transform:translateY(0);
+  }
+  .mega-inner{
+    max-width:1400px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:32px;
+  }
+  .mega-col h6{
+    font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--moss);font-weight:600;
+    margin-bottom:16px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line);
+  }
+  .mega-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .mega-col a{
+    font-size:14px;font-weight:400;
+    color:var(--ink);
+    transition:color .2s,padding-left .2s;
+    display:block;padding:4px 0;
+  }
+  .mega-col a:hover{color:var(--accent);padding-left:6px}
+
+  .cta-btn{
+    background:var(--leaf);
+    color:var(--cream)!important;
+    padding:11px 22px;border-radius:0;
+    font-size:13px;font-weight:600;
+    letter-spacing:.04em;
+    transition:background .2s;
+    display:inline-flex;align-items:center;gap:10px;
+    text-transform:uppercase;
+  }
+  .cta-btn:hover{background:var(--leaf-deep)}
+  .cta-btn::after{display:none!important}
+  .cta-btn svg{transition:transform .2s}
+  .cta-btn:hover svg{transform:translateX(3px)}
+  .mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--ink);padding:8px}
+
+  /* ─── HERO ─── */
+  .hero{
+    position:relative;
+    min-height:78vh;
+    display:flex;align-items:flex-end;
+    overflow:hidden;
+    background:var(--leaf-deep);
+  }
+  .hero-slide{
+    position:absolute;inset:0;
+    background-size:cover;background-position:center;
+    filter:saturate(.88) contrast(1.06);
+    opacity:0;
+    transition:opacity 1.6s ease;
+    will-change:opacity;
+  }
+  .hero-slide.active{opacity:1}
+  .hero-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,
+      rgba(6,24,18,.4) 0%,
+      rgba(6,24,18,.2) 40%,
+      rgba(6,24,18,.88) 100%);
+  }
+  .hero-content{
+    position:relative;
+    max-width:1400px;
+    width:100%;margin:0 auto;
+    padding:40px 40px 36px;
+    color:var(--cream);
+  }
+  .hero-tagline{
+    font-size:12px;font-weight:600;
+    letter-spacing:.25em;text-transform:uppercase;
+    color:var(--wheat);
+    margin-bottom:32px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .hero-tagline::before{content:"";width:32px;height:1px;background:var(--wheat)}
+  h1.hero-title{
+    font-family:'Fraunces',serif;
+    font-weight:400;
+    font-size:clamp(36px,6vw,96px);
+    line-height:.92;
+    letter-spacing:-.035em;
+    margin-bottom:40px;
+    max-width:1100px;
+  }
+  h1.hero-title em{font-style:italic;color:var(--wheat);font-weight:300}
+  .hero-bottom{
+    display:grid;grid-template-columns:1.2fr 1fr auto;
+    gap:60px;align-items:end;
+    padding-top:40px;
+    border-top:1px solid rgba(244,239,230,.2);
+  }
+  .hero-lede{
+    font-size:17px;
+    opacity:.85;
+    line-height:1.65;
+    max-width:520px;
+  }
+  .hero-meta{
+    display:flex;flex-direction:column;gap:6px;
+    font-size:13px;opacity:.7;
+  }
+  .hero-meta strong{
+    color:var(--wheat);font-family:'Fraunces',serif;
+    font-style:italic;font-weight:500;font-size:18px;
+  }
+  .hero-actions{display:flex;gap:14px;align-items:center}
+  .ghost-btn{
+    color:var(--cream);
+    padding:14px 22px;font-size:13px;font-weight:600;
+    letter-spacing:.04em;text-transform:uppercase;
+    border:1px solid rgba(244,239,230,.4);
+    transition:background .2s, border-color .2s;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .ghost-btn:hover{background:rgba(244,239,230,.1);border-color:var(--wheat)}
+
+  /* ─── hero controls ─── */
+  .hero-controls{
+    position:absolute;bottom:14px;left:50%;
+    transform:translateX(-50%);
+    display:flex;align-items:center;gap:10px;
+    z-index:10;
+  }
+  .hero-arrow{
+    background:none;border:none;padding:4px;
+    color:rgba(244,239,230,.6);
+    cursor:pointer;
+    transition:color .2s;
+    display:flex;align-items:center;
+  }
+  .hero-arrow:hover{color:var(--wheat)}
+  .hero-dots{
+    display:flex;align-items:center;gap:8px;
+  }
+  .hero-dot{
+    width:7px;height:7px;border-radius:50%;
+    background:rgba(244,239,230,.35);
+    border:none;padding:0;cursor:pointer;
+    transition:background .3s, transform .3s;
+  }
+  .hero-dot.active{background:var(--wheat);transform:scale(1.3)}
+
+  /* ─── stats strip ─── */
+  .stats-strip{
+    background:var(--paper);
+    padding:60px 40px;
+    border-bottom:1px solid var(--line);
+  }
+  .stats-strip-inner{
+    max-width:1400px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:0;
+  }
+  .stat-cell{
+    padding:20px 30px;
+    border-right:1px solid var(--line);
+    display:flex;align-items:center;gap:24px;
+  }
+  .stat-cell:last-child{border-right:none}
+  .stat-cell:first-child{padding-left:0}
+  .stat-icon{
+    width:54px;height:54px;border-radius:50%;
+    background:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--leaf);flex-shrink:0;
+  }
+  .stat-content{display:flex;flex-direction:column;gap:2px}
+  .stat-value{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:36px;letter-spacing:-.02em;
+    color:var(--leaf-deep);line-height:1;
+  }
+  .stat-value sup{font-size:18px;color:var(--accent);vertical-align:super}
+  .stat-cap{
+    font-size:12px;letter-spacing:.06em;
+    text-transform:uppercase;color:#666;
+    font-weight:500;margin-top:4px;
+  }
+
+  /* ─── story / about ─── */
+  .story{padding:140px 40px;background:var(--paper)}
+  .story-inner{
+    max-width:1400px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1.1fr;
+    gap:100px;align-items:center;
+  }
+  .story-img{position:relative;overflow:hidden}
+  .story-img img,
+  .story-img video{
+    width:100%;height:auto;display:block;object-fit:unset;
+  }
+  .story-img video{
+    filter:contrast(1.04) saturate(1.06);
+  }
+  .story-img::after{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(to bottom, rgba(6,24,18,.28) 0%, rgba(6,24,18,0) 40%);
+    pointer-events:none;
+  }
+  .story-img .badge{
+    position:absolute;bottom:30px;left:30px;
+    background:var(--paper);
+    padding:18px 22px;
+    font-size:11px;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--leaf-deep);font-weight:600;
+    display:flex;align-items:center;gap:12px;
+  }
+  .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+  .story-eyebrow{
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--moss);font-weight:600;
+    margin-bottom:30px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .story-eyebrow::before{content:"";width:32px;height:1px;background:var(--moss)}
+  .story h2{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(40px,5vw,68px);
+    line-height:1.02;letter-spacing:-.025em;
+    color:var(--leaf-deep);
+    margin-bottom:32px;
+  }
+  .story h2 em{font-style:italic;color:var(--accent)}
+  .story p{font-size:17px;color:#3a3a3a;line-height:1.75;margin-bottom:22px}
+  .story-link{
+    margin-top:16px;
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:13px;font-weight:600;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--leaf-deep);
+    padding-bottom:6px;border-bottom:1.5px solid var(--leaf-deep);
+    transition:gap .2s;
+  }
+  .story-link:hover{gap:14px}
+
+  /* ─── segments ─── */
+  .segments{background:var(--cream);padding:140px 40px}
+  .segments-head{
+    max-width:1400px;margin:0 auto 70px;
+    display:grid;grid-template-columns:1fr 1.3fr;
+    gap:80px;align-items:end;
+  }
+  .segments-head h2{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(40px,5vw,68px);
+    line-height:1;letter-spacing:-.025em;color:var(--leaf-deep);
+  }
+  .segments-head h2 em{font-style:italic;color:var(--accent)}
+  .segments-head p{font-size:17px;color:#444;line-height:1.7;max-width:540px}
+  .segments-grid{
+    max-width:1400px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:0;
+  }
+  .segment{position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer}
+  .segment img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+  .segment:hover img{transform:scale(1.08)}
+  .segment-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(6,24,18,0) 30%, rgba(6,24,18,.92) 100%);
+  }
+  .segment-content{position:absolute;inset:auto 0 0 0;padding:32px 28px;color:var(--cream)}
+  .segment-num{
+    font-family:'Fraunces',serif;font-style:italic;
+    font-size:13px;color:var(--wheat);
+    margin-bottom:10px;display:block;opacity:.85;
+  }
+  .segment h3{
+    font-family:'Fraunces',serif;font-weight:500;
+    font-size:26px;letter-spacing:-.01em;
+    margin-bottom:10px;line-height:1.1;
+  }
+  .segment p{
+    font-size:13px;opacity:.85;line-height:1.5;
+    max-height:0;overflow:hidden;
+    transition:max-height .4s ease, margin .4s ease;
+  }
+  .segment:hover p{max-height:120px;margin-bottom:12px}
+  .segment-tag{
+    font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--wheat);font-weight:600;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+
+  /* ─── varieties ─── */
+  .potatoes{background:var(--paper);padding:140px 40px}
+  .potatoes-head{
+    max-width:1400px;margin:0 auto 70px;
+    display:flex;justify-content:space-between;align-items:end;gap:40px;
+    flex-wrap:wrap;
+  }
+  .potatoes-head h2{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(40px,5vw,68px);
+    line-height:1;letter-spacing:-.025em;color:var(--leaf-deep);
+  }
+  .potatoes-head h2 em{font-style:italic;color:var(--accent)}
+  .potatoes-head .small-title{
+    font-size:11px;letter-spacing:.25em;text-transform:uppercase;
+    color:var(--moss);font-weight:600;margin-bottom:14px;
+  }
+  .filter-bar{
+    display:flex;gap:6px;
+    background:var(--cream);
+    padding:5px;border:1px solid var(--line);
+  }
+  .filter-btn{
+    padding:9px 18px;
+    font-size:12px;font-weight:600;letter-spacing:.06em;
+    text-transform:uppercase;color:#666;
+    transition:all .25s;
+  }
+  .filter-btn.active{background:var(--leaf);color:var(--cream)}
+  .filter-btn:not(.active):hover{color:var(--leaf-deep)}
+
+  .varieties-grid{
+    max-width:1400px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:1px;background:var(--line);border:1px solid var(--line);
+  }
+  .varieties-grid .var-card:nth-child(n+7){display:none}
+  .var-card{
+    background:var(--paper);padding:0;
+    transition:background .3s;
+    display:flex;flex-direction:column;
+    position:relative;overflow:hidden;
+  }
+  .var-card.hidden{display:none}
+  .var-card:hover{background:var(--cream)}
+  .var-img{aspect-ratio:5/4;overflow:hidden;background:var(--cream);position:relative}
+  .var-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+  .var-card:hover .var-img img{transform:scale(1.07)}
+  .var-label{
+    position:absolute;top:18px;left:18px;
+    padding:5px 11px;background:var(--paper);
+    font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+    font-weight:600;color:var(--leaf-deep);
+  }
+  .var-label.red{background:#b85431;color:#fff}
+  .var-label.yellow{background:#d4a44a;color:#fff}
+  .var-label.purple{background:#5a3a78;color:#fff}
+  .var-label.new{background:var(--leaf);color:var(--wheat)}
+  .var-body{padding:30px 32px 36px;flex:1;display:flex;flex-direction:column}
+  .var-head{
+    display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    margin-bottom:14px;
+  }
+  .var-head h3{
+    font-family:'Fraunces',serif;font-weight:500;
+    font-size:30px;letter-spacing:-.015em;color:var(--leaf-deep);line-height:1;
+  }
+  .var-code{font-family:'Fraunces',serif;font-style:italic;font-size:13px;color:var(--accent);flex-shrink:0}
+  .var-pitch{
+    font-family:'Fraunces',serif;font-style:italic;
+    font-size:17px;line-height:1.4;color:var(--moss);margin-bottom:18px;
+  }
+  .var-desc{font-size:14px;color:#555;line-height:1.65;margin-bottom:24px;flex:1}
+  .var-specs{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:1px;border-top:1px solid var(--line);
+    padding-top:20px;margin-top:auto;
+  }
+  .var-spec{display:flex;flex-direction:column;gap:4px;padding:0 12px 0 0;border-right:1px solid var(--line)}
+  .var-spec:last-child{border-right:none}
+  .var-spec span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#888;font-weight:500}
+  .var-spec strong{font-family:'Fraunces',serif;font-weight:500;font-size:16px;color:var(--leaf-deep);letter-spacing:-.01em}
+  .var-link{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 32px;border-top:1px solid var(--line);
+    font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    font-weight:600;color:var(--leaf-deep);
+    transition:background .2s, padding-left .2s;
+  }
+  .var-card:hover .var-link{background:var(--leaf);color:var(--cream)}
+  .var-link svg{transition:transform .2s}
+  .var-card:hover .var-link svg{transform:translateX(4px)}
+
+  .potatoes-foot{max-width:1400px;margin:60px auto 0;text-align:center}
+  .ghost-btn-dark{
+    color:var(--leaf-deep);
+    padding:14px 28px;font-size:13px;font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;
+    border:1px solid var(--leaf-deep);
+    transition:background .2s, color .2s;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .ghost-btn-dark:hover{background:var(--leaf-deep);color:var(--cream)}
+
+  /* ─── feature block ─── */
+  .feature{
+    background:var(--leaf-deep);
+    color:var(--cream);
+    overflow:hidden;
+  }
+  .feature-content{
+    max-width:1400px;width:100%;margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:75vh;
+  }
+  .feature-img-col{
+    position:relative;
+    overflow:hidden;
+  }
+  .feature-img-col img{
+    width:100%;height:100%;
+    object-fit:cover;object-position:60% center;
+    display:block;
+    filter:contrast(1.15) saturate(1.3) brightness(0.78);
+  }
+  .feature-img-col::after{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(to right, transparent 50%, var(--leaf-deep) 100%);
+  }
+  .feature-text-col{
+    display:flex;flex-direction:column;justify-content:center;
+    padding:80px 56px 80px 48px;
+    background:var(--leaf-deep);
+  }
+  .feature-tagline{
+    font-family:'Fraunces',serif;font-style:italic;
+    font-size:15px;color:var(--wheat);
+    margin-bottom:20px;letter-spacing:.04em;
+    display:flex;align-items:center;gap:14px;
+  }
+  .feature-tagline::before{content:"";width:32px;height:1px;background:var(--wheat)}
+  .feature-text-col h2{
+    font-family:'Fraunces',serif;font-weight:300;
+    font-size:clamp(36px,4.5vw,72px);
+    line-height:.97;letter-spacing:-.025em;
+    margin-bottom:24px;
+  }
+  .feature-text-col h2 em{font-style:italic;color:var(--wheat)}
+  .feature-text-col p{font-size:16px;opacity:.82;line-height:1.7;margin-bottom:36px}
+  .feature-cta{
+    display:inline-flex;align-items:center;gap:12px;
+    padding:14px 0;border-bottom:1.5px solid var(--wheat);
+    color:var(--wheat);font-size:13px;font-weight:600;
+    letter-spacing:.08em;text-transform:uppercase;
+    width:fit-content;transition:gap .2s;
+  }
+  .feature-cta:hover{gap:16px}
+
+  /* ─── recognition ─── */
+  .recog{background:var(--paper);padding:140px 40px}
+  .recog-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:100px;align-items:start}
+  .recog-left h2{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(36px,4.5vw,56px);
+    line-height:1.02;letter-spacing:-.025em;color:var(--leaf-deep);margin-bottom:24px;
+  }
+  .recog-left h2 em{font-style:italic;color:var(--accent)}
+  .recog-left p{font-size:16px;color:#555;line-height:1.7}
+  .recog-img{margin-top:36px;aspect-ratio:5/4;overflow:hidden}
+  .recog-img img{width:100%;height:100%;object-fit:cover}
+  .timeline{display:flex;flex-direction:column;gap:0}
+  .tl-item{display:grid;grid-template-columns:24px 1fr;gap:28px;padding:32px 0;border-bottom:1px solid var(--line)}
+  .tl-item:first-child{padding-top:0}
+  .tl-year{font-size:20px;color:var(--accent);font-weight:700;line-height:1.6}
+  .tl-text strong{display:block;font-family:'Fraunces',serif;font-size:22px;font-weight:500;color:var(--leaf-deep);margin-bottom:8px;letter-spacing:-.01em}
+  .tl-text p{font-size:15px;color:#555;line-height:1.65}
+  .tl-cert{display:flex;align-items:flex-start;gap:18px;margin-top:2px}
+  .tl-cert-text{flex:1}
+  .cert-thumb-wrap{flex-shrink:0;cursor:zoom-in;position:relative}
+  .cert-thumb-wrap img{
+    width:68px;border:1px solid var(--line-mid);
+    display:block;transition:transform .2s, box-shadow .2s;
+  }
+  .cert-thumb-wrap:hover img{transform:scale(1.06);box-shadow:0 6px 20px rgba(0,0,0,.18)}
+  .cert-thumb-wrap::after{
+    content:'⊕';
+    position:absolute;bottom:4px;right:4px;
+    font-size:13px;color:var(--cream);
+    background:rgba(6,24,18,.55);
+    width:20px;height:20px;display:flex;align-items:center;justify-content:center;
+    line-height:1;pointer-events:none;
+  }
+  /* cert image lightbox */
+  .cert-lightbox{
+    position:fixed;inset:0;z-index:500;
+    background:rgba(6,24,18,.88);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;
+    transition:opacity .3s;
+  }
+  .cert-lightbox.open{opacity:1;pointer-events:all}
+  .cert-lightbox img{
+    max-width:min(90vw,640px);max-height:90vh;
+    box-shadow:0 24px 80px rgba(0,0,0,.55);
+    display:block;
+  }
+  .cert-lightbox-close{
+    position:absolute;top:24px;right:28px;
+    background:none;border:none;color:var(--cream);
+    font-size:26px;cursor:pointer;opacity:.7;transition:opacity .2s;
+  }
+  .cert-lightbox-close:hover{opacity:1}
+
+  /* ─── CTA / contact ─── */
+  .cta-block{background:var(--leaf-deep);color:var(--cream);padding:140px 40px;position:relative;overflow:hidden}
+  .cta-block::before{
+    content:"";position:absolute;inset:0;
+    background-image:url('https://images.unsplash.com/photo-1471194402529-8e0f5a675de6?w=2000&q=80');
+    background-size:cover;background-position:center;opacity:.08;
+  }
+  .cta-inner{position:relative;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:100px;align-items:center}
+  .cta-left h2{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(44px,5.5vw,84px);
+    line-height:1;letter-spacing:-.03em;margin-bottom:30px;
+  }
+  .cta-left h2 em{font-style:italic;color:var(--wheat)}
+  .cta-left p{font-size:17px;opacity:.78;line-height:1.7;margin-bottom:40px;max-width:540px}
+  .cta-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .cta-actions .cta-btn{background:var(--wheat);color:var(--leaf-deep)!important}
+  .cta-actions .cta-btn:hover{background:var(--cream)}
+  .cta-info{background:rgba(244,239,230,.05);border:1px solid rgba(244,239,230,.15);padding:42px}
+  .cta-info h3{font-family:'Fraunces',serif;font-weight:500;font-size:24px;letter-spacing:-.01em;margin-bottom:30px}
+  .info-line{padding:18px 0;border-top:1px solid rgba(244,239,230,.12);display:flex;flex-direction:column;gap:4px}
+  .info-line:first-of-type{border-top:none;padding-top:0}
+  .info-line label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--wheat);font-weight:600}
+  .info-line a, .info-line span{font-size:15px;opacity:.9;transition:color .2s}
+  .info-line a:hover{color:var(--wheat)}
+
+  /* ─── footer ─── */
+  footer{background:var(--leaf-deep);color:var(--cream);padding:80px 40px 30px;border-top:1px solid rgba(255,255,255,.1)}
+  .foot-grid{
+    max-width:1400px;margin:0 auto;
+    display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1.4fr;
+    gap:50px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,.1);
+  }
+  .foot-brand{font-family:'Fraunces',serif;font-size:26px;font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:11px}
+  .foot-tag{font-size:14px;opacity:.7;max-width:340px;line-height:1.6;margin-bottom:24px}
+  .foot-socials{display:flex;gap:10px}
+  .foot-socials a{
+    width:36px;height:36px;border-radius:50%;
+    border:1px solid rgba(255,255,255,.2);
+    display:flex;align-items:center;justify-content:center;
+    transition:all .2s;
+  }
+  .foot-socials a:hover{background:var(--wheat);border-color:var(--wheat);color:var(--leaf-deep)}
+  .foot-col h5{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--wheat);margin-bottom:22px;font-weight:600}
+  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .foot-col a{font-size:14px;opacity:.78;transition:opacity .2s,color .2s}
+  .foot-col a:hover{opacity:1;color:var(--wheat)}
+  .foot-contact{font-size:14px;line-height:1.85;opacity:.85}
+  .foot-contact a{display:block}
+  .foot-bottom{max-width:1400px;margin:30px auto 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;font-size:12px;opacity:.6}
+  .foot-bottom-right{display:flex;gap:24px}
+
+  /* ─── responsive ─── */
+  @media (max-width: 1100px){
+    .stats-strip-inner{grid-template-columns:repeat(2,1fr);gap:30px 0}
+    .stat-cell{padding:20px}
+    .stat-cell:nth-child(2n){border-right:none}
+    .varieties-grid{grid-template-columns:repeat(2,1fr)}
+    .segments-grid{grid-template-columns:repeat(2,1fr)}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width: 880px){
+    .nav-links{display:none}
+    .mobile-toggle{display:flex}
+    .hero-bottom, .story-inner, .segments-head, .recog-inner, .cta-inner{grid-template-columns:1fr;gap:40px}
+    .feature-content{grid-template-columns:1fr}
+    .feature-img-col{min-height:320px}
+    .feature-text-col{padding:48px 24px 56px}
+    .hero{min-height:auto;padding-top:60px}
+    .hero-content{padding:60px 32px 60px}
+    .story, .segments, .potatoes, .recog, .cta-block{padding:80px 24px}
+    .stats-strip{padding:40px 24px}
+    .util-inner{padding:9px 24px;justify-content:center;text-align:center;font-size:11px}
+    .nav-inner{padding:16px 24px}
+  }
+  @media (max-width: 560px){
+    .stats-strip-inner{grid-template-columns:1fr}
+    .stat-cell{border-right:none;border-bottom:1px solid var(--line);padding:16px 0}
+    .stat-cell:last-child{border-bottom:none}
+    .varieties-grid, .segments-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+    .filter-bar{overflow-x:auto;width:100%}
+    h1.hero-title{font-size:clamp(40px,12vw,68px)}
+  }
+
+  /* ─── lightbox ─── */
+  .lightbox{
+    position:fixed;inset:0;z-index:1000;
+    background:rgba(6,24,18,.95);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;visibility:hidden;
+    transition:opacity .3s ease, visibility .3s ease;
+    cursor:zoom-out;
+    padding:24px;
+  }
+  .lightbox.open{opacity:1;visibility:visible}
+  .lightbox img{
+    max-width:100%;max-height:100%;
+    object-fit:contain;
+    border-radius:0;
+    box-shadow:0 40px 100px rgba(0,0,0,.6);
+    transform:scale(.95);
+    transition:transform .3s ease;
+  }
+  .lightbox.open img{transform:scale(1)}
+  .lightbox-close{
+    position:absolute;top:20px;right:24px;
+    color:var(--cream);opacity:.7;
+    font-size:32px;line-height:1;
+    cursor:pointer;transition:opacity .2s;
+    background:none;border:none;
+  }
+  .lightbox-close:hover{opacity:1}
+
+  /* ─── lightbox ─── */
+  .lightbox{
+    position:fixed;inset:0;z-index:1000;
+    background:rgba(6,24,18,.95);
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;visibility:hidden;
+    transition:opacity .3s ease, visibility .3s ease;
+    cursor:zoom-out;
+    padding:24px;
+  }
+  .lightbox.open{opacity:1;visibility:visible}
+  .lightbox video{
+    max-width:100%;max-height:92vh;
+    box-shadow:0 40px 100px rgba(0,0,0,.6);
+    transform:scale(.95);
+    transition:transform .3s ease;
+    cursor:default;
+  }
+  .lightbox.open video{transform:scale(1)}
+  .lightbox-close{
+    position:absolute;top:20px;right:24px;
+    color:var(--cream);opacity:.7;
+    font-size:32px;line-height:1;
+    cursor:pointer;transition:opacity .2s;
+    background:none;border:none;
+  }
+  .lightbox-close:hover{opacity:1}
+  .story-img video{cursor:zoom-in}
+
+  /* ─── scroll reveal ─── */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease, transform .8s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  /* ─── mobile nav open state ─── */
+  .nav-links.open{
+    display:flex;
+    position:absolute;top:100%;left:0;right:0;
+    background:var(--paper);
+    flex-direction:column;
+    padding:24px;
+    border-bottom:1px solid var(--line);
+    gap:18px;
+    align-items:flex-start;
+    z-index:200;
+  }
+</style>
+</head>
+<body>
+
+<!-- top utility bar -->
+<div class="util">
+  <div class="util-inner">
+    <div class="util-left">
+      <span><span class="pulse"></span>SBS Nagar, Punjab — Shivalik Foothills</span>
+      <span style="opacity:.5">|</span>
+      <a href="tel:+919815652360">+91 98156 52360</a>
+    </div>
+    <div>
+      <a href="mailto:info@sekhonbiotech.com">info@sekhonbiotech.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- nav -->
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="logo">
+      <img src="https://sekhonbiotech.com/wp-content/uploads/2021/07/logo2x-new.png" alt="Sekhon Biotech" />
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="varieties.html">Varieties</a></li>
+      <li><a href="process.html">Technology</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="#contact" class="cta-btn">Contact
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="hero">
+  <!-- hero slides — add more .hero-slide divs here to extend the rotation -->
+  <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=2000&q=85')"></div>
+  <div class="hero-slide" style="background-image:url('download_edited.jpeg');background-position:center 62%;filter:saturate(1.1) contrast(1.12) brightness(0.82)"></div>
+  <div class="hero-slide" style="background-image:url('DJI_0645_edited.JPG');background-position:center 52%"></div>
+  <div class="hero-slide" style="background-image:url('DSC04222-1_edited.jpg');background-position:center bottom"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tagline reveal">Seed potatoes · Bred for Indian soil</div>
+    <h1 class="hero-title reveal">
+      World-class<br>
+      seed potatoes,<br>
+      <em>rooted in Punjab.</em>
+    </h1>
+    <div class="hero-bottom reveal">
+      <p class="hero-lede">
+        Sekhon Biotech is an Indian agri-biotech company producing five million tissue-culture mini-tubers each year. Founded in the Shivalik foothills — a region scientifically identified as ideal for potato cultivation — and built around aeroponics technology developed with CPRI Shimla.
+      </p>
+      <div class="hero-meta">
+        <span>In business since</span>
+        <strong>20+ Years</strong>
+        <span style="margin-top:10px">Technology partner</span>
+        <strong>CPRI Shimla</strong>
+      </div>
+      <div class="hero-actions">
+        <a href="varieties.html" class="cta-btn" style="background:var(--wheat);color:var(--leaf-deep)!important">Explore varieties
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="process.html" class="ghost-btn">How we grow</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-controls">
+    <button class="hero-arrow hero-prev" aria-label="Previous slide">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+    </button>
+    <div class="hero-dots"></div>
+    <button class="hero-arrow hero-next" aria-label="Next slide">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- stats strip -->
+<section class="stats-strip">
+  <div class="stats-strip-inner">
+    <div class="stat-cell">
+      <div class="stat-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C8 2 5 6 5 11c0 5 4 11 7 11s7-6 7-11c0-5-3-9-7-9z"/><circle cx="10" cy="9" r=".8" fill="currentColor"/><circle cx="14" cy="11" r=".8" fill="currentColor"/><circle cx="11" cy="14" r=".8" fill="currentColor"/></svg>
+      </div>
+      <div class="stat-content">
+        <div class="stat-value">12<sup>+</sup></div>
+        <div class="stat-cap">Potato varieties</div>
+      </div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M5.6 18.4L18.4 5.6"/></svg>
+      </div>
+      <div class="stat-content">
+        <div class="stat-value">5M</div>
+        <div class="stat-cap">Mini-tubers / year</div>
+      </div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l3 3"/><path d="M16.5 4.5a9 9 0 11-9 0"/></svg>
+      </div>
+      <div class="stat-content">
+        <div class="stat-value">20<sup>+</sup></div>
+        <div class="stat-cap">Years in business</div>
+      </div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div class="stat-content">
+        <div class="stat-value">10<sup>+</sup></div>
+        <div class="stat-cap">States served</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY / ABOUT -->
+<section id="about" class="story">
+  <div class="story-inner">
+    <div class="story-img reveal">
+      <video id="storyVideo" autoplay muted playsinline preload="auto" loop>
+        <source src="Drone_edited.mp4" type="video/mp4">
+      </video>
+      <div class="badge">
+        <span class="badge-dot"></span>
+        SBS Nagar · 31.1°N
+      </div>
+    </div>
+    <div>
+      <div class="story-eyebrow">Our story</div>
+      <h2>The right soil, <em>the right climate.</em></h2>
+      <p>Our facility is in the Shivalik foothills — a vector- and virus-free region that scientific surveys have identified as ideal for potato cultivation. The conditions matter: low disease pressure and the right soil mean fewer inputs in the field and healthier mother stock in the lab.</p>
+      <p>We commissioned our own tissue culture facility, then upgraded it with state-of-the-art aeroponics technology from the Central Potato Research Institute, Shimla. Five million mini-tubers leave our facility each year, supplying commercial growers, seed multipliers, and state corporations across India.</p>
+      <a href="process.html" class="story-link">Read about our technology
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET SEGMENTS -->
+<section id="segments" class="segments">
+  <div class="segments-head">
+    <h2>Built for every <em>end use.</em></h2>
+    <p>From the kitchens of households to the floors of processing plants — we grow varieties matched to the buyer at the end of the chain.</p>
+  </div>
+  <div class="segments-grid">
+    <a class="segment" href="varieties.html?segment=fresh">
+      <img src="Potatoes.jpg" alt="Fresh market" loading="lazy" />
+      <div class="segment-overlay"></div>
+      <div class="segment-content">
+        <span class="segment-num">— 01</span>
+        <h3>Fresh Market</h3>
+        <p>Table-quality potatoes for retail and wholesale markets. Smooth skins, even sizing, good shelf-life.</p>
+        <span class="segment-tag">View varieties →</span>
+      </div>
+    </a>
+    <a class="segment" href="varieties.html?segment=fries">
+      <img src="French Fries.jpg" alt="French fries" loading="lazy" />
+      <div class="segment-overlay"></div>
+      <div class="segment-content">
+        <span class="segment-num">— 02</span>
+        <h3>French Fries</h3>
+        <p>Long, uniform tubers with high dry matter and the right sugar profile for QSR processors.</p>
+        <span class="segment-tag">View varieties →</span>
+      </div>
+    </a>
+    <a class="segment" href="varieties.html?segment=chips">
+      <img src="Chips .jpg" alt="Chips &amp; Crisps" loading="lazy" />
+      <div class="segment-overlay"></div>
+      <div class="segment-content">
+        <span class="segment-num">— 03</span>
+        <h3>Chips &amp; Crisps</h3>
+        <p>20%+ dry matter, low reducing sugars after cold storage. Built for India's growing snack industry.</p>
+        <span class="segment-tag">View varieties →</span>
+      </div>
+    </a>
+    <a class="segment" href="varieties.html?segment=hashbrowns">
+      <img src="HASH-BROWN.jpg" alt="Hash Browns" loading="lazy" />
+      <div class="segment-overlay"></div>
+      <div class="segment-content">
+        <span class="segment-num">— 04</span>
+        <h3>Hash Browns</h3>
+        <p>High starch, firm texture and low moisture — ideal for grated or shredded hash brown production.</p>
+        <span class="segment-tag">View varieties →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- VARIETY CATALOG REMOVED - see varieties.html -->
+<!--
+<section id="varieties" class="potatoes">
+  <div class="potatoes-head">
+    <div>
+      <div class="small-title">Our Potatoes</div>
+      <h2>The <em>variety catalog.</em></h2>
+    </div>
+    <div class="filter-bar" role="group" aria-label="Filter varieties">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="table">Table</button>
+      <button class="filter-btn" data-filter="processing">Processing</button>
+      <button class="filter-btn" data-filter="early">Early</button>
+      <button class="filter-btn" data-filter="new">New</button>
+    </div>
+  </div>
+
+  <div class="varieties-grid" id="varietiesGrid">
+
+    <article class="var-card" data-cat="table">
+      <div class="var-img">
+        <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=900&q=85" alt="Kufri Jyoti" loading="lazy" />
+        <span class="var-label">White flesh</span>
+      </div>
+      <div class="var-body">
+        <div class="var-head">
+          <h3>Kufri Jyoti</h3>
+          <span class="var-code">CPRI · 1968</span>
+        </div>
+        <p class="var-pitch">India's most-loved potato for over half a century.</p>
+        <p class="var-desc">A benchmark white-flesh table potato with exceptional adaptability across altitudes and seasons. The versatile cooking variety that built India's modern potato industry.</p>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–110 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>30 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <a href="#contact" class="var-link">Enquire
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="var-card" data-cat="table early">
+      <div class="var-img">
+        <img src="https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=900&q=85" alt="Kufri Pukhraj" loading="lazy" />
+        <span class="var-label yellow">Yellow flesh</span>
+      </div>
+      <div class="var-body">
+        <div class="var-head">
+          <h3>Kufri Pukhraj</h3>
+          <span class="var-code">CPRI · Early</span>
+        </div>
+        <p class="var-pitch">The early bird that gets the price.</p>
+        <p class="var-desc">India's highest-yielding early variety. Golden-yellow skin, quick maturity, and consistent premium mandi pricing make Pukhraj the farmer's favourite for early market entry.</p>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>70–90 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>40 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <a href="#contact" class="var-link">Enquire
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="var-card" data-cat="processing">
+      <div class="var-img">
+        <img src="https://images.unsplash.com/photo-1591280063444-d3c514eb6e13?w=900&q=85" alt="Kufri Chipsona-1" loading="lazy" />
+        <span class="var-label">Processing</span>
+      </div>
+      <div class="var-body">
+        <div class="var-head">
+          <h3>Kufri Chipsona-1</h3>
+          <span class="var-code">CPRI · Chips</span>
+        </div>
+        <p class="var-pitch">The variety that gave India its own chips.</p>
+        <p class="var-desc">India's first dedicated chipping variety. High dry matter, low reducing sugars after storage — the workhorse behind a generation of domestic snack manufacturers.</p>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–110 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>40 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Chips</strong></div>
+        </div>
+      </div>
+      <a href="#contact" class="var-link">Enquire
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="var-card" data-cat="table">
+      <div class="var-img">
+        <img src="https://images.unsplash.com/photo-1635774855536-9728f2610245?w=900&q=85" alt="Kufri Sindhuri" loading="lazy" />
+        <span class="var-label red">Red skin</span>
+      </div>
+      <div class="var-body">
+        <div class="var-head">
+          <h3>Kufri Sindhuri</h3>
+          <span class="var-code">CPRI · Hardy</span>
+        </div>
+        <p class="var-pitch">A red-skinned classic, built to last.</p>
+        <p class="var-desc">Striking red skin with deep eyes and PLRV tolerance. Holds up in heat- and water-stressed conditions and resists seed degeneration season after season.</p>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>110–120 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>40 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <a href="#contact" class="var-link">Enquire
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="var-card" data-cat="table">
+      <div class="var-img">
+        <img src="https://images.unsplash.com/photo-1567393528677-d6adae7d4a0a?w=900&q=85" alt="Kufri Bahar" loading="lazy" />
+        <span class="var-label">White flesh</span>
+      </div>
+      <div class="var-body">
+        <div class="var-head">
+          <h3>Kufri Bahar</h3>
+          <span class="var-code">CPRI · 3797</span>
+        </div>
+        <p class="var-pitch">High-yielding, slow to degenerate.</p>
+        <p class="var-desc">Large white tubers with deep eyes and excellent storability. Popular across Haryana, Uttar Pradesh, Himachal Pradesh, and Jammu &amp; Kashmir for versatile household use.</p>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>100–110 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>45 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <a href="#contact" class="var-link">Enquire
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="var-card" data-cat="table early">
+      <div class="var-img">
+        <img src="https://images.unsplash.com/photo-1471194402529-8e0f5a675de6?w=900&q=85" alt="Kufri Ashoka" loading="lazy" />
+        <span class="var-label">Early</span>
+      </div>
+      <div class="var-body">
+        <div class="var-head">
+          <h3>Kufri Ashoka</h3>
+          <span class="var-code">CPRI · Early</span>
+        </div>
+        <p class="var-pitch">Made for the tight rotation.</p>
+        <p class="var-desc">Oval-long white tubers with shallow eyes. Excellent for the Indo-Gangetic plains' tight crop windows — a reliable early variety for double cropping.</p>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>75–90 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>30 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <a href="#contact" class="var-link">Enquire
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="var-card" data-cat="table early">
+      <div class="var-img">
+        <img src="https://images.unsplash.com/photo-1599056407101-7c557a4a0144?w=900&q=85" alt="Kufri Chandramukhi" loading="lazy" />
+        <span class="var-label">Early</span>
+      </div>
+      <div class="var-body">
+        <div class="var-head">
+          <h3>Kufri Chandramukhi</h3>
+          <span class="var-code">CPRI · 1968</span>
+        </div>
+        <p class="var-pitch">The Punjab classic that started a revolution.</p>
+        <p class="var-desc">India's first early-maturing variety. Light-yellow flesh, smooth skin, excellent cooking quality — a household name and the variety that enabled double cropping in the plains.</p>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>75–90 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>25 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <a href="#contact" class="var-link">Enquire
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="var-card" data-cat="processing">
+      <div class="var-img">
+        <img src="https://images.unsplash.com/photo-1508313880080-c4bef0730395?w=900&q=85" alt="Kufri Badshah" loading="lazy" />
+        <span class="var-label yellow">Yellow flesh</span>
+      </div>
+      <div class="var-body">
+        <div class="var-head">
+          <h3>Kufri Badshah</h3>
+          <span class="var-code">CPRI · Fries</span>
+        </div>
+        <p class="var-pitch">Made for the deep fryer.</p>
+        <p class="var-desc">Light-yellow flesh with excellent taste and texture. A staple for the QSR and processing sector — uniform tubers and predictable behaviour in the fryer.</p>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>100–110 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>40 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Fries</strong></div>
+        </div>
+      </div>
+      <a href="#contact" class="var-link">Enquire
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="var-card" data-cat="table early">
+      <div class="var-img">
+        <img src="https://images.unsplash.com/photo-1597313401170-ac8a7d2bca29?w=900&q=85" alt="Kufri Lauvkar" loading="lazy" />
+        <span class="var-label">Early</span>
+      </div>
+      <div class="var-body">
+        <div class="var-head">
+          <h3>Kufri Lauvkar</h3>
+          <span class="var-code">CPRI · Fastest</span>
+        </div>
+        <p class="var-pitch">From planting to harvest in seventy days.</p>
+        <p class="var-desc">One of India's earliest-maturing varieties. Smooth, medium-sized tubers — prized by farmers chasing tight crop cycles and quick turnarounds.</p>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>70–80 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>25 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <a href="#contact" class="var-link">Enquire
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="var-card" data-cat="table new">
+      <div class="var-img">
+        <img src="https://images.unsplash.com/photo-1606168305466-93d09afb6826?w=900&q=85" alt="Kufri Ratan" loading="lazy" />
+        <span class="var-label new">New · 2025</span>
+      </div>
+      <div class="var-body">
+        <div class="var-head">
+          <h3>Kufri Ratan</h3>
+          <span class="var-code">CPRI · New</span>
+        </div>
+        <p class="var-pitch">A jewel for the North Indian plains.</p>
+        <p class="var-desc">Recently approved for nationwide cultivation. Attractive dark-red ovoid tubers with shallow medium eyes, yellow flesh, and excellent storability.</p>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>~90 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>37–39 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <a href="#contact" class="var-link">Enquire
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="var-card" data-cat="processing new">
+      <div class="var-img">
+        <img src="https://images.unsplash.com/photo-1590165482129-1b8b27698780?w=900&q=85" alt="Kufri ChipBharat-1" loading="lazy" />
+        <span class="var-label new">New · 2025</span>
+      </div>
+      <div class="var-body">
+        <div class="var-head">
+          <h3>Kufri ChipBharat-1</h3>
+          <span class="var-code">CPRI · Chips</span>
+        </div>
+        <p class="var-pitch">The next chapter for Indian crisps.</p>
+        <p class="var-desc">Next-generation processing variety. High dry matter (20%+) and low reducing sugars — engineered for the cold-storage chip industry of the next decade.</p>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–100 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>35 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Chips</strong></div>
+        </div>
+      </div>
+      <a href="#contact" class="var-link">Enquire
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+    <article class="var-card" data-cat="specialty">
+      <div class="var-img">
+        <img src="https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?w=900&q=85" alt="Kufri Jamunia" loading="lazy" />
+        <span class="var-label purple">Purple flesh</span>
+      </div>
+      <div class="var-body">
+        <div class="var-head">
+          <h3>Kufri Jamunia</h3>
+          <span class="var-code">CPRI · Specialty</span>
+        </div>
+        <p class="var-pitch">India's first purple-flesh biofortified potato.</p>
+        <p class="var-desc">Rich in anthocyanins with strong antioxidant content — a premium specialty variety for health-conscious markets and high-end retail. Currently grown in Himachal and Uttarakhand.</p>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>100–110 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>25 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Specialty</strong></div>
+        </div>
+      </div>
+      <a href="#contact" class="var-link">Enquire
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </article>
+
+  </div>
+
+  <div class="potatoes-foot">
+    <a href="varieties.html" class="ghost-btn-dark">See all varieties
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+-->
+
+<!-- FEATURE BLOCK -->
+<section class="feature">
+  <div class="feature-content">
+    <div class="feature-img-col">
+      <img src="DSC04232.JPG" alt="Sekhon Biotech laboratory team">
+    </div>
+    <div class="feature-text-col">
+      <div class="feature-tagline">Our standard</div>
+      <h2>The Disease-Free <em>Difference</em></h2>
+      <p>Every potato we sell starts as a single, virus-indexed mother plant in our laboratory. From there it is multiplied through tissue culture, transitioned into our aeroponics system, and harvested as a G-0 mini-tuber — pathogen-free, traceable, and ready to multiply in your field. This is the standard we hold ourselves to. Every batch. Every season.</p>
+      <a href="process.html" class="feature-cta">Read about the process
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY / APPROACH -->
+
+<!-- RECOGNITION -->
+<section id="recognition" class="recog">
+  <div class="recog-inner">
+    <div class="recog-left">
+      <div class="story-eyebrow">Recognition</div>
+      <h2>Honoured by those who <em>set the standard.</em></h2>
+      <p>Over 20 years, our work has been recognised by national research institutions, scientific bodies, and the Government of India and Punjab.</p>
+      <div class="recog-img">
+        <img src="https://sekhonbiotech.com/wp-content/uploads/2021/06/CPRI-Shimla.jpg" alt="CPRI Shimla partnership" loading="lazy" />
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">—</div>
+        <div class="tl-text">
+          <strong>ISO 9001:2015 — Quality Management Systems</strong>
+          <div class="tl-cert">
+            <div class="tl-cert-text">
+              <p>Certified by Royal Assessments Pvt. Ltd. (EGAC &amp; IAF accredited) for the design and operation of our Plant Tissue Culture laboratory, Aeroponics Unit for potato mini-tuber production, and Early Generation Potato Seed programme — confirming that every stage of our process meets the international standard for quality management.</p>
+            </div>
+            <div class="cert-thumb-wrap" id="certThumb" title="View certificate">
+              <img src="PHOTO-2026-05-13-13-00-39.jpg" alt="ISO 9001:2015 Certificate" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">—</div>
+        <div class="tl-text">
+          <strong>Vibrant Gujarat Summit</strong>
+          <p>Honoured at the national summit for contributions to agri-biotech innovation and advancing India's seed potato infrastructure.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">—</div>
+        <div class="tl-text">
+          <strong>Government of Punjab</strong>
+          <p>Recognised by the state for advancing seed potato production technology and contributing to farmer prosperity.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">—</div>
+        <div class="tl-text">
+          <strong>CPRI Shimla — Ongoing Partnership</strong>
+          <p>Acknowledged by the Central Potato Research Institute as a key technology partner for aeroponics-based mini-tuber production.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">—</div>
+        <div class="tl-text">
+          <strong>Trusted across India</strong>
+          <p>Supplying farmers, state seed corporations, and commercial growers across more than ten Indian states.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section id="contact" class="cta-block">
+  <div class="cta-inner">
+    <div class="cta-left">
+      <h2>Keep <em>growing</em><br>with us.</h2>
+      <p>Whether you're a commercial farmer, a state seed corporation, a researcher, or a processor — tell us what you're planting and we'll get back within two business days.</p>
+      <div class="cta-actions">
+        <a href="mailto:info@sekhonbiotech.com" class="cta-btn">Email us
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="tel:+919815652360" class="ghost-btn">Call +91 98156 52360</a>
+      </div>
+    </div>
+    <div class="cta-info">
+      <h3>Get in touch</h3>
+      <div class="info-line">
+        <label>Call</label>
+        <a href="tel:+919815652360">+91 98156 52360</a>
+        <a href="tel:+918146272787">+91 81462 72787</a>
+      </div>
+      <div class="info-line">
+        <label>Email</label>
+        <a href="mailto:info@sekhonbiotech.com">info@sekhonbiotech.com</a>
+        <a href="mailto:sekhonbiotech@gmail.com">sekhonbiotech@gmail.com</a>
+      </div>
+      <div class="info-line">
+        <label>Location</label>
+        <span>SBS Nagar District, Punjab, India</span>
+      </div>
+      <div class="info-line">
+        <label>Hours</label>
+        <span>Mon–Sat · 9:00 AM – 6:00 PM IST</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-brand">
+        <img src="https://sekhonbiotech.com/wp-content/uploads/2021/07/logo2x-new.png" alt="Sekhon Biotech" style="height:54px;width:auto;filter:brightness(0) invert(1);" />
+      </div>
+      <p class="foot-tag">An agri-biotech company located within the Shivalik foothills — a vector- and virus-free environment ideal for seed potato production.</p>
+      <div class="foot-socials">
+        <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>Potatoes</h5>
+      <ul>
+        <li><a href="varieties.html">All varieties</a></li>
+        <li><a href="varieties.html">Table potatoes</a></li>
+        <li><a href="varieties.html">Processing</a></li>
+        <li><a href="varieties.html">Early varieties</a></li>
+        <li><a href="varieties.html">Specialty</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Markets</h5>
+      <ul>
+        <li><a href="#segments">Fresh Market</a></li>
+        <li><a href="#segments">French Fries</a></li>
+        <li><a href="#segments">Chips &amp; Crisps</a></li>
+        <li><a href="#segments">Specialty</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#about">About us</a></li>
+        <li><a href="process.html">Technology</a></li>
+        <li><a href="#recognition">Recognition</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Get in touch</h5>
+      <div class="foot-contact">
+        <a href="tel:+919815652360">+91 98156 52360</a>
+        <a href="tel:+918146272787">+91 81462 72787</a>
+        <a href="mailto:info@sekhonbiotech.com">info@sekhonbiotech.com</a>
+        <a href="mailto:sekhonbiotech@gmail.com">sekhonbiotech@gmail.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Sekhon Biotech Pvt. Ltd. All rights reserved.</span>
+    <div class="foot-bottom-right">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<!-- video lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&#x2715;</button>
+  <video id="lightboxVideo" muted playsinline controls>
+    <source src="Drone_edited.mp4" type="video/mp4">
+  </video>
+</div>
+
+<script>
+  // video loop with smooth fade at loop point (fade is baked into video,
+  // this JS also cross-fades opacity so the black frames look intentional)
+  const storyVideo = document.getElementById('storyVideo');
+
+  // video lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxVideo = document.getElementById('lightboxVideo');
+
+  storyVideo?.addEventListener('click', () => {
+    lightboxVideo.currentTime = storyVideo.currentTime;
+    lightboxVideo.play();
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightboxVideo.pause();
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('lightboxClose')?.addEventListener('click', closeLightbox);
+  lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+  // scroll reveals
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 60);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('in'), 150 + i * 120);
+    });
+
+    // hero slideshow
+    const slides  = Array.from(document.querySelectorAll('.hero-slide'));
+    const dotsEl  = document.querySelector('.hero-dots');
+    const prevBtn = document.querySelector('.hero-prev');
+    const nextBtn = document.querySelector('.hero-next');
+    const heroEl  = document.querySelector('.hero');
+
+    if(slides.length > 1){
+      let cur = 0;
+      let timer;
+      let paused = false;
+
+      const dots = slides.map((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'hero-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Slide ' + (i + 1));
+        d.addEventListener('click', () => goTo(i));
+        dotsEl.appendChild(d);
+        return d;
+      });
+
+      function goTo(n){
+        slides[cur].classList.remove('active');
+        dots[cur].classList.remove('active');
+        cur = (n + slides.length) % slides.length;
+        slides[cur].classList.add('active');
+        dots[cur].classList.add('active');
+        clearInterval(timer);
+        if(!paused) timer = setInterval(() => goTo(cur + 1), 6000);
+      }
+
+      prevBtn.addEventListener('click', () => goTo(cur - 1));
+      nextBtn.addEventListener('click', () => goTo(cur + 1));
+
+      heroEl.addEventListener('mousemove', () => { if(!paused){ paused = true; clearInterval(timer); } });
+      heroEl.addEventListener('mouseleave', () => { paused = false; timer = setInterval(() => goTo(cur + 1), 6000); });
+
+      timer = setInterval(() => goTo(cur + 1), 6000);
+    }
+  });
+
+  // variety filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.var-card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      cards.forEach(c => {
+        const cats = (c.dataset.cat || '').split(' ');
+        const show = filter === 'all' || cats.includes(filter);
+        c.classList.toggle('hidden', !show);
+      });
+    });
+  });
+
+  // mobile nav toggle
+  const toggle = document.getElementById('mobileToggle');
+  const navLinks = document.getElementById('navLinks');
+  toggle?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = navLinks.classList.contains('open');
+    navLinks.classList.toggle('open', !isOpen);
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+  document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && e.target !== toggle) {
+      navLinks.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    }
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+<!-- cert lightbox -->
+<div class="cert-lightbox" id="certLightbox">
+  <button class="cert-lightbox-close" id="certLightboxClose">&#x2715;</button>
+  <img src="PHOTO-2026-05-13-13-00-39.jpg" alt="ISO 9001:2015 Certificate" />
+</div>
+
+<script>
+  const certLightbox = document.getElementById('certLightbox');
+  document.getElementById('certThumb')?.addEventListener('click', () => certLightbox.classList.add('open'));
+  document.getElementById('certLightboxClose')?.addEventListener('click', () => certLightbox.classList.remove('open'));
+  certLightbox?.addEventListener('click', e => { if (e.target === certLightbox) certLightbox.classList.remove('open'); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') certLightbox?.classList.remove('open'); });
+</script>
+</body>
+</html>

@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>All Varieties — Sekhon Biotech</title>
+<meta name="description" content="Browse the full Sekhon Biotech seed potato variety catalog — table, processing, early, and specialty varieties." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --leaf:#0f3a2e;--leaf-deep:#061812;--moss:#345e4a;
+    --wheat:#d9c79a;--cream:#f4efe6;--paper:#fbf8f1;
+    --ink:#0d1612;--accent:#b85431;
+    --line:rgba(13,22,18,.1);--line-mid:rgba(13,22,18,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+  /* ── nav ── */
+  nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(251,248,241,.94);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1400px;margin:0 auto;
+    padding:18px 40px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .logo img{height:44px;width:auto;display:block}
+  .back-link{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--leaf-deep);transition:gap .2s;
+  }
+  .back-link svg{transition:transform .2s}
+  .back-link:hover{gap:12px}
+
+  /* ── page header ── */
+  .page-header{
+    background:var(--leaf-deep);color:var(--cream);
+    padding:72px 40px 60px;
+  }
+  .page-header-inner{
+    max-width:1400px;margin:0 auto;
+    display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px;
+  }
+  .page-eyebrow{
+    font-size:11px;letter-spacing:.25em;text-transform:uppercase;
+    color:var(--wheat);font-weight:600;margin-bottom:20px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .page-eyebrow::before{content:"";width:32px;height:1px;background:var(--wheat)}
+  .page-header h1{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(38px,5.5vw,80px);
+    line-height:.95;letter-spacing:-.03em;margin-bottom:20px;
+  }
+  .page-header h1 em{font-style:italic;color:var(--wheat);font-weight:300}
+  .page-header p{font-size:16px;opacity:.72;max-width:480px;line-height:1.65}
+  .header-stat{text-align:right;flex-shrink:0}
+  .header-stat strong{
+    font-family:'Fraunces',serif;font-style:italic;
+    font-size:clamp(48px,6vw,88px);color:var(--wheat);
+    line-height:1;display:block;letter-spacing:-.03em;
+  }
+  .header-stat span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.6}
+
+  /* ── filter bar ── */
+  .filter-wrap{
+    background:var(--paper);
+    border-bottom:1px solid var(--line-mid);
+    padding:0 40px;
+    position:sticky;top:81px;z-index:90;
+  }
+  .filter-wrap-inner{
+    max-width:1400px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .filter-bar{display:flex;gap:0}
+  .filter-btn{
+    padding:16px 20px;font-size:12px;font-weight:600;letter-spacing:.06em;
+    text-transform:uppercase;color:#999;
+    border-bottom:2px solid transparent;
+    transition:color .2s, border-color .2s;
+  }
+  .filter-btn.active{color:var(--leaf-deep);border-bottom-color:var(--leaf-deep)}
+  .filter-btn:not(.active):hover{color:var(--leaf-deep)}
+  .filter-count{font-size:12px;color:#aaa;font-weight:500;white-space:nowrap}
+  .filter-count span{color:var(--leaf-deep);font-weight:700}
+
+  /* ── catalog list ── */
+  .catalog{padding:0 40px 100px;background:var(--paper)}
+  .varieties-list{max-width:1400px;margin:0 auto;border-top:1px solid var(--line-mid)}
+
+  /* ── row card ── */
+  .var-card{
+    display:grid;
+    grid-template-columns:120px 1fr auto;
+    align-items:center;
+    border-bottom:1px solid var(--line);
+    transition:background .2s;
+    position:relative;
+  }
+  .var-card.hidden{display:none}
+  .var-card:hover{background:var(--cream)}
+
+  /* thumbnail */
+  .var-thumb{
+    width:120px;height:120px;
+    overflow:hidden;flex-shrink:0;
+  }
+  .var-thumb img{
+    width:100%;height:100%;
+    object-fit:cover;
+    transition:transform .6s ease;
+    filter:saturate(1.1) contrast(1.05);
+  }
+  .var-card:hover .var-thumb img{transform:scale(1.1)}
+
+  /* main row content */
+  .var-main{
+    padding:24px 40px;
+    display:flex;align-items:center;gap:52px;
+  }
+  .var-info{min-width:220px;flex-shrink:0}
+  .var-name-row{display:flex;align-items:baseline;gap:10px;margin-bottom:5px}
+  .var-name-row h3{
+    font-family:'Fraunces',serif;font-weight:500;
+    font-size:21px;letter-spacing:-.02em;color:var(--leaf-deep);line-height:1;
+  }
+  .var-code{font-family:'Fraunces',serif;font-style:italic;font-size:12px;color:var(--accent)}
+  .var-pitch{
+    font-family:'Fraunces',serif;font-style:italic;
+    font-size:14px;color:var(--moss);line-height:1.35;
+  }
+
+  /* specs */
+  .var-specs{display:flex;gap:36px;flex-shrink:0}
+  .var-spec{display:flex;flex-direction:column;gap:4px}
+  .var-spec span{
+    font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+    color:#aaa;font-weight:600;
+  }
+  .var-spec strong{
+    font-family:'Fraunces',serif;font-weight:500;
+    font-size:17px;color:var(--leaf-deep);letter-spacing:-.01em;
+  }
+
+  /* right actions */
+  .var-actions{
+    padding:24px 32px;
+    display:flex;flex-direction:column;align-items:flex-end;gap:12px;
+    flex-shrink:0;min-width:160px;
+  }
+  .var-tags{display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-end}
+  .var-tag{
+    padding:3px 9px;
+    font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+    border:1px solid var(--line-mid);color:#888;
+    transition:border-color .2s,color .2s;
+  }
+  .var-tag.tag-new{border-color:var(--leaf);color:var(--leaf)}
+  .var-tag.tag-early{border-color:var(--moss);color:var(--moss)}
+  .var-tag.tag-processing{border-color:var(--accent);color:var(--accent)}
+  .var-link{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:9px 18px;
+    font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    background:var(--leaf-deep);color:var(--cream);
+    opacity:0;transform:translateY(4px);
+    transition:opacity .2s, transform .2s, background .2s;
+    white-space:nowrap;
+  }
+  .var-card:hover .var-link{opacity:1;transform:translateY(0)}
+  .var-link svg{transition:transform .2s}
+  .var-card:hover .var-link svg{transform:translateX(3px)}
+
+  /* no results */
+  .no-results{
+    max-width:1400px;margin:0 auto;
+    padding:80px 0;text-align:center;display:none;
+  }
+  .no-results p{font-family:'Fraunces',serif;font-style:italic;font-size:22px;color:#bbb}
+
+  /* ── enquiry modal ── */
+  .enq-overlay{
+    position:fixed;inset:0;z-index:300;
+    background:rgba(6,12,9,.80);
+    backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;
+    opacity:0;pointer-events:none;transition:opacity .25s;
+  }
+  .enq-overlay.open{opacity:1;pointer-events:all}
+  .enq-modal{
+    background:var(--paper);
+    max-width:520px;width:100%;
+    padding:44px 44px 40px;
+    position:relative;
+    transform:translateY(16px);transition:transform .25s;
+  }
+  .enq-overlay.open .enq-modal{transform:translateY(0)}
+  .enq-eyebrow{
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:10px;
+  }
+  .enq-title{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:28px;letter-spacing:-.02em;color:var(--leaf-deep);
+    line-height:1.1;margin-bottom:28px;
+  }
+  .enq-title em{font-style:italic;color:var(--moss)}
+  .enq-form{display:flex;flex-direction:column;gap:16px}
+  .enq-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .enq-field{display:flex;flex-direction:column;gap:6px}
+  .enq-field label{
+    font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#999;
+  }
+  .enq-field input,.enq-field textarea,.enq-field select{
+    font-family:'Inter',sans-serif;font-size:14px;
+    background:var(--cream);border:1px solid var(--line-mid);
+    padding:11px 14px;color:var(--ink);
+    transition:border-color .2s;outline:none;width:100%;
+  }
+  .enq-field input:focus,.enq-field textarea:focus,.enq-field select:focus{border-color:var(--leaf)}
+  .enq-field textarea{resize:vertical;min-height:80px}
+  .enq-submit{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 28px;margin-top:4px;
+    background:var(--leaf-deep);color:var(--cream);
+    font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;
+    border:none;cursor:pointer;align-self:flex-start;
+    transition:background .2s;
+  }
+  .enq-submit:hover{background:var(--leaf)}
+  .enq-or{
+    display:flex;align-items:center;gap:12px;margin-top:4px;
+  }
+  .enq-or::before,.enq-or::after{content:'';flex:1;height:1px;background:var(--line-mid)}
+  .enq-or span{font-size:11px;color:#bbb;white-space:nowrap;letter-spacing:.05em}
+  .enq-phones{display:flex;gap:16px;flex-wrap:wrap}
+  .enq-phone-link{
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:13px;font-weight:600;color:var(--leaf-deep);
+    padding:9px 16px;border:1px solid var(--line-mid);
+    transition:background .2s,border-color .2s;
+    flex:1;justify-content:center;white-space:nowrap;
+  }
+  .enq-phone-link:hover{background:var(--cream);border-color:var(--leaf)}
+  .enq-success{
+    text-align:center;padding:24px 0;
+    font-family:'Fraunces',serif;font-style:italic;
+    font-size:20px;color:var(--moss);display:none;
+  }
+  .enq-close{
+    position:absolute;top:16px;right:16px;
+    background:none;border:none;cursor:pointer;
+    color:#bbb;transition:color .2s;padding:4px;
+  }
+  .enq-close:hover{color:var(--leaf-deep)}
+  @media(max-width:560px){
+    .enq-modal{padding:32px 24px 28px}
+    .enq-row{grid-template-columns:1fr}
+  }
+
+  /* ── footer strip ── */
+  .foot-strip{
+    background:var(--leaf-deep);color:var(--cream);
+    padding:26px 40px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  }
+  .foot-strip p{font-size:13px;opacity:.6}
+  .foot-strip a{font-size:13px;opacity:.6;transition:opacity .2s}
+  .foot-strip a:hover{opacity:1}
+
+  /* ── responsive ── */
+  @media(max-width:1100px){
+    .var-main{gap:32px}
+    .var-specs{gap:24px}
+  }
+  @media(max-width:860px){
+    .var-card{grid-template-columns:90px 1fr}
+    .var-thumb{width:90px;height:90px}
+    .var-actions{display:none}
+    .var-main{padding:20px 24px;gap:24px;flex-wrap:wrap}
+    .page-header-inner{grid-template-columns:1fr}
+    .header-stat{display:none}
+  }
+  /* ── modal ── */
+  .modal-overlay{
+    position:fixed;inset:0;z-index:200;
+    background:rgba(6,12,9,.78);
+    backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;
+    opacity:0;pointer-events:none;
+    transition:opacity .28s;
+  }
+  .modal-overlay.open{opacity:1;pointer-events:all}
+  .modal{
+    background:var(--paper);
+    max-width:980px;width:100%;max-height:90vh;
+    display:grid;grid-template-columns:400px 1fr;
+    overflow:hidden;position:relative;
+    transform:translateY(18px) scale(.98);
+    transition:transform .28s;
+  }
+  .modal-overlay.open .modal{transform:translateY(0) scale(1)}
+  .modal-img{position:relative;overflow:hidden;min-height:420px}
+  .modal-img img{width:100%;height:100%;object-fit:cover;filter:contrast(1.1) saturate(1.12)}
+  .modal-body{
+    padding:44px 40px 44px;overflow-y:auto;
+    display:flex;flex-direction:column;gap:22px;
+  }
+  .modal-close{
+    position:absolute;top:16px;right:16px;
+    width:34px;height:34px;border-radius:50%;
+    background:rgba(6,24,18,.55);color:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;z-index:10;transition:background .2s;
+  }
+  .modal-close:hover{background:var(--leaf-deep)}
+  .modal-eyebrow{
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:10px;
+  }
+  .modal-name{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(28px,3.5vw,46px);
+    line-height:.95;letter-spacing:-.025em;color:var(--leaf-deep);
+  }
+  .modal-pitch{
+    font-family:'Fraunces',serif;font-style:italic;
+    font-size:16px;color:var(--moss);line-height:1.45;
+  }
+  .modal-divider{height:1px;background:var(--line)}
+  .modal-specs-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:18px 28px;
+  }
+  .modal-spec span{
+    font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+    color:#bbb;font-weight:600;display:block;margin-bottom:4px;
+  }
+  .modal-spec strong{
+    font-family:'Fraunces',serif;font-weight:500;
+    font-size:18px;color:var(--leaf-deep);
+  }
+  .modal-trait{
+    background:var(--cream);
+    border-left:3px solid var(--wheat);
+    padding:16px 18px;
+  }
+  .modal-trait-label{
+    font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+    color:#aaa;font-weight:600;margin-bottom:7px;
+  }
+  .modal-trait p{font-size:14px;color:#444;line-height:1.68}
+  .modal-adapt{font-size:13px;color:#777;line-height:1.55}
+  .modal-adapt strong{color:var(--leaf-deep);font-weight:600;display:block;margin-bottom:3px}
+  .modal-cta{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:13px 26px;margin-top:4px;
+    background:var(--leaf-deep);color:var(--cream);
+    font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    align-self:flex-start;transition:background .2s;
+  }
+  .modal-cta:hover{background:var(--leaf)}
+  @media(max-width:760px){
+    .modal{grid-template-columns:1fr;max-height:95vh}
+    .modal-img{min-height:220px;max-height:240px}
+    .modal-body{padding:28px 24px}
+  }
+
+  @media(max-width:600px){
+    .page-header{padding:50px 24px 40px}
+    .catalog{padding:0 0 80px}
+    .filter-wrap{padding:0 16px}
+    .nav-inner{padding:16px 20px}
+    .filter-btn{padding:14px 12px;font-size:11px}
+    .var-main{gap:18px}
+    .var-specs{gap:16px}
+    .var-spec strong{font-size:15px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="https://sekhonbiotech.com/wp-content/uploads/2021/07/logo2x-new.png" alt="Sekhon Biotech" />
+    </a>
+    <a href="index.html" class="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to home
+    </a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <div class="page-eyebrow">Our Potatoes</div>
+      <h1 id="pageTitle">The complete <em>variety catalog.</em></h1>
+      <p id="pageDesc">12 varieties — suited for fresh market, french fries, chips, and hash browns. All produced as disease-free G-0 mini-tubers.</p>
+    </div>
+    <div class="header-stat">
+      <strong>12</strong>
+      <span>Varieties</span>
+    </div>
+  </div>
+</div>
+
+<div class="filter-wrap">
+  <div class="filter-wrap-inner">
+    <div class="filter-bar" role="group" aria-label="Filter varieties">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="fresh">Fresh Market</button>
+      <button class="filter-btn" data-filter="fries">French Fries</button>
+      <button class="filter-btn" data-filter="chips">Chips &amp; Crisps</button>
+      <button class="filter-btn" data-filter="hashbrowns">Hash Browns</button>
+      <button class="filter-btn" data-filter="early">Early</button>
+      <button class="filter-btn" data-filter="new">New</button>
+    </div>
+    <div class="filter-count">Showing <span id="visibleCount">12</span> of 12</div>
+  </div>
+</div>
+
+<section class="catalog">
+  <div class="varieties-list" id="varietiesGrid">
+
+    <article class="var-card" data-cat="table fresh hashbrowns" data-id="kufri-jyoti">
+      <div class="var-thumb">
+        <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&q=85" alt="Kufri Jyoti" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Jyoti</h3><span class="var-code">CPRI · 1968</span></div>
+          <p class="var-pitch">India's most-loved potato for over half a century.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–110 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>30 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag">Fresh Market</span>
+          <span class="var-tag">Hash Browns</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+    </article>
+
+    <article class="var-card" data-cat="table early fresh fries" data-id="kufri-pukhraj">
+      <div class="var-thumb">
+        <img src="https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=400&q=85" alt="Kufri Pukhraj" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Pukhraj</h3><span class="var-code">CPRI · Early</span></div>
+          <p class="var-pitch">The early bird that gets the price.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>70–90 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>40 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag tag-early">Early</span>
+          <span class="var-tag">Fresh Market</span>
+          <span class="var-tag">French Fries</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+    </article>
+
+    <article class="var-card" data-cat="processing chips hashbrowns" data-id="kufri-chipsona-1">
+      <div class="var-thumb">
+        <img src="https://images.unsplash.com/photo-1591280063444-d3c514eb6e13?w=400&q=85" alt="Kufri Chipsona-1" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Chipsona-1</h3><span class="var-code">CPRI · Chips</span></div>
+          <p class="var-pitch">The variety that gave India its own chips.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–110 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>40 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Chips</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag tag-processing">Processing</span>
+          <span class="var-tag">Chips</span>
+          <span class="var-tag">Hash Browns</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+    </article>
+
+    <article class="var-card" data-cat="table fresh" data-id="kufri-sindhuri">
+      <div class="var-thumb">
+        <img src="https://images.unsplash.com/photo-1635774855536-9728f2610245?w=400&q=85" alt="Kufri Sindhuri" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Sindhuri</h3><span class="var-code">CPRI · Hardy</span></div>
+          <p class="var-pitch">A red-skinned classic, built to last.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>110–120 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>40 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag">Fresh Market</span>
+          <span class="var-tag">Red skin</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+    </article>
+
+    <article class="var-card" data-cat="table fresh fries" data-id="kufri-bahar">
+      <div class="var-thumb">
+        <img src="https://images.unsplash.com/photo-1567393528677-d6adae7d4a0a?w=400&q=85" alt="Kufri Bahar" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Bahar</h3><span class="var-code">CPRI · 3797</span></div>
+          <p class="var-pitch">High-yielding, slow to degenerate.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>100–110 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>45 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag">Fresh Market</span>
+          <span class="var-tag">French Fries</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+    </article>
+
+    <article class="var-card" data-cat="table early fresh" data-id="kufri-ashoka">
+      <div class="var-thumb">
+        <img src="https://images.unsplash.com/photo-1471194402529-8e0f5a675de6?w=400&q=85" alt="Kufri Ashoka" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Ashoka</h3><span class="var-code">CPRI · Early</span></div>
+          <p class="var-pitch">Made for the tight rotation.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>75–90 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>30 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag tag-early">Early</span>
+          <span class="var-tag">Fresh Market</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+    </article>
+
+    <article class="var-card" data-cat="table early fresh" data-id="kufri-chandramukhi">
+      <div class="var-thumb">
+        <img src="https://images.unsplash.com/photo-1599056407101-7c557a4a0144?w=400&q=85" alt="Kufri Chandramukhi" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Chandramukhi</h3><span class="var-code">CPRI · 1968</span></div>
+          <p class="var-pitch">The Punjab classic that started a revolution.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>75–90 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>25 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag tag-early">Early</span>
+          <span class="var-tag">Fresh Market</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+    </article>
+
+    <article class="var-card" data-cat="processing fries chips hashbrowns" data-id="kufri-badshah">
+      <div class="var-thumb">
+        <img src="https://images.unsplash.com/photo-1508313880080-c4bef0730395?w=400&q=85" alt="Kufri Badshah" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Badshah</h3><span class="var-code">CPRI · Fries</span></div>
+          <p class="var-pitch">Made for the deep fryer.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>100–110 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>40 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Fries</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag tag-processing">Processing</span>
+          <span class="var-tag">French Fries</span>
+          <span class="var-tag">Chips</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+    </article>
+
+    <article class="var-card" data-cat="table early fresh" data-id="kufri-lauvkar">
+      <div class="var-thumb">
+        <img src="https://images.unsplash.com/photo-1597313401170-ac8a7d2bca29?w=400&q=85" alt="Kufri Lauvkar" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Lauvkar</h3><span class="var-code">CPRI · Fastest</span></div>
+          <p class="var-pitch">From planting to harvest in seventy days.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>70–80 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>25 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag tag-early">Early</span>
+          <span class="var-tag">Fresh Market</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+    </article>
+
+    <article class="var-card" data-cat="table new fresh" data-id="kufri-ratan">
+      <div class="var-thumb">
+        <img src="https://images.unsplash.com/photo-1606168305466-93d09afb6826?w=400&q=85" alt="Kufri Ratan" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Ratan</h3><span class="var-code">CPRI · New</span></div>
+          <p class="var-pitch">A jewel for the North Indian plains.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>~90 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>37–39 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag tag-new">New · 2025</span>
+          <span class="var-tag">Fresh Market</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+    </article>
+
+    <article class="var-card" data-cat="processing new chips hashbrowns" data-id="kufri-chipbharat-1">
+      <div class="var-thumb">
+        <img src="https://images.unsplash.com/photo-1590165482129-1b8b27698780?w=400&q=85" alt="Kufri ChipBharat-1" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri ChipBharat-1</h3><span class="var-code">CPRI · Chips</span></div>
+          <p class="var-pitch">The next chapter for Indian crisps.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–100 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>35 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Chips</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag tag-new">New · 2025</span>
+          <span class="var-tag tag-processing">Processing</span>
+          <span class="var-tag">Chips</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+    </article>
+
+    <article class="var-card" data-cat="table fresh" data-id="kufri-jamunia">
+      <div class="var-thumb">
+        <img src="https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?w=400&q=85" alt="Kufri Jamunia" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Jamunia</h3><span class="var-code">CPRI · Specialty</span></div>
+          <p class="var-pitch">India's first purple-flesh biofortified potato.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>100–110 d</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>25 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Specialty</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag">Fresh Market</span>
+          <span class="var-tag">Purple flesh</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+    </article>
+
+  </div>
+  <div class="no-results" id="noResults">
+    <p>No varieties match this filter.</p>
+  </div>
+</section>
+
+<!-- VARIETY MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-img">
+      <img id="modalImg" src="" alt="" />
+    </div>
+    <div class="modal-body">
+      <div>
+        <p class="modal-eyebrow" id="modalCode"></p>
+        <h2 class="modal-name" id="modalName"></h2>
+      </div>
+      <p class="modal-pitch" id="modalPitch"></p>
+      <div class="modal-divider"></div>
+      <div class="modal-specs-grid" id="modalSpecs"></div>
+      <div class="modal-trait">
+        <div class="modal-trait-label">Special trait</div>
+        <p id="modalTrait"></p>
+      </div>
+      <p class="modal-adapt" id="modalAdapt"></p>
+      <button class="modal-cta enq-btn" id="modalEnqBtn">Enquire about this variety <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+    </div>
+    <button class="modal-close" id="modalClose" aria-label="Close">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ENQUIRY MODAL -->
+<div class="enq-overlay" id="enqOverlay">
+  <div class="enq-modal">
+    <button class="enq-close" id="enqClose" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <p class="enq-eyebrow">Enquire</p>
+    <h3 class="enq-title">Interested in <em id="enqVarietyName">this variety</em>?</h3>
+    <form class="enq-form" id="enqForm">
+      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+      <input type="hidden" name="subject" id="enqSubject" value="Variety Enquiry">
+      <input type="hidden" name="from_name" value="Sekhon Biotech Website">
+      <input type="hidden" name="variety" id="enqVarietyField">
+      <div class="enq-row">
+        <div class="enq-field">
+          <label>Full name</label>
+          <input type="text" name="name" placeholder="Your name" required>
+        </div>
+        <div class="enq-field">
+          <label>Phone</label>
+          <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+        </div>
+      </div>
+      <div class="enq-field">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="enq-field">
+        <label>Message / requirements <span style="font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></label>
+        <textarea name="message" placeholder="Quantity needed, region, intended use…"></textarea>
+      </div>
+      <button type="submit" class="enq-submit">Send enquiry <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      <div class="enq-or">
+        <span>or call us directly</span>
+      </div>
+      <div class="enq-phones">
+        <a href="tel:+919815652360" class="enq-phone-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +91 98156 52360
+        </a>
+        <a href="tel:+918146272787" class="enq-phone-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +91 81462 72787
+        </a>
+      </div>
+    </form>
+    <div class="enq-success" id="enqSuccess">
+      Thank you — we'll be in touch shortly.
+    </div>
+  </div>
+</div>
+
+<div class="foot-strip">
+  <p>© 2026 Sekhon Biotech Pvt. Ltd.</p>
+  <a href="index.html#contact">Get in touch →</a>
+</div>
+
+<script>
+  const segmentMeta = {
+    fresh:      { title: 'Fresh Market <em>Varieties</em>',   desc: 'Table-quality potatoes suited for retail and wholesale fresh markets — smooth skins, even sizing, good shelf-life.' },
+    fries:      { title: 'French Fry <em>Varieties</em>',     desc: 'Long, uniform tubers with high dry matter and the right sugar profile for QSR and food-processing operations.' },
+    chips:      { title: 'Chips & Crisps <em>Varieties</em>', desc: '20%+ dry matter, low reducing sugars after cold storage — built for India\'s growing snack industry.' },
+    hashbrowns: { title: 'Hash Brown <em>Varieties</em>',     desc: 'High starch, firm texture and low moisture — ideal for grated or shredded hash brown production.' },
+    early:      { title: 'Early Maturity <em>Varieties</em>', desc: 'Varieties that reach harvest in 70–90 days, ideal for tight crop rotations and early market entry.' },
+    new:        { title: 'New <em>Releases</em>',             desc: 'Recently approved varieties from CPRI Shimla, now available for seed multiplication across India.' },
+  };
+
+  // ── variety detail data ──
+  const varietyData = {
+    'kufri-jyoti': {
+      img:'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=900&q=85',
+      name:'Kufri Jyoti', code:'CPRI · Released 1968',
+      pitch:"India's most-loved potato for over half a century.",
+      maturity:'90–110 days', yield:'30 t/ha', purpose:'Table', year:'1968',
+      trait:'Moderately resistant to late blight. Wide adaptability across altitudes and seasons — from the plains to the hills. Early bulker with slow seed degeneration and day-neutral behaviour.',
+      adapt:'Punjab, Haryana, Uttar Pradesh, Himachal Pradesh, Jammu & Kashmir, Bihar',
+    },
+    'kufri-pukhraj': {
+      img:'https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=900&q=85',
+      name:'Kufri Pukhraj', code:'CPRI · Early Variety',
+      pitch:"The early bird that gets the price.",
+      maturity:'70–90 days', yield:'40 t/ha', purpose:'Table / Fries', year:'2006',
+      trait:'India\'s highest-yielding early variety. Tolerant to high temperatures — well-suited to the Indo-Gangetic plains. Golden-yellow skin maintains premium mandi pricing in early harvest windows.',
+      adapt:'Punjab, Haryana, Uttar Pradesh, West Bengal, Assam',
+    },
+    'kufri-chipsona-1': {
+      img:'https://images.unsplash.com/photo-1591280063444-d3c514eb6e13?w=900&q=85',
+      name:'Kufri Chipsona-1', code:'CPRI · Processing',
+      pitch:"The variety that gave India its own chips.",
+      maturity:'90–110 days', yield:'40 t/ha', purpose:'Processing / Chips', year:'1998',
+      trait:'India\'s first dedicated chipping variety. Dry matter above 20% and low reducing sugars even after cold storage — produces light, uniform chip colour critical for snack manufacturers.',
+      adapt:'Punjab, Haryana, Uttar Pradesh, Himachal Pradesh, Gujarat',
+    },
+    'kufri-sindhuri': {
+      img:'https://images.unsplash.com/photo-1635774855536-9728f2610245?w=900&q=85',
+      name:'Kufri Sindhuri', code:'CPRI · Hardy',
+      pitch:"A red-skinned classic, built to last.",
+      maturity:'110–120 days', yield:'40 t/ha', purpose:'Table', year:'1973',
+      trait:'Tolerant to Potato Leaf Roll Virus (PLRV) and heat stress. Distinctive red skin resists seed degeneration season after season — a farmer favourite in hot, dry plains.',
+      adapt:'Uttar Pradesh, Bihar, West Bengal, Assam, Odisha, Maharashtra',
+    },
+    'kufri-bahar': {
+      img:'https://images.unsplash.com/photo-1567393528677-d6adae7d4a0a?w=900&q=85',
+      name:'Kufri Bahar', code:'CPRI · 1994',
+      pitch:"High-yielding, slow to degenerate.",
+      maturity:'100–110 days', yield:'45 t/ha', purpose:'Table', year:'1994',
+      trait:'Moderately resistant to late blight with excellent storability. Large white tubers with deep eyes — popular across northern India for its reliable performance in cold-store and direct retail.',
+      adapt:'Haryana, Uttar Pradesh, Himachal Pradesh, Jammu & Kashmir',
+    },
+    'kufri-ashoka': {
+      img:'https://images.unsplash.com/photo-1471194402529-8e0f5a675de6?w=900&q=85',
+      name:'Kufri Ashoka', code:'CPRI · Early',
+      pitch:"Made for the tight rotation.",
+      maturity:'75–90 days', yield:'30 t/ha', purpose:'Table', year:'1997',
+      trait:'Shallow-eyed oval-long tubers suited to the tight crop windows of the Indo-Gangetic plains. Enables reliable double-cropping without sacrificing yield or quality.',
+      adapt:'Uttar Pradesh, Bihar, West Bengal, Punjab, Haryana',
+    },
+    'kufri-chandramukhi': {
+      img:'https://images.unsplash.com/photo-1599056407101-7c557a4a0144?w=900&q=85',
+      name:'Kufri Chandramukhi', code:'CPRI · Released 1968',
+      pitch:"The Punjab classic that started a revolution.",
+      maturity:'75–90 days', yield:'25 t/ha', purpose:'Table', year:'1968',
+      trait:'India\'s first early-maturing variety — the pioneer that enabled double cropping across the plains. Light-yellow flesh with smooth skin and excellent cooking quality make it a household name.',
+      adapt:'Punjab, Haryana, Uttar Pradesh, Bihar, Himachal Pradesh, J&K',
+    },
+    'kufri-badshah': {
+      img:'https://images.unsplash.com/photo-1508313880080-c4bef0730395?w=900&q=85',
+      name:'Kufri Badshah', code:'CPRI · Processing',
+      pitch:"Made for the deep fryer.",
+      maturity:'100–110 days', yield:'40 t/ha', purpose:'Processing / Fries', year:'2005',
+      trait:'Light-yellow flesh with consistent dry matter and low reducing sugars — produces the golden fry colour demanded by QSR chains. Uniform tuber shape ensures even slice thickness for industrial processing.',
+      adapt:'Punjab, Haryana, Uttar Pradesh, Himachal Pradesh',
+    },
+    'kufri-lauvkar': {
+      img:'https://images.unsplash.com/photo-1597313401170-ac8a7d2bca29?w=900&q=85',
+      name:'Kufri Lauvkar', code:'CPRI · Fastest',
+      pitch:"From planting to harvest in seventy days.",
+      maturity:'70–80 days', yield:'25 t/ha', purpose:'Table', year:'1987',
+      trait:'One of India\'s earliest-maturing varieties. Smooth, medium-sized white tubers — prized by farmers chasing tight crop cycles in both hills and plains for quick market entry.',
+      adapt:'Himachal Pradesh, Jammu & Kashmir, Punjab, Uttar Pradesh',
+    },
+    'kufri-ratan': {
+      img:'https://images.unsplash.com/photo-1606168305466-93d09afb6826?w=900&q=85',
+      name:'Kufri Ratan', code:'CPRI · New Release',
+      pitch:"A jewel for the North Indian plains.",
+      maturity:'~90 days', yield:'37–39 t/ha', purpose:'Table', year:'2022',
+      trait:'Recently approved for nationwide cultivation. Dark-red ovoid tubers with shallow-medium eyes and yellow flesh. Excellent post-harvest storability and broad adaptability across the major potato-growing states.',
+      adapt:'Punjab, Haryana, Uttar Pradesh, Bihar, West Bengal',
+    },
+    'kufri-chipbharat-1': {
+      img:'https://images.unsplash.com/photo-1590165482129-1b8b27698780?w=900&q=85',
+      name:'Kufri ChipBharat-1', code:'CPRI · New Release',
+      pitch:"The next chapter for Indian crisps.",
+      maturity:'90–100 days', yield:'35 t/ha', purpose:'Processing / Chips', year:'2023',
+      trait:'Next-generation processing variety engineered for cold-storage chip production. Dry matter above 20% with consistently low reducing sugars after cold storage — produces lighter, more uniform chips than legacy processing varieties.',
+      adapt:'Punjab, Haryana, Uttar Pradesh, Gujarat, Karnataka',
+    },
+    'kufri-jamunia': {
+      img:'https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?w=900&q=85',
+      name:'Kufri Jamunia', code:'CPRI · Specialty',
+      pitch:"India's first purple-flesh biofortified potato.",
+      maturity:'100–110 days', yield:'25 t/ha', purpose:'Specialty / Table', year:'2015',
+      trait:'Rich in anthocyanins — natural antioxidants responsible for the striking purple flesh. A premium biofortified variety suited to health-conscious retail and high-end food service. Currently grown in Himachal Pradesh and Uttarakhand.',
+      adapt:'Himachal Pradesh, Uttarakhand, Jammu & Kashmir',
+    },
+  };
+
+  // ── modal logic ──
+  const overlay   = document.getElementById('modalOverlay');
+  const modalImg  = document.getElementById('modalImg');
+  const modalCode = document.getElementById('modalCode');
+  const modalName = document.getElementById('modalName');
+  const modalPitch= document.getElementById('modalPitch');
+  const modalSpecs= document.getElementById('modalSpecs');
+  const modalTrait= document.getElementById('modalTrait');
+  const modalAdapt= document.getElementById('modalAdapt');
+
+  function openModal(id) {
+    const d = varietyData[id]; if (!d) return;
+    modalImg.src    = d.img;
+    modalImg.alt    = d.name;
+    modalCode.textContent = d.code;
+    modalName.textContent = d.name;
+    modalPitch.textContent= d.pitch;
+    modalSpecs.innerHTML  = `
+      <div class="modal-spec"><span>Maturity</span><strong>${d.maturity}</strong></div>
+      <div class="modal-spec"><span>Yield</span><strong>${d.yield}</strong></div>
+      <div class="modal-spec"><span>Purpose</span><strong>${d.purpose}</strong></div>
+      <div class="modal-spec"><span>Year released</span><strong>${d.year}</strong></div>`;
+    modalTrait.textContent= d.trait;
+    modalAdapt.innerHTML  = `<strong>Adaptability</strong>${d.adapt}`;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  document.querySelectorAll('.var-card').forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', e => {
+      if (e.target.closest('a')) return; // let enquire link work normally
+      openModal(card.dataset.id);
+    });
+  });
+
+  const filterBtns  = document.querySelectorAll('.filter-btn');
+  const cards       = document.querySelectorAll('.var-card');
+  const countEl     = document.getElementById('visibleCount');
+  const noResults   = document.getElementById('noResults');
+  const pageTitle   = document.getElementById('pageTitle');
+  const pageDesc    = document.getElementById('pageDesc');
+
+  function applyFilter(filter) {
+    filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
+    let visible = 0;
+    cards.forEach(c => {
+      const show = filter === 'all' || c.dataset.cat.split(' ').includes(filter);
+      c.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+    countEl.textContent = visible;
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+    if (segmentMeta[filter]) {
+      pageTitle.innerHTML = segmentMeta[filter].title;
+      pageDesc.textContent = segmentMeta[filter].desc;
+    } else {
+      pageTitle.innerHTML = 'The complete <em>variety catalog.</em>';
+      pageDesc.textContent = '12 varieties — suited for fresh market, french fries, chips, and hash browns. All produced as disease-free G-0 mini-tubers.';
+    }
+  }
+
+  // ── enquiry modal ──
+  const enqOverlay     = document.getElementById('enqOverlay');
+  const enqVarietyName = document.getElementById('enqVarietyName');
+  const enqVarietyField= document.getElementById('enqVarietyField');
+  const enqSubject     = document.getElementById('enqSubject');
+  const enqForm        = document.getElementById('enqForm');
+  const enqSuccess     = document.getElementById('enqSuccess');
+
+  function openEnquiry(varName) {
+    const label = varName || 'this variety';
+    enqVarietyName.textContent  = label;
+    enqVarietyField.value       = label;
+    enqSubject.value            = 'Variety Enquiry: ' + label;
+    enqForm.style.display       = '';
+    enqSuccess.style.display    = 'none';
+    enqOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeEnquiry() {
+    enqOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('enqClose').addEventListener('click', closeEnquiry);
+  enqOverlay.addEventListener('click', e => { if (e.target === enqOverlay) closeEnquiry(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && enqOverlay.classList.contains('open')) closeEnquiry(); });
+
+  // row hover enquire buttons
+  document.querySelectorAll('.enq-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const card = btn.closest('.var-card');
+      const id   = card ? card.dataset.id : null;
+      const name = id && varietyData[id] ? varietyData[id].name : null;
+      openEnquiry(name);
+    });
+  });
+
+  // modal CTA button
+  const modalEnqBtn = document.getElementById('modalEnqBtn');
+  if (modalEnqBtn) {
+    modalEnqBtn.addEventListener('click', () => {
+      const name = document.getElementById('modalName').textContent;
+      overlay.classList.remove('open'); // close variety modal first
+      setTimeout(() => openEnquiry(name), 60);
+    });
+  }
+
+  // form submission via Web3Forms
+  enqForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = enqForm.querySelector('.enq-submit');
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method:'POST',
+        body: new FormData(enqForm),
+      });
+      if ((await res.json()).success) {
+        enqForm.style.display = 'none';
+        enqSuccess.style.display = 'block';
+      } else { throw new Error(); }
+    } catch {
+      btn.textContent = 'Send enquiry →';
+      btn.disabled = false;
+      alert('Something went wrong — please try again.');
+    }
+  });
+
+  filterBtns.forEach(btn => btn.addEventListener('click', () => applyFilter(btn.dataset.filter)));
+
+  const urlSegment = new URLSearchParams(window.location.search).get('segment');
+  applyFilter(urlSegment || 'all');
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+# Raw originals — large files not used in the site
+DJI_0647.MP4
+Drone.MP4
+DSC04222-1.ARW
+DSC04222-1_wide.jpg
+DJI_0645.JPG
+download.jpeg
+Tuber.png
+
+# Dev/internal files
+CLAUDE-2.md
+SKILL.md
+brand_assets
+
+# macOS
+.DS_Store
