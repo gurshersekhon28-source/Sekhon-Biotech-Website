@@ -151,6 +151,48 @@
   .cta-btn:hover svg{transform:translateX(3px)}
   .mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--ink);padding:8px}
 
+  /* ─── hiring badge (utility bar) ─── */
+  .hiring-badge{
+    display:inline-flex;align-items:center;gap:7px;
+    animation:badge-fade .5s ease 1.4s both;
+    flex-shrink:0;
+  }
+  .hiring-badge a{
+    color:var(--cream);display:flex;align-items:center;gap:7px;
+    font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    opacity:.9;transition:opacity .2s;
+  }
+  .hiring-badge a:hover{opacity:1}
+  .hbadge-dot{
+    width:7px;height:7px;border-radius:50%;
+    background:#f4c07a;
+    box-shadow:0 0 0 0 rgba(244,192,122,.7);
+    animation:badge-pulse 2s infinite;
+    flex-shrink:0;
+  }
+  .hiring-close{
+    opacity:.45;font-size:11px;line-height:1;
+    padding:1px 2px;
+    transition:opacity .2s;
+    color:var(--cream);
+  }
+  .hiring-close:hover{opacity:1}
+  @keyframes badge-fade{
+    from{opacity:0}
+    to{opacity:1}
+  }
+  @keyframes badge-pulse{
+    0%{box-shadow:0 0 0 0 rgba(244,192,122,.6)}
+    70%{box-shadow:0 0 0 7px rgba(244,192,122,0)}
+    100%{box-shadow:0 0 0 0 rgba(244,192,122,0)}
+  }
+  .hiring-badge.hide{
+    animation:badge-out .25s ease forwards;
+  }
+  @keyframes badge-out{
+    to{opacity:0;max-width:0;overflow:hidden;margin:0;padding:0}
+  }
+
   /* ─── HERO ─── */
   .hero{
     position:relative;
@@ -784,6 +826,11 @@
       <span><span class="pulse"></span>SBS Nagar, Punjab — Shivalik Foothills</span>
       <span style="opacity:.5">|</span>
       <a href="tel:+919815652360">+91 98156 52360</a>
+      <span style="opacity:.5">|</span>
+      <span class="hiring-badge" id="hiringBadge">
+        <a href="careers.html"><span class="hbadge-dot"></span>We're Hiring</a>
+        <button class="hiring-close" id="hiringClose" aria-label="Dismiss">&#x2715;</button>
+      </span>
     </div>
     <div>
       <a href="mailto:info@sekhonbiotech.com">info@sekhonbiotech.com</a>
@@ -1558,6 +1605,13 @@
         c.classList.toggle('hidden', !show);
       });
     });
+  });
+
+  // hiring badge dismiss
+  const hiringBadge = document.getElementById('hiringBadge');
+  document.getElementById('hiringClose')?.addEventListener('click', () => {
+    hiringBadge.classList.add('hide');
+    hiringBadge.addEventListener('animationend', () => hiringBadge.remove(), {once:true});
   });
 
   // mobile nav toggle
