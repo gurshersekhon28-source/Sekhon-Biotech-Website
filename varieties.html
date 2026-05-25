@@ -104,26 +104,55 @@
   .var-card{
     display:grid;
     grid-template-columns:120px 1fr auto;
+    grid-template-rows:auto auto;
     align-items:center;
     border-bottom:1px solid var(--line);
-    transition:background .2s;
+    border-left:3px solid transparent;
+    transition:background .2s, border-left-color .2s;
     position:relative;
   }
   .var-card.hidden{display:none}
-  .var-card:hover{background:var(--cream)}
+  .var-card:hover{background:var(--cream);border-left-color:var(--leaf)}
 
   /* thumbnail */
   .var-thumb{
     width:120px;height:120px;
     overflow:hidden;flex-shrink:0;
+    transition:width .3s ease, height .3s ease;
   }
   .var-thumb img{
     width:100%;height:100%;
     object-fit:cover;
-    transition:transform .6s ease;
+    transition:transform .5s ease;
     filter:saturate(1.1) contrast(1.05);
   }
-  .var-card:hover .var-thumb img{transform:scale(1.1)}
+  .var-card:hover .var-thumb{width:140px;height:140px}
+  .var-card:hover .var-thumb img{transform:scale(1.08)}
+
+  /* buyer benefit strip */
+  .var-benefit{
+    grid-column:1 / -1;
+    display:flex;align-items:center;gap:10px;
+    max-height:0;overflow:hidden;opacity:0;
+    padding:0 32px;
+    transition:max-height .35s ease, opacity .25s ease, padding .35s ease;
+    border-top:1px solid transparent;
+  }
+  .var-card:hover .var-benefit{
+    max-height:52px;opacity:1;
+    padding:13px 32px;
+    border-top-color:var(--line);
+  }
+  .var-benefit-icon{
+    width:22px;height:22px;border-radius:50%;
+    background:var(--leaf);color:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;font-size:12px;font-weight:700;
+  }
+  .var-benefit p{
+    font-size:13px;color:var(--moss);line-height:1.4;
+    font-style:italic;
+  }
 
   /* main row content */
   .var-main{
@@ -175,11 +204,11 @@
     padding:9px 18px;
     font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
     background:var(--leaf-deep);color:var(--cream);
-    opacity:0;transform:translateY(4px);
-    transition:opacity .2s, transform .2s, background .2s;
+    opacity:.35;transform:translateY(0);
+    transition:opacity .2s, background .2s;
     white-space:nowrap;
   }
-  .var-card:hover .var-link{opacity:1;transform:translateY(0)}
+  .var-card:hover .var-link{opacity:1}
   .var-link svg{transition:transform .2s}
   .var-card:hover .var-link svg{transform:translateX(3px)}
 
@@ -460,6 +489,7 @@
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>The name buyers recognise before you finish speaking — consistent mandi demand and reliable market pricing across all of India.</p></div>
     </article>
 
     <article class="var-card" data-cat="table early fresh fries" data-id="kufri-pukhraj">
@@ -485,6 +515,7 @@
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Hit markets 3 weeks before competitors — early harvest means premium early-season prices and faster cash flow.</p></div>
     </article>
 
     <article class="var-card" data-cat="processing chips hashbrowns" data-id="kufri-chipsona-1">
@@ -510,6 +541,7 @@
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Low reducing sugars give a golden, non-browning chip — the spec preferred by Haldiram's and Lay's contract suppliers.</p></div>
     </article>
 
     <article class="var-card" data-cat="table fresh" data-id="kufri-sindhuri">
@@ -534,6 +566,7 @@
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Striking red skin commands a retail premium and extends shelf life — traders and retailers consistently reorder.</p></div>
     </article>
 
     <article class="var-card" data-cat="table fresh fries" data-id="kufri-bahar">
@@ -558,6 +591,7 @@
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>45 t/ha potential with slow degeneration — the high-volume variety multipliers come back to season after season.</p></div>
     </article>
 
     <article class="var-card" data-cat="table early fresh" data-id="kufri-ashoka">
@@ -582,6 +616,7 @@
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>75-day harvest fits a tight double-crop rotation — maximise land use without sacrificing table quality.</p></div>
     </article>
 
     <article class="var-card" data-cat="table early fresh" data-id="kufri-chandramukhi">
@@ -606,6 +641,7 @@
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Dry, fluffy texture commands a mandi premium in Punjab and UP — the buyer's first choice for household consumption.</p></div>
     </article>
 
     <article class="var-card" data-cat="processing fries chips hashbrowns" data-id="kufri-badshah">
@@ -631,6 +667,7 @@
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Long oval tubers with high dry matter — the benchmark variety for fry processors seeking consistent golden results.</p></div>
     </article>
 
     <article class="var-card" data-cat="table early fresh" data-id="kufri-lauvkar">
@@ -655,6 +692,7 @@
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>India's fastest commercial variety — first to market every season, capturing the early-harvest price window.</p></div>
     </article>
 
     <article class="var-card" data-cat="table new fresh" data-id="kufri-ratan">
@@ -679,6 +717,7 @@
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>New-generation disease tolerance with 37–39 t/ha yield — reduced field losses for North Indian plains growers.</p></div>
     </article>
 
     <article class="var-card" data-cat="processing new chips hashbrowns" data-id="kufri-chipbharat-1">
@@ -704,6 +743,7 @@
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Bred for low acrylamide formation — meets EU and FSSAI food safety benchmarks for next-generation snack manufacturing.</p></div>
     </article>
 
     <article class="var-card" data-cat="table fresh" data-id="kufri-jamunia">
@@ -728,6 +768,7 @@
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Anthocyanin-rich purple flesh commands specialty and export premiums — a conversation starter on any restaurant menu.</p></div>
     </article>
 
   </div>
