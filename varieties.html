@@ -440,8 +440,11 @@
   }
   @media(max-width:900px){
     .modal{grid-template-columns:1fr;max-height:95vh;grid-template-rows:auto 1fr}
-    .modal-gallery{max-height:260px;min-height:0;overflow:hidden;flex-shrink:0}
-    .mg-slider{min-height:180px;max-height:220px}
+    .modal-gallery{max-height:45vh;min-height:0;overflow:hidden;flex-shrink:0}
+    .mg-slider{min-height:200px;max-height:40vh}
+    .modal-nav{display:flex;width:36px;height:36px}
+    .modal-nav-prev{left:8px}
+    .modal-nav-next{right:8px}
     .mg-thumb{height:80px}
     .mg-thumb img{max-height:60px}
     .modal-body{padding:28px 24px;overflow-y:auto;min-height:0}
@@ -1488,6 +1491,16 @@
     if (overlay.classList.contains('open')) {
       if (e.key === 'ArrowLeft'  && curIdx > 0)                      openModal(variantIds[curIdx - 1]);
       if (e.key === 'ArrowRight' && curIdx < variantIds.length - 1)  openModal(variantIds[curIdx + 1]);
+    }
+  });
+
+  let touchStartX = 0;
+  overlay.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, {passive:true});
+  overlay.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0 && curIdx < variantIds.length - 1) openModal(variantIds[curIdx + 1]);
+      if (diff < 0 && curIdx > 0)                     openModal(variantIds[curIdx - 1]);
     }
   });
 
