@@ -23,7 +23,7 @@
   img{display:block;max-width:100%}
   button{font-family:inherit;cursor:pointer;border:none;background:none}
 
-  /* ── nav ── */
+  /* nav */
   nav{
     position:sticky;top:0;z-index:100;
     background:rgba(251,248,241,.94);
@@ -44,7 +44,7 @@
   .back-link svg{transition:transform .2s}
   .back-link:hover{gap:12px}
 
-  /* ── page header ── */
+  /* page header */
   .page-header{
     background:var(--leaf-deep);color:var(--cream);
     padding:72px 40px 60px;
@@ -74,7 +74,7 @@
   }
   .header-stat span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.6}
 
-  /* ── filter bar ── */
+  /* filter bar */
   .filter-wrap{
     background:var(--paper);
     border-bottom:1px solid var(--line-mid);
@@ -97,11 +97,11 @@
   .filter-count{font-size:12px;color:#aaa;font-weight:500;white-space:nowrap}
   .filter-count span{color:var(--leaf-deep);font-weight:700}
 
-  /* ── catalog list ── */
+  /* catalog list */
   .catalog{padding:0 40px 100px;background:var(--paper)}
   .varieties-list{max-width:1400px;margin:0 auto;border-top:1px solid var(--line-mid)}
 
-  /* ── row card ── */
+  /* row card */
   .var-card{
     display:grid;
     grid-template-columns:120px 1fr auto;
@@ -111,6 +111,7 @@
     border-left:3px solid transparent;
     transition:background .2s, border-left-color .2s;
     position:relative;
+    cursor:pointer;
   }
   .var-card.hidden{display:none}
   .var-card:hover{background:var(--cream);border-left-color:var(--leaf)}
@@ -150,17 +151,14 @@
     display:flex;align-items:center;justify-content:center;
     flex-shrink:0;font-size:12px;font-weight:700;
   }
-  .var-benefit p{
-    font-size:13px;color:var(--moss);line-height:1.4;
-    font-style:italic;
-  }
+  .var-benefit p{font-size:13px;color:var(--moss);line-height:1.4;font-style:italic;}
 
   /* main row content */
   .var-main{
     padding:24px 40px;
     display:flex;align-items:center;gap:52px;
   }
-  .var-info{min-width:220px;flex-shrink:0}
+  .var-info{width:260px;flex-shrink:0;flex-grow:0}
   .var-name-row{display:flex;align-items:baseline;gap:10px;margin-bottom:5px}
   .var-name-row h3{
     font-family:'Fraunces',serif;font-weight:500;
@@ -205,7 +203,7 @@
     padding:9px 18px;
     font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
     background:var(--leaf-deep);color:var(--cream);
-    opacity:.35;transform:translateY(0);
+    opacity:.35;
     transition:opacity .2s, background .2s;
     white-space:nowrap;
   }
@@ -220,7 +218,148 @@
   }
   .no-results p{font-family:'Fraunces',serif;font-style:italic;font-size:22px;color:#bbb}
 
-  /* ── enquiry modal ── */
+  /* variety modal */
+  .modal-overlay{
+    position:fixed;inset:0;z-index:200;
+    background:rgba(6,12,9,.78);
+    backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;
+    opacity:0;pointer-events:none;
+    transition:opacity .28s;
+  }
+  .modal-overlay.open{opacity:1;pointer-events:all}
+  .modal{
+    background:var(--paper);
+    max-width:1120px;width:100%;max-height:90vh;
+    display:grid;grid-template-columns:580px 1fr;
+    overflow:hidden;position:relative;
+    transform:translateY(18px) scale(.98);
+    transition:transform .28s;
+  }
+  .modal-overlay.open .modal{transform:translateY(0) scale(1)}
+
+  /* variety prev/next navigation */
+  .modal-nav{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:48px;height:48px;border-radius:50%;
+    background:rgba(251,248,241,.13);border:1px solid rgba(255,255,255,.18);
+    color:rgba(255,255,255,.85);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;z-index:210;
+    transition:background .2s,color .2s,transform .2s;
+    flex-shrink:0;
+  }
+  .modal-nav:hover{background:rgba(251,248,241,.26);color:#fff;transform:translateY(-50%) scale(1.1)}
+  .modal-nav.dim{opacity:.28;pointer-events:none}
+  .modal-nav-prev{left:20px}
+  .modal-nav-next{right:20px}
+  .modal-idx{font-size:11px;font-weight:600;letter-spacing:.08em;color:#bbb;margin-left:auto}
+  @media(max-width:1280px){.modal-nav{display:none}}
+
+  /* photo gallery panel */
+  .modal-gallery{
+    display:flex;flex-direction:column;
+    background:var(--paper);
+    min-height:420px;
+  }
+
+  /* main slider */
+  .mg-slider{
+    flex:1;position:relative;
+    overflow:hidden;
+    background:var(--paper);
+    min-height:280px;
+  }
+  .mg-slider-track{
+    display:flex;height:100%;
+    transition:transform .4s ease;
+  }
+  .mg-slider-photo{
+    min-width:100%;height:100%;
+    display:flex;align-items:center;justify-content:center;
+    padding:20px;background:var(--paper);
+  }
+  .mg-slider-photo img{
+    max-width:100%;max-height:100%;
+    object-fit:contain;display:block;
+  }
+  .mg-sl-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:36px;height:36px;border-radius:50%;
+    background:rgba(6,24,18,.5);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    border:none;cursor:pointer;z-index:5;transition:background .2s;
+  }
+  .mg-sl-arrow:hover{background:var(--leaf-deep)}
+  .mg-sl-prev{left:12px}
+  .mg-sl-next{right:12px}
+  .mg-sl-counter{
+    position:absolute;bottom:12px;right:14px;
+    background:rgba(6,24,18,.5);color:#fff;
+    font-size:11px;font-weight:600;letter-spacing:.06em;
+    padding:4px 9px;
+  }
+
+  /* thumbnail strip */
+  .mg-thumb-strip{
+    flex-shrink:0;
+    display:flex;gap:2px;
+    background:rgba(13,22,18,.07);
+    border-top:2px solid rgba(13,22,18,.07);
+  }
+  .mg-thumb{
+    flex:1;height:140px;
+    background:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;padding:10px;
+    cursor:pointer;transition:background .2s;
+  }
+  .mg-thumb:hover{background:var(--wheat)}
+  .mg-thumb img{
+    max-width:100%;max-height:118px;
+    object-fit:contain;display:block;
+  }
+
+  /* modal info panel */
+  .modal-body{
+    padding:44px 40px 44px;overflow-y:auto;
+    display:flex;flex-direction:column;gap:22px;
+  }
+  .modal-close{
+    position:absolute;top:16px;right:16px;
+    width:34px;height:34px;border-radius:50%;
+    background:rgba(6,24,18,.55);color:var(--cream);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;z-index:10;transition:background .2s;border:none;
+  }
+  .modal-close:hover{background:var(--leaf-deep)}
+  .modal-eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px;}
+  .modal-name{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(28px,3.5vw,46px);
+    line-height:.95;letter-spacing:-.025em;color:var(--leaf-deep);
+  }
+  .modal-pitch{font-family:'Fraunces',serif;font-style:italic;font-size:16px;color:var(--moss);line-height:1.45}
+  .modal-divider{height:1px;background:var(--line)}
+  .modal-specs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 28px;}
+  .modal-spec span{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#bbb;font-weight:600;display:block;margin-bottom:4px;}
+  .modal-spec strong{font-family:'Fraunces',serif;font-weight:500;font-size:18px;color:var(--leaf-deep);}
+  .modal-trait{background:var(--cream);border-left:3px solid var(--wheat);padding:16px 18px;}
+  .modal-trait-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#aaa;font-weight:600;margin-bottom:7px;}
+  .modal-trait p{font-size:14px;color:#444;line-height:1.68}
+  .modal-adapt{font-size:13px;color:#777;line-height:1.55}
+  .modal-adapt strong{color:var(--leaf-deep);font-weight:600;display:block;margin-bottom:3px}
+  .modal-cta{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:13px 26px;margin-top:4px;
+    background:var(--leaf-deep);color:var(--cream);
+    font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    align-self:flex-start;transition:background .2s;border:none;cursor:pointer;font-family:inherit;
+  }
+  .modal-cta:hover{background:var(--leaf)}
+
+  /* enquiry modal */
   .enq-overlay{
     position:fixed;inset:0;z-index:300;
     background:rgba(6,12,9,.80);
@@ -238,29 +377,20 @@
     transform:translateY(16px);transition:transform .25s;
   }
   .enq-overlay.open .enq-modal{transform:translateY(0)}
-  .enq-eyebrow{
-    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
-    color:var(--accent);font-weight:600;margin-bottom:10px;
-  }
-  .enq-title{
-    font-family:'Fraunces',serif;font-weight:400;
-    font-size:28px;letter-spacing:-.02em;color:var(--leaf-deep);
-    line-height:1.1;margin-bottom:28px;
-  }
+  .enq-eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px;}
+  .enq-title{font-family:'Fraunces',serif;font-weight:400;font-size:28px;letter-spacing:-.02em;color:var(--leaf-deep);line-height:1.1;margin-bottom:28px;}
   .enq-title em{font-style:italic;color:var(--moss)}
   .enq-form{display:flex;flex-direction:column;gap:16px}
   .enq-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .enq-field{display:flex;flex-direction:column;gap:6px}
-  .enq-field label{
-    font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#999;
-  }
-  .enq-field input,.enq-field textarea,.enq-field select{
+  .enq-field label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#999;}
+  .enq-field input,.enq-field textarea{
     font-family:'Inter',sans-serif;font-size:14px;
     background:var(--cream);border:1px solid var(--line-mid);
     padding:11px 14px;color:var(--ink);
     transition:border-color .2s;outline:none;width:100%;
   }
-  .enq-field input:focus,.enq-field textarea:focus,.enq-field select:focus{border-color:var(--leaf)}
+  .enq-field input:focus,.enq-field textarea:focus{border-color:var(--leaf)}
   .enq-field textarea{resize:vertical;min-height:80px}
   .enq-submit{
     display:inline-flex;align-items:center;gap:10px;
@@ -272,9 +402,7 @@
     transition:background .2s;
   }
   .enq-submit:hover{background:var(--leaf)}
-  .enq-or{
-    display:flex;align-items:center;gap:12px;margin-top:4px;
-  }
+  .enq-or{display:flex;align-items:center;gap:12px;margin-top:4px;}
   .enq-or::before,.enq-or::after{content:'';flex:1;height:1px;background:var(--line-mid)}
   .enq-or span{font-size:11px;color:#bbb;white-space:nowrap;letter-spacing:.05em}
   .enq-phones{display:flex;gap:16px;flex-wrap:wrap}
@@ -286,23 +414,11 @@
     flex:1;justify-content:center;white-space:nowrap;
   }
   .enq-phone-link:hover{background:var(--cream);border-color:var(--leaf)}
-  .enq-success{
-    text-align:center;padding:24px 0;
-    font-family:'Fraunces',serif;font-style:italic;
-    font-size:20px;color:var(--moss);display:none;
-  }
-  .enq-close{
-    position:absolute;top:16px;right:16px;
-    background:none;border:none;cursor:pointer;
-    color:#bbb;transition:color .2s;padding:4px;
-  }
+  .enq-success{text-align:center;padding:24px 0;font-family:'Fraunces',serif;font-style:italic;font-size:20px;color:var(--moss);display:none;}
+  .enq-close{position:absolute;top:16px;right:16px;background:none;border:none;cursor:pointer;color:#bbb;transition:color .2s;padding:4px;}
   .enq-close:hover{color:var(--leaf-deep)}
-  @media(max-width:560px){
-    .enq-modal{padding:32px 24px 28px}
-    .enq-row{grid-template-columns:1fr}
-  }
 
-  /* ── footer strip ── */
+  /* footer */
   .foot-strip{
     background:var(--leaf-deep);color:var(--cream);
     padding:26px 40px;
@@ -312,11 +428,8 @@
   .foot-strip a{font-size:13px;opacity:.6;transition:opacity .2s}
   .foot-strip a:hover{opacity:1}
 
-  /* ── responsive ── */
-  @media(max-width:1100px){
-    .var-main{gap:32px}
-    .var-specs{gap:24px}
-  }
+  /* responsive */
+  @media(max-width:1100px){.var-main{gap:32px}.var-specs{gap:24px}}
   @media(max-width:860px){
     .var-card{grid-template-columns:90px 1fr}
     .var-thumb{width:90px;height:90px}
@@ -325,91 +438,13 @@
     .page-header-inner{grid-template-columns:1fr}
     .header-stat{display:none}
   }
-  /* ── modal ── */
-  .modal-overlay{
-    position:fixed;inset:0;z-index:200;
-    background:rgba(6,12,9,.78);
-    backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
-    display:flex;align-items:center;justify-content:center;
-    padding:24px;
-    opacity:0;pointer-events:none;
-    transition:opacity .28s;
-  }
-  .modal-overlay.open{opacity:1;pointer-events:all}
-  .modal{
-    background:var(--paper);
-    max-width:980px;width:100%;max-height:90vh;
-    display:grid;grid-template-columns:400px 1fr;
-    overflow:hidden;position:relative;
-    transform:translateY(18px) scale(.98);
-    transition:transform .28s;
-  }
-  .modal-overlay.open .modal{transform:translateY(0) scale(1)}
-  .modal-img{position:relative;overflow:hidden;min-height:420px}
-  .modal-img img{width:100%;height:100%;object-fit:cover;filter:contrast(1.1) saturate(1.12)}
-  .modal-body{
-    padding:44px 40px 44px;overflow-y:auto;
-    display:flex;flex-direction:column;gap:22px;
-  }
-  .modal-close{
-    position:absolute;top:16px;right:16px;
-    width:34px;height:34px;border-radius:50%;
-    background:rgba(6,24,18,.55);color:var(--cream);
-    display:flex;align-items:center;justify-content:center;
-    cursor:pointer;z-index:10;transition:background .2s;
-  }
-  .modal-close:hover{background:var(--leaf-deep)}
-  .modal-eyebrow{
-    font-size:11px;letter-spacing:.2em;text-transform:uppercase;
-    color:var(--accent);font-weight:600;margin-bottom:10px;
-  }
-  .modal-name{
-    font-family:'Fraunces',serif;font-weight:400;
-    font-size:clamp(28px,3.5vw,46px);
-    line-height:.95;letter-spacing:-.025em;color:var(--leaf-deep);
-  }
-  .modal-pitch{
-    font-family:'Fraunces',serif;font-style:italic;
-    font-size:16px;color:var(--moss);line-height:1.45;
-  }
-  .modal-divider{height:1px;background:var(--line)}
-  .modal-specs-grid{
-    display:grid;grid-template-columns:repeat(2,1fr);gap:18px 28px;
-  }
-  .modal-spec span{
-    font-size:10px;letter-spacing:.12em;text-transform:uppercase;
-    color:#bbb;font-weight:600;display:block;margin-bottom:4px;
-  }
-  .modal-spec strong{
-    font-family:'Fraunces',serif;font-weight:500;
-    font-size:18px;color:var(--leaf-deep);
-  }
-  .modal-trait{
-    background:var(--cream);
-    border-left:3px solid var(--wheat);
-    padding:16px 18px;
-  }
-  .modal-trait-label{
-    font-size:10px;letter-spacing:.15em;text-transform:uppercase;
-    color:#aaa;font-weight:600;margin-bottom:7px;
-  }
-  .modal-trait p{font-size:14px;color:#444;line-height:1.68}
-  .modal-adapt{font-size:13px;color:#777;line-height:1.55}
-  .modal-adapt strong{color:var(--leaf-deep);font-weight:600;display:block;margin-bottom:3px}
-  .modal-cta{
-    display:inline-flex;align-items:center;gap:10px;
-    padding:13px 26px;margin-top:4px;
-    background:var(--leaf-deep);color:var(--cream);
-    font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-    align-self:flex-start;transition:background .2s;
-  }
-  .modal-cta:hover{background:var(--leaf)}
-  @media(max-width:760px){
+  @media(max-width:900px){
     .modal{grid-template-columns:1fr;max-height:95vh}
-    .modal-img{min-height:220px;max-height:240px}
+    .mg-main-strip{min-height:200px}
+    .mg-thumb{height:100px}
+    .mg-thumb img{max-height:78px}
     .modal-body{padding:28px 24px}
   }
-
   @media(max-width:600px){
     .page-header{padding:50px 24px 40px}
     .catalog{padding:0 0 80px}
@@ -419,6 +454,8 @@
     .var-main{gap:18px}
     .var-specs{gap:16px}
     .var-spec strong{font-size:15px}
+    .enq-modal{padding:32px 24px 28px}
+    .enq-row{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -441,10 +478,10 @@
     <div>
       <div class="page-eyebrow">Our Potatoes</div>
       <h1 id="pageTitle">The complete <em>variety catalog.</em></h1>
-      <p id="pageDesc">12 varieties — suited for fresh market, french fries, chips, and hash browns. All produced as disease-free G-0 mini-tubers.</p>
+      <p id="pageDesc">29 varieties — CPRI-bred and exotic, suited for fresh market, processing, and specialty markets. All produced as disease-free G-0 mini-tubers.</p>
     </div>
     <div class="header-stat">
-      <strong>12</strong>
+      <strong>29</strong>
       <span>Varieties</span>
     </div>
   </div>
@@ -459,9 +496,11 @@
       <button class="filter-btn" data-filter="chips">Chips &amp; Crisps</button>
       <button class="filter-btn" data-filter="hashbrowns">Hash Browns</button>
       <button class="filter-btn" data-filter="early">Early</button>
+      <button class="filter-btn" data-filter="hills">Hills</button>
       <button class="filter-btn" data-filter="new">New</button>
+      <button class="filter-btn" data-filter="exotic">Exotic</button>
     </div>
-    <div class="filter-count">Showing <span id="visibleCount">12</span> of 12</div>
+    <div class="filter-count">Showing <span id="visibleCount">29</span> of 29</div>
   </div>
 </div>
 
@@ -470,7 +509,7 @@
 
     <article class="var-card" data-cat="table fresh hashbrowns" data-id="kufri-jyoti">
       <div class="var-thumb">
-        <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&q=85" alt="Kufri Jyoti" loading="lazy" />
+        <img src="variety-photos/jyoti_tuber.jpg" alt="Kufri Jyoti" loading="lazy" />
       </div>
       <div class="var-main">
         <div class="var-info">
@@ -478,7 +517,7 @@
           <p class="var-pitch">India's most-loved potato for over half a century.</p>
         </div>
         <div class="var-specs">
-          <div class="var-spec"><span>Maturity</span><strong>90–110 d</strong></div>
+          <div class="var-spec"><span>Maturity</span><strong>90–110 days</strong></div>
           <div class="var-spec"><span>Yield</span><strong>30 t/ha</strong></div>
           <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
         </div>
@@ -490,12 +529,12 @@
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
-      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>The name buyers recognise before you finish speaking — consistent mandi demand and reliable market pricing across all of India.</p></div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>The name buyers recognise before you finish speaking — consistent mandi demand and reliable pricing across all of India.</p></div>
     </article>
 
     <article class="var-card" data-cat="table early fresh fries" data-id="kufri-pukhraj">
       <div class="var-thumb">
-        <img src="https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=400&q=85" alt="Kufri Pukhraj" loading="lazy" />
+        <img src="variety-photos/pukhraj_tuber.jpg" alt="Kufri Pukhraj" loading="lazy" />
       </div>
       <div class="var-main">
         <div class="var-info">
@@ -503,7 +542,7 @@
           <p class="var-pitch">The early bird that gets the price.</p>
         </div>
         <div class="var-specs">
-          <div class="var-spec"><span>Maturity</span><strong>70–90 d</strong></div>
+          <div class="var-spec"><span>Maturity</span><strong>70–90 days</strong></div>
           <div class="var-spec"><span>Yield</span><strong>40 t/ha</strong></div>
           <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
         </div>
@@ -521,7 +560,7 @@
 
     <article class="var-card" data-cat="processing chips hashbrowns" data-id="kufri-chipsona-1">
       <div class="var-thumb">
-        <img src="https://images.unsplash.com/photo-1591280063444-d3c514eb6e13?w=400&q=85" alt="Kufri Chipsona-1" loading="lazy" />
+        <img src="variety-photos/chipsona1_tuber.jpg" alt="Kufri Chipsona-1" loading="lazy" />
       </div>
       <div class="var-main">
         <div class="var-info">
@@ -529,7 +568,7 @@
           <p class="var-pitch">The variety that gave India its own chips.</p>
         </div>
         <div class="var-specs">
-          <div class="var-spec"><span>Maturity</span><strong>90–110 d</strong></div>
+          <div class="var-spec"><span>Maturity</span><strong>90–110 days</strong></div>
           <div class="var-spec"><span>Yield</span><strong>40 t/ha</strong></div>
           <div class="var-spec"><span>Best for</span><strong>Chips</strong></div>
         </div>
@@ -545,42 +584,42 @@
       <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Low reducing sugars give a golden, non-browning chip — the spec preferred by Haldiram's and Lay's contract suppliers.</p></div>
     </article>
 
-    <article class="var-card" data-cat="table fresh" data-id="kufri-sindhuri">
+    <article class="var-card" data-cat="processing chips" data-id="kufri-chipsona-3">
       <div class="var-thumb">
-        <img src="https://images.unsplash.com/photo-1635774855536-9728f2610245?w=400&q=85" alt="Kufri Sindhuri" loading="lazy" />
+        <img src="variety-photos/chipsona3_tuber.jpg" alt="Kufri Chipsona-3" loading="lazy" />
       </div>
       <div class="var-main">
         <div class="var-info">
-          <div class="var-name-row"><h3>Kufri Sindhuri</h3><span class="var-code">CPRI · Hardy</span></div>
-          <p class="var-pitch">A red-skinned classic, built to last.</p>
+          <div class="var-name-row"><h3>Kufri Chipsona-3</h3><span class="var-code">CPRI · Chips</span></div>
+          <p class="var-pitch">Cold-stable sugars for year-round processing.</p>
         </div>
         <div class="var-specs">
-          <div class="var-spec"><span>Maturity</span><strong>110–120 d</strong></div>
-          <div class="var-spec"><span>Yield</span><strong>40 t/ha</strong></div>
-          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+          <div class="var-spec"><span>Maturity</span><strong>90–100 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>28–32 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Chips</strong></div>
         </div>
       </div>
       <div class="var-actions">
         <div class="var-tags">
-          <span class="var-tag">Fresh Market</span>
-          <span class="var-tag">Red skin</span>
+          <span class="var-tag tag-processing">Processing</span>
+          <span class="var-tag">Chips</span>
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
-      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Striking red skin commands a retail premium and extends shelf life — traders and retailers consistently reorder.</p></div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Cold-stable sugar profile enables year-round chip production — processors can run extended campaigns without quality loss.</p></div>
     </article>
 
     <article class="var-card" data-cat="table fresh fries" data-id="kufri-bahar">
       <div class="var-thumb">
-        <img src="https://images.unsplash.com/photo-1567393528677-d6adae7d4a0a?w=400&q=85" alt="Kufri Bahar" loading="lazy" />
+        <img src="variety-photos/bahar_tuber.jpg" alt="Kufri Bahar" loading="lazy" />
       </div>
       <div class="var-main">
         <div class="var-info">
-          <div class="var-name-row"><h3>Kufri Bahar</h3><span class="var-code">CPRI · 3797</span></div>
+          <div class="var-name-row"><h3>Kufri Bahar</h3><span class="var-code">CPRI · 1994</span></div>
           <p class="var-pitch">High-yielding, slow to degenerate.</p>
         </div>
         <div class="var-specs">
-          <div class="var-spec"><span>Maturity</span><strong>100–110 d</strong></div>
+          <div class="var-spec"><span>Maturity</span><strong>100–110 days</strong></div>
           <div class="var-spec"><span>Yield</span><strong>45 t/ha</strong></div>
           <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
         </div>
@@ -595,34 +634,9 @@
       <div class="var-benefit"><div class="var-benefit-icon">→</div><p>45 t/ha potential with slow degeneration — the high-volume variety multipliers come back to season after season.</p></div>
     </article>
 
-    <article class="var-card" data-cat="table early fresh" data-id="kufri-ashoka">
-      <div class="var-thumb">
-        <img src="https://images.unsplash.com/photo-1471194402529-8e0f5a675de6?w=400&q=85" alt="Kufri Ashoka" loading="lazy" />
-      </div>
-      <div class="var-main">
-        <div class="var-info">
-          <div class="var-name-row"><h3>Kufri Ashoka</h3><span class="var-code">CPRI · Early</span></div>
-          <p class="var-pitch">Made for the tight rotation.</p>
-        </div>
-        <div class="var-specs">
-          <div class="var-spec"><span>Maturity</span><strong>75–90 d</strong></div>
-          <div class="var-spec"><span>Yield</span><strong>30 t/ha</strong></div>
-          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
-        </div>
-      </div>
-      <div class="var-actions">
-        <div class="var-tags">
-          <span class="var-tag tag-early">Early</span>
-          <span class="var-tag">Fresh Market</span>
-        </div>
-        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
-      </div>
-      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>75-day harvest fits a tight double-crop rotation — maximise land use without sacrificing table quality.</p></div>
-    </article>
-
     <article class="var-card" data-cat="table early fresh" data-id="kufri-chandramukhi">
       <div class="var-thumb">
-        <img src="https://images.unsplash.com/photo-1599056407101-7c557a4a0144?w=400&q=85" alt="Kufri Chandramukhi" loading="lazy" />
+        <img src="variety-photos/chandramukhi_tuber.jpg" alt="Kufri Chandramukhi" loading="lazy" />
       </div>
       <div class="var-main">
         <div class="var-info">
@@ -630,7 +644,7 @@
           <p class="var-pitch">The Punjab classic that started a revolution.</p>
         </div>
         <div class="var-specs">
-          <div class="var-spec"><span>Maturity</span><strong>75–90 d</strong></div>
+          <div class="var-spec"><span>Maturity</span><strong>75–90 days</strong></div>
           <div class="var-spec"><span>Yield</span><strong>25 t/ha</strong></div>
           <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
         </div>
@@ -647,7 +661,7 @@
 
     <article class="var-card" data-cat="processing fries chips hashbrowns" data-id="kufri-badshah">
       <div class="var-thumb">
-        <img src="https://images.unsplash.com/photo-1508313880080-c4bef0730395?w=400&q=85" alt="Kufri Badshah" loading="lazy" />
+        <img src="variety-photos/badshah_tuber.jpg" alt="Kufri Badshah" loading="lazy" />
       </div>
       <div class="var-main">
         <div class="var-info">
@@ -655,7 +669,7 @@
           <p class="var-pitch">Made for the deep fryer.</p>
         </div>
         <div class="var-specs">
-          <div class="var-spec"><span>Maturity</span><strong>100–110 d</strong></div>
+          <div class="var-spec"><span>Maturity</span><strong>100–110 days</strong></div>
           <div class="var-spec"><span>Yield</span><strong>40 t/ha</strong></div>
           <div class="var-spec"><span>Best for</span><strong>Fries</strong></div>
         </div>
@@ -673,7 +687,7 @@
 
     <article class="var-card" data-cat="table early fresh" data-id="kufri-lauvkar">
       <div class="var-thumb">
-        <img src="https://images.unsplash.com/photo-1597313401170-ac8a7d2bca29?w=400&q=85" alt="Kufri Lauvkar" loading="lazy" />
+        <img src="variety-photos/lauvkar_tuber.jpg" alt="Kufri Lauvkar" loading="lazy" />
       </div>
       <div class="var-main">
         <div class="var-info">
@@ -681,7 +695,7 @@
           <p class="var-pitch">From planting to harvest in seventy days.</p>
         </div>
         <div class="var-specs">
-          <div class="var-spec"><span>Maturity</span><strong>70–80 d</strong></div>
+          <div class="var-spec"><span>Maturity</span><strong>70–80 days</strong></div>
           <div class="var-spec"><span>Yield</span><strong>25 t/ha</strong></div>
           <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
         </div>
@@ -696,80 +710,527 @@
       <div class="var-benefit"><div class="var-benefit-icon">→</div><p>India's fastest commercial variety — first to market every season, capturing the early-harvest price window.</p></div>
     </article>
 
-    <article class="var-card" data-cat="table new fresh" data-id="kufri-ratan">
+    <article class="var-card" data-cat="table fresh" data-id="kufri-surya">
       <div class="var-thumb">
-        <img src="https://images.unsplash.com/photo-1606168305466-93d09afb6826?w=400&q=85" alt="Kufri Ratan" loading="lazy" />
+        <img src="variety-photos/surya_tuber.jpg" alt="Kufri Surya" loading="lazy" />
       </div>
       <div class="var-main">
         <div class="var-info">
-          <div class="var-name-row"><h3>Kufri Ratan</h3><span class="var-code">CPRI · New</span></div>
-          <p class="var-pitch">A jewel for the North Indian plains.</p>
+          <div class="var-name-row"><h3>Kufri Surya</h3><span class="var-code">CPRI · 1992</span></div>
+          <p class="var-pitch">Broadly adaptable. Reliable season after season.</p>
         </div>
         <div class="var-specs">
-          <div class="var-spec"><span>Maturity</span><strong>~90 d</strong></div>
-          <div class="var-spec"><span>Yield</span><strong>37–39 t/ha</strong></div>
+          <div class="var-spec"><span>Maturity</span><strong>75–90 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>25–30 t/ha</strong></div>
           <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
         </div>
       </div>
       <div class="var-actions">
         <div class="var-tags">
-          <span class="var-tag tag-new">New · 2025</span>
           <span class="var-tag">Fresh Market</span>
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
-      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>New-generation disease tolerance with 37–39 t/ha yield — reduced field losses for North Indian plains growers.</p></div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Reliable performer across North Indian plains — predictable yield and quality season after season.</p></div>
     </article>
 
-    <article class="var-card" data-cat="processing new chips hashbrowns" data-id="kufri-chipbharat-1">
+    <article class="var-card" data-cat="processing fries" data-id="kufri-frysona">
       <div class="var-thumb">
-        <img src="https://images.unsplash.com/photo-1590165482129-1b8b27698780?w=400&q=85" alt="Kufri ChipBharat-1" loading="lazy" />
+        <img src="variety-photos/frysona_tuber.jpg" alt="Kufri Frysona" loading="lazy" />
       </div>
       <div class="var-main">
         <div class="var-info">
-          <div class="var-name-row"><h3>Kufri ChipBharat-1</h3><span class="var-code">CPRI · Chips</span></div>
-          <p class="var-pitch">The next chapter for Indian crisps.</p>
+          <div class="var-name-row"><h3>Kufri Frysona</h3><span class="var-code">CPRI · Processing</span></div>
+          <p class="var-pitch">Long, uniform tubers. QSR-grade specifications.</p>
         </div>
         <div class="var-specs">
-          <div class="var-spec"><span>Maturity</span><strong>90–100 d</strong></div>
-          <div class="var-spec"><span>Yield</span><strong>35 t/ha</strong></div>
+          <div class="var-spec"><span>Maturity</span><strong>100–115 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>30–35 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Fries</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag tag-processing">Processing</span>
+          <span class="var-tag">French Fries</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>QSR-grade elongated tubers with consistent sugar profile — the preferred input for large-scale fry processing.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="processing fries" data-id="kufri-fryom">
+      <div class="var-thumb">
+        <img src="variety-photos/fryom_bag.jpg" alt="Kufri FryoM" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri FryoM</h3><span class="var-code">CPRI · Processing</span></div>
+          <p class="var-pitch">Consistent input for the frozen fry line.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–100 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>28–32 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Fries</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag tag-processing">Processing</span>
+          <span class="var-tag">French Fries</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>High solid content and consistent shape — meets the spec of industrial frozen fry supply chains.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="table fresh" data-id="kufri-udhay">
+      <div class="var-thumb">
+        <img src="variety-photos/udhay_tuber.jpg" alt="Kufri Udhay" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Udhay</h3><span class="var-code">CPRI · 2013</span></div>
+          <p class="var-pitch">High-yielding mid-season for the plains.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>80–95 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>30–35 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag">Fresh Market</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>High mid-season yield across the Indo-Gangetic plains — white oval tubers with consistent buyer acceptance.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="table fresh" data-id="kufri-kiran">
+      <div class="var-thumb">
+        <img src="variety-photos/kiran.jpg" alt="Kufri Kiran" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Kiran</h3><span class="var-code">CPRI · Plains</span></div>
+          <p class="var-pitch">Steady mid-season yield across the Indo-Gangetic belt.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>80–90 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>28–35 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag">Fresh Market</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Consistent white oval tubers with good table quality — reliable mandi acceptance across the Ganga plains.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="table fresh" data-id="kufri-lalit">
+      <div class="var-thumb">
+        <img src="variety-photos/lalit_tuber.jpg" alt="Kufri Lalit" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Lalit</h3><span class="var-code">CPRI · 1999</span></div>
+          <p class="var-pitch">Smooth skin. Good keeping quality.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>95–110 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>30–35 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag">Fresh Market</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Smooth white skin and excellent shelf life — cold-storage operators reorder for its consistent keeping quality.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="table early fresh" data-id="kufri-karan">
+      <div class="var-thumb">
+        <img src="variety-photos/karan_bag.jpg" alt="Kufri Karan" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Karan</h3><span class="var-code">CPRI · Early</span></div>
+          <p class="var-pitch">First out of the field, first into the mandi.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>75–85 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>25–28 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag tag-early">Early</span>
+          <span class="var-tag">Fresh Market</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Among the earliest to market in Punjab and Haryana — compact vines and quick harvest maximise seasonal returns.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="table fresh" data-id="kufri-sangam">
+      <div class="var-thumb">
+        <img src="variety-photos/sangam_bag.jpg" alt="Kufri Sangam" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Sangam</h3><span class="var-code">CPRI · 1997</span></div>
+          <p class="var-pitch">Adaptable from the plains to the plateau.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–100 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>30–35 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag">Fresh Market</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Heat-tolerant adaptability for the plateau and peninsula — dependable where other varieties struggle.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="table fresh hills" data-id="kufri-himsona">
+      <div class="var-thumb">
+        <img src="variety-photos/himsona_tuber.jpg" alt="Kufri Himsona" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Himsona</h3><span class="var-code">CPRI · Hills</span></div>
+          <p class="var-pitch">Bred for altitude. Built for the hills.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>100–115 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>28–35 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag">Fresh Market</span>
+          <span class="var-tag">Hills</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Purpose-bred for Himalayan foothills — the go-to variety for Himachal Pradesh and J&amp;K seed multipliers.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="table fresh" data-id="kufri-mohan">
+      <div class="var-thumb">
+        <img src="variety-photos/mohan_tuber.jpg" alt="Kufri Mohan" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Mohan</h3><span class="var-code">CPRI · 1989</span></div>
+          <p class="var-pitch">Smooth, uniform. Preferred by Agra-region traders.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>80–90 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>25–28 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag">Fresh Market</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Smooth, uniform appearance preferred by Agra-region traders — consistent round oval tubers with strong retail appeal.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="table fresh hills" data-id="kufri-himalani">
+      <div class="var-thumb">
+        <img src="variety-photos/himalani_tuber.jpg" alt="Kufri Himalani" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Himalani</h3><span class="var-code">CPRI · Hills</span></div>
+          <p class="var-pitch">Mid-altitude performer with broad adaptability.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–110 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>28–32 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag">Fresh Market</span>
+          <span class="var-tag">Hills</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Performs reliably from 1500 to 3000 m — the hill multiplier's first choice for broad altitude adaptability.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="table early fresh" data-id="kufri-lima">
+      <div class="var-thumb">
+        <img src="variety-photos/lima_tuber.jpg" alt="Kufri Lima" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Lima</h3><span class="var-code">CPRI · 1992</span></div>
+          <p class="var-pitch">Compact plants. Higher density per acre.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>75–90 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>25–30 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag tag-early">Early</span>
+          <span class="var-tag">Fresh Market</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Compact canopy enables closer spacing — more plants per acre means more total yield from the same land.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="table fresh" data-id="kufri-neelkanth">
+      <div class="var-thumb">
+        <img src="variety-photos/neelkanth_tuber.jpg" alt="Kufri Neelkanth" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Neelkanth</h3><span class="var-code">CPRI · 2009</span></div>
+          <p class="var-pitch">High yield with good consumer acceptance.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–100 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>28–35 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag">Fresh Market</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>High yield with consumer-preferred cream flesh — a dependable commercial variety for Ganga belt markets.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="processing chips table fresh" data-id="kufri-khyati">
+      <div class="var-thumb">
+        <img src="variety-photos/khyati_tuber.jpg" alt="Kufri Khyati" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Khyati</h3><span class="var-code">CPRI · 2007</span></div>
+          <p class="var-pitch">One of CPRI's highest-yielding commercial releases.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–110 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>30–40 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Processing</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag tag-processing">Processing</span>
+          <span class="var-tag">Fresh Market</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Up to 40 t/ha with processing-grade low reducing sugars — the rare variety that works for both growers and processors.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="table fresh new" data-id="kufri-sukhyati">
+      <div class="var-thumb">
+        <img src="variety-photos/sukhyati.jpg" alt="Kufri Sukhyati" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kufri Sukhyati</h3><span class="var-code">CPRI · New</span></div>
+          <p class="var-pitch">High yield with improved field resistance.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–100 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>30–38 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag tag-new">New</span>
+          <span class="var-tag">Fresh Market</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>New CPRI release with improved disease tolerance — fewer crop losses and better returns for plains growers.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="processing chips exotic" data-id="lady-rosette">
+      <div class="var-thumb">
+        <img src="variety-photos/lady-rosette.webp" alt="Lady Rosette" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Lady Rosette</h3><span class="var-code">Exotic · Dutch</span></div>
+          <p class="var-pitch">The European benchmark for quality crisps.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–110 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>30–40 t/ha</strong></div>
           <div class="var-spec"><span>Best for</span><strong>Chips</strong></div>
         </div>
       </div>
       <div class="var-actions">
         <div class="var-tags">
-          <span class="var-tag tag-new">New · 2025</span>
+          <span class="var-tag">Exotic</span>
           <span class="var-tag tag-processing">Processing</span>
           <span class="var-tag">Chips</span>
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
-      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Bred for low acrylamide formation — meets EU and FSSAI food safety benchmarks for next-generation snack manufacturing.</p></div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Low reducing sugars and high dry matter — the Dutch standard for premium crisp manufacturers worldwide.</p></div>
     </article>
 
-    <article class="var-card" data-cat="table fresh" data-id="kufri-jamunia">
+    <article class="var-card" data-cat="processing fries exotic" data-id="kuroda">
       <div class="var-thumb">
-        <img src="https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?w=400&q=85" alt="Kufri Jamunia" loading="lazy" />
+        <img src="variety-photos/kuroda.png" alt="Kuroda" loading="lazy" />
       </div>
       <div class="var-main">
         <div class="var-info">
-          <div class="var-name-row"><h3>Kufri Jamunia</h3><span class="var-code">CPRI · Specialty</span></div>
-          <p class="var-pitch">India's first purple-flesh biofortified potato.</p>
+          <div class="var-name-row"><h3>Kuroda</h3><span class="var-code">Exotic · Japanese</span></div>
+          <p class="var-pitch">Long oval tubers with processing-grade dry matter.</p>
         </div>
         <div class="var-specs">
-          <div class="var-spec"><span>Maturity</span><strong>100–110 d</strong></div>
-          <div class="var-spec"><span>Yield</span><strong>25 t/ha</strong></div>
-          <div class="var-spec"><span>Best for</span><strong>Specialty</strong></div>
+          <div class="var-spec"><span>Maturity</span><strong>95–110 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>35–45 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Fries</strong></div>
         </div>
       </div>
       <div class="var-actions">
         <div class="var-tags">
-          <span class="var-tag">Fresh Market</span>
-          <span class="var-tag">Purple flesh</span>
+          <span class="var-tag">Exotic</span>
+          <span class="var-tag tag-processing">Processing</span>
+          <span class="var-tag">French Fries</span>
         </div>
         <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
       </div>
-      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Anthocyanin-rich purple flesh commands specialty and export premiums — a conversation starter on any restaurant menu.</p></div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>High dry matter and consistent long oval shape — favoured by industrial fry processors for uniform cut yield.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="processing chips fries exotic" data-id="diamant">
+      <div class="var-thumb">
+        <img src="variety-photos/diamant.jpg" alt="Diamant" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Diamant</h3><span class="var-code">Exotic · Dutch</span></div>
+          <p class="var-pitch">India's most trusted exotic processing variety.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–110 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>35–45 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Processing</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag">Exotic</span>
+          <span class="var-tag tag-processing">Processing</span>
+          <span class="var-tag">Chips</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>The Dutch variety most widely contracted by Indian chip processors — proven performance from Punjab to Gujarat.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="processing chips exotic" data-id="atlantic">
+      <div class="var-thumb">
+        <img src="variety-photos/atlantic.jpg" alt="Atlantic" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Atlantic</h3><span class="var-code">Exotic · American</span></div>
+          <p class="var-pitch">The global chip standard that redefined crispness.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–100 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>30–40 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Chips</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag">Exotic</span>
+          <span class="var-tag tag-processing">Processing</span>
+          <span class="var-tag">Chips</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Consistently low reducing sugars after cold storage — the benchmark variety for multinational chip manufacturers in India.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="table fries fresh exotic" data-id="kenebec">
+      <div class="var-thumb">
+        <img src="variety-photos/kenebec.jpg" alt="Kenebec" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Kenebec</h3><span class="var-code">Exotic · American</span></div>
+          <p class="var-pitch">Versatile, high-yielding, and widely adaptable.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–110 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>35–45 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table / Fries</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag">Exotic</span>
+          <span class="var-tag">Fresh Market</span>
+          <span class="var-tag">French Fries</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Dual-purpose American variety — large white-skinned tubers suited for both fresh market and fry processing.</p></div>
+    </article>
+
+    <article class="var-card" data-cat="table fresh exotic" data-id="cardinal">
+      <div class="var-thumb">
+        <img src="variety-photos/cardinal.jpg" alt="Cardinal" loading="lazy" />
+      </div>
+      <div class="var-main">
+        <div class="var-info">
+          <div class="var-name-row"><h3>Cardinal</h3><span class="var-code">Exotic · Dutch</span></div>
+          <p class="var-pitch">Bold red skin. Premium mandi presence.</p>
+        </div>
+        <div class="var-specs">
+          <div class="var-spec"><span>Maturity</span><strong>90–105 days</strong></div>
+          <div class="var-spec"><span>Yield</span><strong>35–40 t/ha</strong></div>
+          <div class="var-spec"><span>Best for</span><strong>Table</strong></div>
+        </div>
+      </div>
+      <div class="var-actions">
+        <div class="var-tags">
+          <span class="var-tag">Exotic</span>
+          <span class="var-tag">Fresh Market</span>
+        </div>
+        <button class="var-link enq-btn">Enquire <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+      </div>
+      <div class="var-benefit"><div class="var-benefit-icon">→</div><p>Striking red skin from a Dutch classic — commands retail premiums and high buyer recognition in urban markets.</p></div>
     </article>
 
   </div>
@@ -781,12 +1242,13 @@
 <!-- VARIETY MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal" role="dialog" aria-modal="true">
-    <div class="modal-img">
-      <img id="modalImg" src="" alt="" />
-    </div>
+    <div class="modal-gallery" id="modalGallery"></div>
     <div class="modal-body">
       <div>
-        <p class="modal-eyebrow" id="modalCode"></p>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+          <p class="modal-eyebrow" style="margin-bottom:0" id="modalCode"></p>
+          <span class="modal-idx" id="modalIdx"></span>
+        </div>
         <h2 class="modal-name" id="modalName"></h2>
       </div>
       <p class="modal-pitch" id="modalPitch"></p>
@@ -803,6 +1265,12 @@
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
   </div>
+  <button class="modal-nav modal-nav-prev dim" id="modalNavPrev" aria-label="Previous variety">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="modal-nav modal-nav-next dim" id="modalNavNext" aria-label="Next variety">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
 </div>
 
 <!-- ENQUIRY MODAL -->
@@ -837,9 +1305,7 @@
         <textarea name="message" placeholder="Quantity needed, region, intended use…"></textarea>
       </div>
       <button type="submit" class="enq-submit">Send enquiry <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
-      <div class="enq-or">
-        <span>or call us directly</span>
-      </div>
+      <div class="enq-or"><span>or call us directly</span></div>
       <div class="enq-phones">
         <a href="tel:+919815652360" class="enq-phone-link">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.18 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -851,9 +1317,7 @@
         </a>
       </div>
     </form>
-    <div class="enq-success" id="enqSuccess">
-      Thank you — we'll be in touch shortly.
-    </div>
+    <div class="enq-success" id="enqSuccess">Thank you — we'll be in touch shortly.</div>
   </div>
 </div>
 
@@ -864,165 +1328,144 @@
 
 <script>
   const segmentMeta = {
-    fresh:      { title: 'Fresh Market <em>Varieties</em>',   desc: 'Table-quality potatoes suited for retail and wholesale fresh markets — smooth skins, even sizing, good shelf-life.' },
-    fries:      { title: 'French Fry <em>Varieties</em>',     desc: 'Long, uniform tubers with high dry matter and the right sugar profile for QSR and food-processing operations.' },
-    chips:      { title: 'Chips & Crisps <em>Varieties</em>', desc: '20%+ dry matter, low reducing sugars after cold storage — built for India\'s growing snack industry.' },
-    hashbrowns: { title: 'Hash Brown <em>Varieties</em>',     desc: 'High starch, firm texture and low moisture — ideal for grated or shredded hash brown production.' },
-    early:      { title: 'Early Maturity <em>Varieties</em>', desc: 'Varieties that reach harvest in 70–90 days, ideal for tight crop rotations and early market entry.' },
-    new:        { title: 'New <em>Releases</em>',             desc: 'Recently approved varieties from CPRI Shimla, now available for seed multiplication across India.' },
+    fresh:      { title:'The complete <em>variety catalog.</em>', desc:'Table-quality potatoes suited for retail and wholesale fresh markets — smooth skins, even sizing, good shelf-life.' },
+    fries:      { title:'French Fry <em>Varieties</em>',         desc:'Long, uniform tubers with high dry matter and the right sugar profile for QSR and food-processing operations.' },
+    chips:      { title:'Chips &amp; Crisps <em>Varieties</em>', desc:'20%+ dry matter, low reducing sugars after cold storage — built for India\'s growing snack industry.' },
+    hashbrowns: { title:'Hash Brown <em>Varieties</em>',         desc:'High starch, firm texture and low moisture — ideal for grated or shredded hash brown production.' },
+    early:      { title:'Early Maturity <em>Varieties</em>',     desc:'Varieties that reach harvest in 70–90 days, ideal for tight crop rotations and early market entry.' },
+    hills:      { title:'Hill &amp; Mountain <em>Varieties</em>',desc:'Varieties bred for mid-to-high altitude conditions — Himachal Pradesh, Uttarakhand, and J&K.' },
+    new:        { title:'New <em>Releases</em>',                 desc:'Recently approved varieties from CPRI Shimla, now available for seed multiplication across India.' },
+    exotic:     { title:'Exotic <em>Varieties</em>',             desc:'International varieties contracted for their processing performance, adaptability, and market demand in India.' },
   };
 
-  // ── variety detail data ──
   const varietyData = {
-    'kufri-jyoti': {
-      img:'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=900&q=85',
-      name:'Kufri Jyoti', code:'CPRI · Released 1968',
-      pitch:"India's most-loved potato for over half a century.",
-      maturity:'90–110 days', yield:'30 t/ha', purpose:'Table', year:'1968',
-      trait:'Moderately resistant to late blight. Wide adaptability across altitudes and seasons — from the plains to the hills. Early bulker with slow seed degeneration and day-neutral behaviour.',
-      adapt:'Punjab, Haryana, Uttar Pradesh, Himachal Pradesh, Jammu & Kashmir, Bihar',
-    },
-    'kufri-pukhraj': {
-      img:'https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=900&q=85',
-      name:'Kufri Pukhraj', code:'CPRI · Early Variety',
-      pitch:"The early bird that gets the price.",
-      maturity:'70–90 days', yield:'40 t/ha', purpose:'Table / Fries', year:'2006',
-      trait:'India\'s highest-yielding early variety. Tolerant to high temperatures — well-suited to the Indo-Gangetic plains. Golden-yellow skin maintains premium mandi pricing in early harvest windows.',
-      adapt:'Punjab, Haryana, Uttar Pradesh, West Bengal, Assam',
-    },
-    'kufri-chipsona-1': {
-      img:'https://images.unsplash.com/photo-1591280063444-d3c514eb6e13?w=900&q=85',
-      name:'Kufri Chipsona-1', code:'CPRI · Processing',
-      pitch:"The variety that gave India its own chips.",
-      maturity:'90–110 days', yield:'40 t/ha', purpose:'Processing / Chips', year:'1998',
-      trait:'India\'s first dedicated chipping variety. Dry matter above 20% and low reducing sugars even after cold storage — produces light, uniform chip colour critical for snack manufacturers.',
-      adapt:'Punjab, Haryana, Uttar Pradesh, Himachal Pradesh, Gujarat',
-    },
-    'kufri-sindhuri': {
-      img:'https://images.unsplash.com/photo-1635774855536-9728f2610245?w=900&q=85',
-      name:'Kufri Sindhuri', code:'CPRI · Hardy',
-      pitch:"A red-skinned classic, built to last.",
-      maturity:'110–120 days', yield:'40 t/ha', purpose:'Table', year:'1973',
-      trait:'Tolerant to Potato Leaf Roll Virus (PLRV) and heat stress. Distinctive red skin resists seed degeneration season after season — a farmer favourite in hot, dry plains.',
-      adapt:'Uttar Pradesh, Bihar, West Bengal, Assam, Odisha, Maharashtra',
-    },
-    'kufri-bahar': {
-      img:'https://images.unsplash.com/photo-1567393528677-d6adae7d4a0a?w=900&q=85',
-      name:'Kufri Bahar', code:'CPRI · 1994',
-      pitch:"High-yielding, slow to degenerate.",
-      maturity:'100–110 days', yield:'45 t/ha', purpose:'Table', year:'1994',
-      trait:'Moderately resistant to late blight with excellent storability. Large white tubers with deep eyes — popular across northern India for its reliable performance in cold-store and direct retail.',
-      adapt:'Haryana, Uttar Pradesh, Himachal Pradesh, Jammu & Kashmir',
-    },
-    'kufri-ashoka': {
-      img:'https://images.unsplash.com/photo-1471194402529-8e0f5a675de6?w=900&q=85',
-      name:'Kufri Ashoka', code:'CPRI · Early',
-      pitch:"Made for the tight rotation.",
-      maturity:'75–90 days', yield:'30 t/ha', purpose:'Table', year:'1997',
-      trait:'Shallow-eyed oval-long tubers suited to the tight crop windows of the Indo-Gangetic plains. Enables reliable double-cropping without sacrificing yield or quality.',
-      adapt:'Uttar Pradesh, Bihar, West Bengal, Punjab, Haryana',
-    },
-    'kufri-chandramukhi': {
-      img:'https://images.unsplash.com/photo-1599056407101-7c557a4a0144?w=900&q=85',
-      name:'Kufri Chandramukhi', code:'CPRI · Released 1968',
-      pitch:"The Punjab classic that started a revolution.",
-      maturity:'75–90 days', yield:'25 t/ha', purpose:'Table', year:'1968',
-      trait:'India\'s first early-maturing variety — the pioneer that enabled double cropping across the plains. Light-yellow flesh with smooth skin and excellent cooking quality make it a household name.',
-      adapt:'Punjab, Haryana, Uttar Pradesh, Bihar, Himachal Pradesh, J&K',
-    },
-    'kufri-badshah': {
-      img:'https://images.unsplash.com/photo-1508313880080-c4bef0730395?w=900&q=85',
-      name:'Kufri Badshah', code:'CPRI · Processing',
-      pitch:"Made for the deep fryer.",
-      maturity:'100–110 days', yield:'40 t/ha', purpose:'Processing / Fries', year:'2005',
-      trait:'Light-yellow flesh with consistent dry matter and low reducing sugars — produces the golden fry colour demanded by QSR chains. Uniform tuber shape ensures even slice thickness for industrial processing.',
-      adapt:'Punjab, Haryana, Uttar Pradesh, Himachal Pradesh',
-    },
-    'kufri-lauvkar': {
-      img:'https://images.unsplash.com/photo-1597313401170-ac8a7d2bca29?w=900&q=85',
-      name:'Kufri Lauvkar', code:'CPRI · Fastest',
-      pitch:"From planting to harvest in seventy days.",
-      maturity:'70–80 days', yield:'25 t/ha', purpose:'Table', year:'1987',
-      trait:'One of India\'s earliest-maturing varieties. Smooth, medium-sized white tubers — prized by farmers chasing tight crop cycles in both hills and plains for quick market entry.',
-      adapt:'Himachal Pradesh, Jammu & Kashmir, Punjab, Uttar Pradesh',
-    },
-    'kufri-ratan': {
-      img:'https://images.unsplash.com/photo-1606168305466-93d09afb6826?w=900&q=85',
-      name:'Kufri Ratan', code:'CPRI · New Release',
-      pitch:"A jewel for the North Indian plains.",
-      maturity:'~90 days', yield:'37–39 t/ha', purpose:'Table', year:'2022',
-      trait:'Recently approved for nationwide cultivation. Dark-red ovoid tubers with shallow-medium eyes and yellow flesh. Excellent post-harvest storability and broad adaptability across the major potato-growing states.',
-      adapt:'Punjab, Haryana, Uttar Pradesh, Bihar, West Bengal',
-    },
-    'kufri-chipbharat-1': {
-      img:'https://images.unsplash.com/photo-1590165482129-1b8b27698780?w=900&q=85',
-      name:'Kufri ChipBharat-1', code:'CPRI · New Release',
-      pitch:"The next chapter for Indian crisps.",
-      maturity:'90–100 days', yield:'35 t/ha', purpose:'Processing / Chips', year:'2023',
-      trait:'Next-generation processing variety engineered for cold-storage chip production. Dry matter above 20% with consistently low reducing sugars after cold storage — produces lighter, more uniform chips than legacy processing varieties.',
-      adapt:'Punjab, Haryana, Uttar Pradesh, Gujarat, Karnataka',
-    },
-    'kufri-jamunia': {
-      img:'https://images.unsplash.com/photo-1551892374-ecf8754cf8b0?w=900&q=85',
-      name:'Kufri Jamunia', code:'CPRI · Specialty',
-      pitch:"India's first purple-flesh biofortified potato.",
-      maturity:'100–110 days', yield:'25 t/ha', purpose:'Specialty / Table', year:'2015',
-      trait:'Rich in anthocyanins — natural antioxidants responsible for the striking purple flesh. A premium biofortified variety suited to health-conscious retail and high-end food service. Currently grown in Himachal Pradesh and Uttarakhand.',
-      adapt:'Himachal Pradesh, Uttarakhand, Jammu & Kashmir',
-    },
+    'kufri-jyoti':        { photos:['variety-photos/jyoti_tuber.jpg','variety-photos/jyoti_bag.jpg','variety-photos/jyoti_leaf.jpg','variety-photos/jyoti_flower.jpg','variety-photos/jyoti_sprout.jpg'],                   name:'Kufri Jyoti',        code:'CPRI · Released 1968',  pitch:"India's most-loved potato for over half a century.",        maturity:'90–110 days', yield:'30 t/ha',    purpose:'Table',           year:'1968', trait:'Broad adaptability from sub-tropics to high hills. Creamy yellow flesh with slow seed degeneration and day-neutral behaviour.',                                      adapt:'Punjab, Haryana, Uttar Pradesh, Himachal Pradesh, J&K, Bihar' },
+    'kufri-pukhraj':      { photos:['variety-photos/pukhraj_tuber.jpg','variety-photos/pukhraj_bag.jpg','variety-photos/pukhraj_leaf.jpg','variety-photos/pukhraj_flower.jpg','variety-photos/pukhraj_sprout.jpg'],               name:'Kufri Pukhraj',      code:'CPRI · Early Variety',  pitch:"The early bird that gets the price.",                        maturity:'70–90 days',  yield:'40 t/ha',    purpose:'Table / Fries',   year:'2006', trait:'India\'s highest-yielding early variety. Tolerant to high temperatures — well-suited to the Indo-Gangetic plains. Golden-yellow skin.',                         adapt:'Punjab, Haryana, Uttar Pradesh, West Bengal, Assam' },
+    'kufri-chipsona-1':   { photos:['variety-photos/chipsona1_tuber.jpg','variety-photos/chipsona1_bag.jpg','variety-photos/chipsona1_leaf.jpg','variety-photos/chipsona1_flower.jpg','variety-photos/chipsona1_sprout.jpg'],         name:'Kufri Chipsona-1',   code:'CPRI · Processing',     pitch:"The variety that gave India its own chips.",                 maturity:'90–110 days', yield:'40 t/ha',    purpose:'Chips',           year:'1998', trait:'India\'s first dedicated chipping variety. Low reducing sugars even after cold storage — produces light, uniform chip colour.',                                  adapt:'Punjab, Haryana, Uttar Pradesh, Himachal Pradesh, Gujarat' },
+    'kufri-chipsona-3':   { photos:['variety-photos/chipsona3_tuber.jpg','variety-photos/chipsona3_bag.jpg','variety-photos/chipsona3_leaf.jpg','variety-photos/chipsona3_flower.jpg','variety-photos/chipsona3_sprout.jpg'],         name:'Kufri Chipsona-3',   code:'CPRI · Processing',     pitch:"Cold-stable sugars for year-round processing.",              maturity:'90–100 days', yield:'28–32 t/ha', purpose:'Chips',           year:'2007', trait:'Improved cold-storage sugar stability over Chipsona-1. Suitable for year-round and late-crop chip processing campaigns.',                                      adapt:'Punjab, Uttar Pradesh, Bihar' },
+    'kufri-bahar':        { photos:['variety-photos/bahar_tuber.jpg','variety-photos/bahar_bag.jpg','variety-photos/bahar_leaf.jpg','variety-photos/bahar_flower.jpg','variety-photos/bahar_sprout.jpg'],                     name:'Kufri Bahar',        code:'CPRI · 1994',           pitch:"High-yielding, slow to degenerate.",                         maturity:'100–110 days',yield:'45 t/ha',    purpose:'Table',           year:'1994', trait:'Moderately resistant to late blight with excellent storability. Large white tubers. Popular in cold-store and direct retail.',                                  adapt:'Haryana, Uttar Pradesh, Himachal Pradesh, J&K' },
+    'kufri-chandramukhi': { photos:['variety-photos/chandramukhi_tuber.jpg','variety-photos/chandramukhi_bag.jpg','variety-photos/chandramukhi_leaf.jpg','variety-photos/chandramukhi_flower.jpg','variety-photos/chandramukhi_sprout.jpg'],name:'Kufri Chandramukhi', code:'CPRI · 1968',           pitch:"The Punjab classic that started a revolution.",              maturity:'75–90 days',  yield:'25 t/ha',    purpose:'Table',           year:'1968', trait:'India\'s first early-maturing variety — pioneer of double cropping. Light-yellow flesh with smooth skin and excellent cooking quality.',                       adapt:'Punjab, Haryana, Uttar Pradesh, Bihar, Himachal Pradesh, J&K' },
+    'kufri-badshah':      { photos:['variety-photos/badshah_tuber.jpg','variety-photos/badshah_bag.jpg','variety-photos/badshah_leaf.jpg','variety-photos/badshah_flower.jpg','variety-photos/badshah_sprout.jpg'],               name:'Kufri Badshah',      code:'CPRI · Processing',     pitch:"Made for the deep fryer.",                                   maturity:'100–110 days',yield:'40 t/ha',    purpose:'Processing / Fries',year:'2005',trait:'Light-yellow flesh with consistent dry matter and low reducing sugars — produces the golden fry colour demanded by QSR chains.',                                adapt:'Punjab, Haryana, Uttar Pradesh, Himachal Pradesh' },
+    'kufri-lauvkar':      { photos:['variety-photos/lauvkar_tuber.jpg','variety-photos/lauvkar_bag.jpg','variety-photos/lauvkar_leaf.jpg','variety-photos/lauvkar_flower.jpg','variety-photos/lauvkar_sprout.jpg'],               name:'Kufri Lauvkar',      code:'CPRI · Fastest',        pitch:"From planting to harvest in seventy days.",                  maturity:'70–80 days',  yield:'25 t/ha',    purpose:'Table',           year:'1987', trait:'One of India\'s earliest-maturing varieties. Smooth, medium-sized white tubers — prized by farmers chasing tight crop cycles.',                                adapt:'Himachal Pradesh, J&K, Punjab, Uttar Pradesh' },
+    'kufri-surya':        { photos:['variety-photos/surya_tuber.jpg','variety-photos/surya_bag.jpg','variety-photos/surya_leaf.jpg','variety-photos/surya_flower.jpg','variety-photos/surya_sprout.jpg'],                     name:'Kufri Surya',        code:'CPRI · 1992',           pitch:"Broadly adaptable. Reliable season after season.",           maturity:'75–90 days',  yield:'25–30 t/ha', purpose:'Table',           year:'1992', trait:'Medium maturity with good adaptability across North Indian plains. Pale yellow skin and white flesh — consistent performance.',                                adapt:'Punjab, Haryana, Uttar Pradesh' },
+    'kufri-frysona':      { photos:['variety-photos/frysona_tuber.jpg','variety-photos/frysona_bag.jpg','variety-photos/frysona_leaf.jpg','variety-photos/frysona_flower.jpg','variety-photos/frysona_sprout.jpg'],               name:'Kufri Frysona',      code:'CPRI · Processing',     pitch:"Long, uniform tubers. QSR-grade specifications.",            maturity:'100–115 days',yield:'30–35 t/ha', purpose:'Fries',           year:'2010', trait:'Elongated tubers suited for cut fries. Low reducing sugars and high dry matter for consistent golden fry production at QSR scale.',                          adapt:'Punjab, Haryana, Uttar Pradesh' },
+    'kufri-fryom':        { photos:['variety-photos/fryom_bag.jpg'],                                                                                      name:'Kufri FryoM',        code:'CPRI · Processing',     pitch:"Consistent input for the frozen fry line.",                  maturity:'90–100 days', yield:'28–32 t/ha', purpose:'Fries',           year:'2014', trait:'High solid content and consistent tuber shape. Medium-late maturity suited for processing operations targeting the frozen fry supply chain.',              adapt:'Punjab, Uttar Pradesh, Haryana' },
+    'kufri-udhay':        { photos:['variety-photos/udhay_tuber.jpg'],                                                                                    name:'Kufri Udhay',        code:'CPRI · 2013',           pitch:"High-yielding mid-season for the plains.",                   maturity:'80–95 days',  yield:'30–35 t/ha', purpose:'Table',           year:'2013', trait:'Medium maturity with high yield. White oval tubers with shallow eyes. Good adaptability for the Indo-Gangetic plains.',                                      adapt:'Uttar Pradesh, Bihar, Punjab' },
+    'kufri-kiran':        { photos:['variety-photos/kiran.jpg'],                                            name:'Kufri Kiran',        code:'CPRI · Plains Variety', pitch:"Steady mid-season yield across the Indo-Gangetic belt.",     maturity:'80–90 days',  yield:'28–35 t/ha', purpose:'Table',           year:'~2003', trait:'White oval tubers with shallow eyes. Good adaptability across the North Indian plains with reliable commercial performance.',                              adapt:'Uttar Pradesh, Bihar, Punjab, Haryana' },
+    'kufri-lalit':        { photos:['variety-photos/lalit_tuber.jpg','variety-photos/lalit_bag.jpg','variety-photos/lalit_leaf.jpg','variety-photos/lalit_flower.jpg','variety-photos/lalit_sprout.jpg'],                     name:'Kufri Lalit',        code:'CPRI · 1999',           pitch:"Smooth skin. Good keeping quality.",                         maturity:'95–110 days', yield:'30–35 t/ha', purpose:'Table',           year:'1999', trait:'Oval tubers with smooth white skin. Excellent shelf life — a consistent performer in cold-storage programmes across UP and Bihar.',                          adapt:'Uttar Pradesh, Bihar, Punjab' },
+    'kufri-karan':        { photos:['variety-photos/karan_bag.jpg'],                                                                                      name:'Kufri Karan',        code:'CPRI · Early',          pitch:"First out of the field, first into the mandi.",              maturity:'75–85 days',  yield:'25–28 t/ha', purpose:'Table',           year:'2005', trait:'Early maturity with compact vines. Round to oval white tubers suited for the early-harvest market window in Punjab and Haryana.',                          adapt:'Punjab, Haryana, Uttar Pradesh' },
+    'kufri-sangam':       { photos:['variety-photos/sangam_bag.jpg'],                                                                                     name:'Kufri Sangam',       code:'CPRI · 1997',           pitch:"Adaptable from the plains to the plateau.",                  maturity:'90–100 days', yield:'30–35 t/ha', purpose:'Table',           year:'1997', trait:'Good adaptability for warmer peninsular regions. Oval tubers with white skin. Heat tolerance above average.',                                                  adapt:'Madhya Pradesh, Maharashtra, Karnataka, Andhra Pradesh' },
+    'kufri-himsona':      { photos:['variety-photos/himsona_tuber.jpg','variety-photos/himsona_bag.jpg','variety-photos/himsona_leaf.jpg','variety-photos/himsona_flower.jpg','variety-photos/himsona_sprout.jpg'],               name:'Kufri Himsona',      code:'CPRI · Hill Variety',   pitch:"Bred for altitude. Built for the hills.",                    maturity:'100–115 days',yield:'28–35 t/ha', purpose:'Table',           year:'1996', trait:'Good performance at mid-to-high altitude. Late maturity suited to the short growing windows of the Himalayan foothills.',                                    adapt:'Himachal Pradesh, Uttarakhand, Jammu & Kashmir' },
+    'kufri-mohan':        { photos:['variety-photos/mohan_tuber.jpg','variety-photos/mohan_bag.jpg','variety-photos/mohan_leaf.jpg','variety-photos/mohan_flower.jpg','variety-photos/mohan_sprout.jpg'],                     name:'Kufri Mohan',        code:'CPRI · 1989',           pitch:"Smooth, uniform. Preferred by Agra-region traders.",         maturity:'80–90 days',  yield:'25–28 t/ha', purpose:'Table',           year:'1989', trait:'Round oval tubers with white skin and white flesh. Medium-early maturity — consistent performance in North Indian flat plains.',                            adapt:'Uttar Pradesh, Punjab, Haryana' },
+    'kufri-himalani':     { photos:['variety-photos/himalani_tuber.jpg','variety-photos/himalani_bag.jpg','variety-photos/himalani_leaf.jpg','variety-photos/himalani_flower.jpg','variety-photos/himalani_sprout.jpg'],           name:'Kufri Himalani',     code:'CPRI · Hill Variety',   pitch:"Mid-altitude performer with broad adaptability.",            maturity:'90–110 days', yield:'28–32 t/ha', purpose:'Table',           year:'2001', trait:'Good adaptation from 1500 to 3000 m altitude. Medium-late maturity with broad field adaptability for hill regions.',                                        adapt:'Himachal Pradesh, Uttarakhand, Meghalaya' },
+    'kufri-lima':         { photos:['variety-photos/lima_tuber.jpg','variety-photos/lima_bag.jpg','variety-photos/lima_leaf.jpg','variety-photos/lima_flower.jpg','variety-photos/lima_sprout.jpg'],                       name:'Kufri Lima',         code:'CPRI · 1992',           pitch:"Compact plants. Higher density per acre.",                   maturity:'75–90 days',  yield:'25–30 t/ha', purpose:'Table',           year:'1992', trait:'Short-medium maturity with compact canopy. Ideal for closer plant spacing to maximise plant density and total yield per acre.',                              adapt:'Punjab, Uttar Pradesh, Haryana' },
+    'kufri-neelkanth':    { photos:['variety-photos/neelkanth_tuber.jpg','variety-photos/neelkanth_bag.jpg','variety-photos/neelkanth_leaf.jpg','variety-photos/neelkanth_flower.jpg','variety-photos/neelkanth_sprout.jpg'],         name:'Kufri Neelkanth',    code:'CPRI · 2009',           pitch:"High yield with good consumer acceptance.",                  maturity:'90–100 days', yield:'28–35 t/ha', purpose:'Table',           year:'2009', trait:'Medium maturity. Oval tubers with white skin and cream flesh. High yield with consumer acceptance across Ganga belt markets.',                              adapt:'Uttar Pradesh, Bihar, Punjab' },
+    'kufri-khyati':       { photos:['variety-photos/khyati_tuber.jpg','variety-photos/khyati_bag.jpg','variety-photos/khyati_leaf.jpg','variety-photos/khyati_flower.jpg','variety-photos/khyati_sprout.jpg'],                 name:'Kufri Khyati',       code:'CPRI · 2007',           pitch:"One of CPRI's highest-yielding commercial releases.",        maturity:'90–110 days', yield:'30–40 t/ha', purpose:'Processing / Table',year:'2007',trait:'Very high yield potential. Low reducing sugars suited for chip processing. Multi-purpose variety for commercial growers and processors.',                      adapt:'Punjab, Uttar Pradesh, Bihar' },
+    'kufri-sukhyati':     { photos:['variety-photos/sukhyati.jpg'],                                           name:'Kufri Sukhyati',     code:'CPRI · New Release',    pitch:"High yield with improved field resistance.",                 maturity:'90–100 days', yield:'30–38 t/ha', purpose:'Table',           year:'~2015', trait:'New-generation CPRI variety with enhanced field tolerance. White oval tubers — consistent yield across varied agro-climatic conditions.',                    adapt:'Punjab, Haryana, Uttar Pradesh, Bihar' },
+    'lady-rosette':       { photos:['variety-photos/lady-rosette.webp'],                                              name:'Lady Rosette',       code:'Exotic · Dutch',        pitch:"The European benchmark for quality crisps.",                 maturity:'90–110 days', yield:'30–40 t/ha', purpose:'Chips',           year:'—',    trait:'Pink-skinned round variety with very low reducing sugars. Produces the light, uniform chip colour demanded by premium snack brands.',                           adapt:'Punjab, Haryana, Uttar Pradesh, Gujarat' },
+    'kuroda':             { photos:['variety-photos/kuroda.png'],                                            name:'Kuroda',             code:'Exotic · Japanese',     pitch:"Long oval tubers with processing-grade dry matter.",          maturity:'95–110 days', yield:'35–45 t/ha', purpose:'Fries',           year:'—',    trait:'High dry matter and consistent elongated shape. Preferred for industrial fry-cut applications where uniformity is critical.',                                  adapt:'Punjab, Haryana, Uttar Pradesh' },
+    'diamant':            { photos:['variety-photos/diamant.jpg'],                                           name:'Diamant',            code:'Exotic · Dutch',        pitch:"India's most trusted exotic processing variety.",            maturity:'90–110 days', yield:'35–45 t/ha', purpose:'Processing',      year:'—',    trait:'Widely contracted by Indian chip manufacturers. Low reducing sugars with high dry matter — consistent quality across growing seasons.',                        adapt:'Punjab, Gujarat, Haryana, Uttar Pradesh' },
+    'atlantic':           { photos:['variety-photos/atlantic.jpg'],                                              name:'Atlantic',           code:'Exotic · American',     pitch:"The global chip standard that redefined crispness.",          maturity:'90–100 days', yield:'30–40 t/ha', purpose:'Chips',           year:'—',    trait:'Consistently low reducing sugars after cold storage. The benchmark variety for multinational chip and crisp manufacturers worldwide.',                        adapt:'Punjab, Haryana, Gujarat, Maharashtra, Karnataka' },
+    'kenebec':            { photos:['variety-photos/kenebec.jpg'],                                            name:'Kenebec',            code:'Exotic · American',     pitch:"Versatile, high-yielding, and widely adaptable.",             maturity:'90–110 days', yield:'35–45 t/ha', purpose:'Table / Fries',   year:'—',    trait:'Large white-skinned oval tubers with good storage. Dual-purpose use in both fresh markets and fry processing operations.',                                    adapt:'Punjab, Haryana, Uttar Pradesh, Himachal Pradesh' },
+    'cardinal':           { photos:['variety-photos/cardinal.jpg'],                                           name:'Cardinal',           code:'Exotic · Dutch',        pitch:"Bold red skin. Premium mandi presence.",                     maturity:'90–105 days', yield:'35–40 t/ha', purpose:'Table',           year:'—',    trait:'Distinctive red-skinned Dutch variety with yellow flesh. Strong retail appeal — buyers recognise and seek out Cardinal for premium retail.',                  adapt:'Punjab, Haryana, Himachal Pradesh, Uttarakhand' },
   };
 
-  // ── modal logic ──
-  const overlay   = document.getElementById('modalOverlay');
-  const modalImg  = document.getElementById('modalImg');
-  const modalCode = document.getElementById('modalCode');
-  const modalName = document.getElementById('modalName');
-  const modalPitch= document.getElementById('modalPitch');
-  const modalSpecs= document.getElementById('modalSpecs');
-  const modalTrait= document.getElementById('modalTrait');
-  const modalAdapt= document.getElementById('modalAdapt');
+  // gallery builder — slider for first 2 photos, thumbnails below for the rest
+  function mgBuild(photos) {
+    const gallery   = document.getElementById('modalGallery');
+    const mainPhotos  = photos.slice(0, 2);
+    const thumbPhotos = photos.slice(2);
+    const multi = mainPhotos.length > 1;
+
+    let html = '<div class="mg-slider" id="mgSlider"><div class="mg-slider-track" id="mgTrack">';
+    mainPhotos.forEach(src => {
+      html += `<div class="mg-slider-photo"><img src="${src}" alt="" /></div>`;
+    });
+    html += '</div>';
+    if (multi) {
+      html += `<button class="mg-sl-arrow mg-sl-prev" id="mgSlPrev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>`;
+      html += `<button class="mg-sl-arrow mg-sl-next" id="mgSlNext"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>`;
+      html += `<div class="mg-sl-counter" id="mgSlCounter">1 / ${mainPhotos.length}</div>`;
+    }
+    html += '</div>';
+
+    if (thumbPhotos.length > 0) {
+      html += '<div class="mg-thumb-strip">';
+      thumbPhotos.forEach(src => {
+        html += `<div class="mg-thumb"><img src="${src}" alt="" /></div>`;
+      });
+      html += '</div>';
+    }
+
+    gallery.innerHTML = html;
+
+    if (multi) {
+      const track   = document.getElementById('mgTrack');
+      const counter = document.getElementById('mgSlCounter');
+      let cur = 0;
+      function slideTo(n) {
+        cur = ((n % mainPhotos.length) + mainPhotos.length) % mainPhotos.length;
+        track.style.transform = `translateX(-${cur * 100}%)`;
+        counter.textContent   = `${cur + 1} / ${mainPhotos.length}`;
+      }
+      document.getElementById('mgSlPrev').addEventListener('click', () => slideTo(cur - 1));
+      document.getElementById('mgSlNext').addEventListener('click', () => slideTo(cur + 1));
+    }
+  }
+
+  // variety modal
+  const overlay    = document.getElementById('modalOverlay');
+  const modalCode  = document.getElementById('modalCode');
+  const modalName  = document.getElementById('modalName');
+  const modalPitch = document.getElementById('modalPitch');
+  const modalSpecs = document.getElementById('modalSpecs');
+  const modalTrait = document.getElementById('modalTrait');
+  const modalAdapt = document.getElementById('modalAdapt');
+  const modalIdxEl = document.getElementById('modalIdx');
+  const modalNavPrev = document.getElementById('modalNavPrev');
+  const modalNavNext = document.getElementById('modalNavNext');
+
+  const variantIds = Array.from(document.querySelectorAll('.var-card')).map(c => c.dataset.id);
+  let curIdx = -1;
 
   function openModal(id) {
     const d = varietyData[id]; if (!d) return;
-    modalImg.src    = d.img;
-    modalImg.alt    = d.name;
-    modalCode.textContent = d.code;
-    modalName.textContent = d.name;
-    modalPitch.textContent= d.pitch;
-    modalSpecs.innerHTML  = `
-      <div class="modal-spec"><span>Maturity</span><strong>${d.maturity}</strong></div>
-      <div class="modal-spec"><span>Yield</span><strong>${d.yield}</strong></div>
-      <div class="modal-spec"><span>Purpose</span><strong>${d.purpose}</strong></div>
-      <div class="modal-spec"><span>Year released</span><strong>${d.year}</strong></div>`;
-    modalTrait.textContent= d.trait;
-    modalAdapt.innerHTML  = `<strong>Adaptability</strong>${d.adapt}`;
+    curIdx = variantIds.indexOf(id);
+    mgBuild(d.photos);
+    modalCode.textContent  = d.code;
+    modalName.textContent  = d.name;
+    modalPitch.textContent = d.pitch;
+    modalSpecs.innerHTML   = `<div class="modal-spec"><span>Maturity</span><strong>${d.maturity}</strong></div><div class="modal-spec"><span>Yield</span><strong>${d.yield}</strong></div><div class="modal-spec"><span>Purpose</span><strong>${d.purpose}</strong></div><div class="modal-spec"><span>Year released</span><strong>${d.year}</strong></div>`;
+    modalTrait.textContent = d.trait;
+    modalAdapt.innerHTML   = `<strong>Adaptability</strong>${d.adapt}`;
+    modalIdxEl.textContent = `${curIdx + 1} / ${variantIds.length}`;
+    modalNavPrev.classList.toggle('dim', curIdx === 0);
+    modalNavNext.classList.toggle('dim', curIdx === variantIds.length - 1);
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-
-  function closeModal() {
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  function closeModal() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
 
   document.getElementById('modalClose').addEventListener('click', closeModal);
   overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  modalNavPrev.addEventListener('click', () => { if (curIdx > 0) openModal(variantIds[curIdx - 1]); });
+  modalNavNext.addEventListener('click', () => { if (curIdx < variantIds.length - 1) openModal(variantIds[curIdx + 1]); });
 
   document.querySelectorAll('.var-card').forEach(card => {
-    card.style.cursor = 'pointer';
     card.addEventListener('click', e => {
-      if (e.target.closest('a')) return; // let enquire link work normally
+      if (e.target.closest('.enq-btn')) return;
       openModal(card.dataset.id);
     });
   });
 
-  const filterBtns  = document.querySelectorAll('.filter-btn');
-  const cards       = document.querySelectorAll('.var-card');
-  const countEl     = document.getElementById('visibleCount');
-  const noResults   = document.getElementById('noResults');
-  const pageTitle   = document.getElementById('pageTitle');
-  const pageDesc    = document.getElementById('pageDesc');
+  // filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards      = document.querySelectorAll('.var-card');
+  const countEl    = document.getElementById('visibleCount');
+  const noResults  = document.getElementById('noResults');
+  const pageTitle  = document.getElementById('pageTitle');
+  const pageDesc   = document.getElementById('pageDesc');
 
   function applyFilter(filter) {
     filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
@@ -1035,42 +1478,44 @@
     countEl.textContent = visible;
     noResults.style.display = visible === 0 ? 'block' : 'none';
     if (segmentMeta[filter]) {
-      pageTitle.innerHTML = segmentMeta[filter].title;
+      pageTitle.innerHTML  = segmentMeta[filter].title;
       pageDesc.textContent = segmentMeta[filter].desc;
     } else {
-      pageTitle.innerHTML = 'The complete <em>variety catalog.</em>';
-      pageDesc.textContent = '12 varieties — suited for fresh market, french fries, chips, and hash browns. All produced as disease-free G-0 mini-tubers.';
+      pageTitle.innerHTML  = 'The complete <em>variety catalog.</em>';
+      pageDesc.textContent = '29 varieties — CPRI-bred and exotic, suited for fresh market, processing, and specialty markets. All produced as disease-free G-0 mini-tubers.';
     }
   }
 
-  // ── enquiry modal ──
-  const enqOverlay     = document.getElementById('enqOverlay');
-  const enqVarietyName = document.getElementById('enqVarietyName');
-  const enqVarietyField= document.getElementById('enqVarietyField');
-  const enqSubject     = document.getElementById('enqSubject');
-  const enqForm        = document.getElementById('enqForm');
-  const enqSuccess     = document.getElementById('enqSuccess');
+  // enquiry modal
+  const enqOverlay      = document.getElementById('enqOverlay');
+  const enqVarietyName  = document.getElementById('enqVarietyName');
+  const enqVarietyField = document.getElementById('enqVarietyField');
+  const enqSubject      = document.getElementById('enqSubject');
+  const enqForm         = document.getElementById('enqForm');
+  const enqSuccess      = document.getElementById('enqSuccess');
 
   function openEnquiry(varName) {
     const label = varName || 'this variety';
-    enqVarietyName.textContent  = label;
-    enqVarietyField.value       = label;
-    enqSubject.value            = 'Variety Enquiry: ' + label;
-    enqForm.style.display       = '';
-    enqSuccess.style.display    = 'none';
+    enqVarietyName.textContent = label;
+    enqVarietyField.value      = label;
+    enqSubject.value           = 'Variety Enquiry: ' + label;
+    enqForm.style.display      = '';
+    enqSuccess.style.display   = 'none';
     enqOverlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
-  function closeEnquiry() {
-    enqOverlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  function closeEnquiry() { enqOverlay.classList.remove('open'); document.body.style.overflow = ''; }
 
   document.getElementById('enqClose').addEventListener('click', closeEnquiry);
   enqOverlay.addEventListener('click', e => { if (e.target === enqOverlay) closeEnquiry(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && enqOverlay.classList.contains('open')) closeEnquiry(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal(); closeEnquiry(); }
+    if (overlay.classList.contains('open')) {
+      if (e.key === 'ArrowLeft'  && curIdx > 0)                      openModal(variantIds[curIdx - 1]);
+      if (e.key === 'ArrowRight' && curIdx < variantIds.length - 1)  openModal(variantIds[curIdx + 1]);
+    }
+  });
 
-  // row hover enquire buttons
   document.querySelectorAll('.enq-btn').forEach(btn => {
     btn.addEventListener('click', e => {
       e.stopPropagation();
@@ -1081,42 +1526,25 @@
     });
   });
 
-  // modal CTA button
-  const modalEnqBtn = document.getElementById('modalEnqBtn');
-  if (modalEnqBtn) {
-    modalEnqBtn.addEventListener('click', () => {
-      const name = document.getElementById('modalName').textContent;
-      overlay.classList.remove('open'); // close variety modal first
-      setTimeout(() => openEnquiry(name), 60);
-    });
-  }
+  document.getElementById('modalEnqBtn')?.addEventListener('click', () => {
+    const name = document.getElementById('modalName').textContent;
+    closeModal();
+    setTimeout(() => openEnquiry(name), 60);
+  });
 
-  // form submission via Web3Forms
   enqForm.addEventListener('submit', async e => {
     e.preventDefault();
     const btn = enqForm.querySelector('.enq-submit');
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
+    btn.textContent = 'Sending…'; btn.disabled = true;
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method:'POST',
-        body: new FormData(enqForm),
-      });
-      if ((await res.json()).success) {
-        enqForm.style.display = 'none';
-        enqSuccess.style.display = 'block';
-      } else { throw new Error(); }
-    } catch {
-      btn.textContent = 'Send enquiry →';
-      btn.disabled = false;
-      alert('Something went wrong — please try again.');
-    }
+      const res = await fetch('https://api.web3forms.com/submit', { method:'POST', body:new FormData(enqForm) });
+      if ((await res.json()).success) { enqForm.style.display = 'none'; enqSuccess.style.display = 'block'; }
+      else throw new Error();
+    } catch { btn.textContent = 'Send enquiry →'; btn.disabled = false; alert('Something went wrong — please try again.'); }
   });
 
   filterBtns.forEach(btn => btn.addEventListener('click', () => applyFilter(btn.dataset.filter)));
-
-  const urlSegment = new URLSearchParams(window.location.search).get('segment');
-  applyFilter(urlSegment || 'all');
+  applyFilter(new URLSearchParams(window.location.search).get('segment') || 'all');
 </script>
 </body>
 </html>
