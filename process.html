@@ -46,8 +46,22 @@
   .page-header{
     background:var(--leaf-deep);color:var(--cream);
     padding:72px 40px 60px;
+    position:relative;overflow:hidden;
   }
-  .page-header-inner{max-width:1200px;margin:0 auto}
+  .page-header::before{
+    content:"";position:absolute;inset:0;
+    background:rgba(6,24,12,.74);z-index:1;
+  }
+  .header-strips{
+    position:absolute;inset:0;
+    display:grid;grid-template-columns:repeat(11,1fr);
+    z-index:0;
+  }
+  .strip{
+    background-size:cover;background-repeat:no-repeat;
+    border-right:1px solid rgba(6,24,12,.35);
+  }
+  .page-header-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2}
   .page-eyebrow{
     font-size:11px;letter-spacing:.25em;text-transform:uppercase;
     color:var(--wheat);font-weight:600;margin-bottom:20px;
@@ -318,6 +332,23 @@
 </nav>
 
 <div class="page-header">
+  <div class="header-strips">
+    <!-- Stage 1: Tissue Culture -->
+    <div class="strip" style="background-image:url('lab1.png');background-position:25% center"></div>
+    <div class="strip" style="background-image:url('Old_lab_edited.jpg');background-position:50% center"></div>
+    <div class="strip" style="background-image:url('download_edited.jpeg');background-position:center;border-right:2px solid rgba(251,248,241,.25)"></div>
+    <!-- Stage 2: Two Pathways -->
+    <div class="strip" style="background-image:url('CocoP_edited.jpg');background-position:50% center"></div>
+    <div class="strip" style="background-image:url('Tuber_edited.jpg');background-position:50% center;border-right:2px solid rgba(251,248,241,.25)"></div>
+    <!-- Stage 3: G-0 Mini-Tuber -->
+    <div class="strip" style="background-image:url('IMG_0192.jpeg');background-position:center"></div>
+    <div class="strip" style="background-image:url('IMG_0193.jpeg');background-position:center"></div>
+    <div class="strip" style="background-image:url('stage3-potatoes.png');background-position:50% center;border-right:2px solid rgba(251,248,241,.25)"></div>
+    <!-- Stage 4: Field-Ready Seed -->
+    <div class="strip" style="background-image:url('IMG_8618.jpeg');background-position:30% center"></div>
+    <div class="strip" style="background-image:url('IMG_8619.jpeg');background-position:50% center"></div>
+    <div class="strip" style="background-image:url('potato-isolated-on-white-background-free-photo.jpg');background-position:center;background-color:#fff"></div>
+  </div>
   <div class="page-header-inner">
     <div class="page-eyebrow">How we grow</div>
     <h1>From plantlet to <em>field-ready seed.</em></h1>
