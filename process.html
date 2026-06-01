@@ -287,6 +287,20 @@
     .gen-step::after{display:none}
     .snav-btn{padding:20px 18px}
   }
+  .s3-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
+  .s3-slide.active{opacity:1}
+  .s3-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2}
+  .s3-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:background .3s}
+  .s3-dot.active{background:#fff}
+  .s3-arrow,.s4-arrow{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(6,24,12,.55);border:none;color:#fff;font-size:20px;cursor:pointer;z-index:3;display:flex;align-items:center;justify-content:center;transition:background .2s;line-height:1}
+  .s3-arrow:hover,.s4-arrow:hover{background:rgba(6,24,12,.88)}
+  .s3-prev,.s4-prev{left:12px}
+  .s3-next,.s4-next{right:12px}
+  .s4-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
+  .s4-slide.active{opacity:1}
+  .s4-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2}
+  .s4-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:background .3s}
+  .s4-dot.active{background:#fff}
 </style>
 </head>
 <body>
@@ -407,23 +421,21 @@
 
     <!-- Panel 03: G-0 Mini-Tuber -->
     <div class="stage-panel" data-panel="3">
-      <div class="stats-bar">
-        <div class="stat-block">
-          <span class="stat-num">15M+</span>
-          <span class="stat-lbl">Mini-tubers / year</span>
+      <div class="panel-grid" style="grid-template-columns:1.4fr 1fr">
+        <div class="panel-photo s3-slider-wrap" style="position:relative">
+          <img src="IMG_0192.jpeg" alt="G-0 mini-tubers" class="s3-slide active" />
+          <img src="IMG_0193.jpeg" alt="G-0 mini-tubers" class="s3-slide" />
+          <img src="stage3-potatoes.png" alt="G-0 mini-tuber varieties" class="s3-slide" />
+          <button class="s3-arrow s3-prev" aria-label="Previous">&#8249;</button>
+          <button class="s3-arrow s3-next" aria-label="Next">&#8250;</button>
+          <div class="s3-dots">
+            <span class="s3-dot active"></span>
+            <span class="s3-dot"></span>
+            <span class="s3-dot"></span>
+          </div>
         </div>
-        <div class="stat-block">
-          <span class="stat-num">29</span>
-          <span class="stat-lbl">Varieties as G-0</span>
-        </div>
-        <div class="stat-block">
-          <span class="stat-num">G-0</span>
-          <span class="stat-lbl">Highest purity grade</span>
-        </div>
-      </div>
-      <div class="panel-text-grid">
-        <p class="tl-desc" style="margin-bottom:0">Both production pathways converge at the same output — small, dense, disease-free G-0 mini-tubers. Each carries the full genetic profile of its parent variety, produced under conditions that guarantee zero viral, bacterial, or fungal contamination. These are the foundation of our entire seed multiplication chain.</p>
         <div>
+          <p class="tl-desc">Both production pathways converge at the same output — small, dense, disease-free G-0 mini-tubers. Each carries the full genetic profile of its parent variety, produced under conditions that guarantee zero viral, bacterial, or fungal contamination. These are the foundation of our entire seed multiplication chain.</p>
           <div class="adv-label">Advantages</div>
           <ul class="adv-list">
             <li class="adv-item">Certified pathogen-free with lot-level traceability</li>
@@ -460,9 +472,19 @@
           <span class="gen-sub">Delivered to farmers</span>
         </div>
       </div>
-      <div class="panel-text-grid">
-        <p class="tl-desc" style="margin-bottom:0">G-0 mini-tubers are multiplied through a tightly controlled number of field generations to produce certified planting material at commercial scale. By starting from a disease-free G-0 foundation, we compress the conventional chain — delivering seed that performs consistently from the first planting, season after season.</p>
+      <div class="panel-grid" style="grid-template-columns:1.4fr 1fr;margin-top:40px">
+        <div class="panel-photo s4-slider-wrap" style="position:relative">
+          <img src="IMG_8618.jpeg" alt="Seed potato field" class="s4-slide active" />
+          <img src="IMG_8619.jpeg" alt="Seed potato field" class="s4-slide" />
+          <button class="s4-arrow s4-prev" aria-label="Previous">&#8249;</button>
+          <button class="s4-arrow s4-next" aria-label="Next">&#8250;</button>
+          <div class="s4-dots">
+            <span class="s4-dot active"></span>
+            <span class="s4-dot"></span>
+          </div>
+        </div>
         <div>
+          <p class="tl-desc">G-0 mini-tubers are multiplied through a tightly controlled number of field generations to produce certified planting material at commercial scale. By starting from a disease-free G-0 foundation, we compress the conventional chain — delivering seed that performs consistently from the first planting, season after season.</p>
           <div class="adv-label">Advantages</div>
           <ul class="adv-list">
             <li class="adv-item">Fewer field generations means higher quality at commercial scale</li>
@@ -487,6 +509,56 @@
 <script>
   const btns   = document.querySelectorAll('.snav-btn');
   const panels = document.querySelectorAll('.stage-panel');
+
+  const s3slides = document.querySelectorAll('.s3-slide');
+  const s3dots   = document.querySelectorAll('.s3-dot');
+  let s3idx = 0, s3timer;
+
+  function s3go(n) {
+    s3slides[s3idx].classList.remove('active');
+    s3dots[s3idx].classList.remove('active');
+    s3idx = ((n % s3slides.length) + s3slides.length) % s3slides.length;
+    s3slides[s3idx].classList.add('active');
+    s3dots[s3idx].classList.add('active');
+  }
+  function s3startAuto() { s3timer = setInterval(() => s3go(s3idx + 1), 3500); }
+  s3startAuto();
+
+  document.querySelector('.s3-prev').addEventListener('click', () => { clearInterval(s3timer); s3go(s3idx - 1); s3startAuto(); });
+  document.querySelector('.s3-next').addEventListener('click', () => { clearInterval(s3timer); s3go(s3idx + 1); s3startAuto(); });
+
+  const s3wrap = document.querySelector('.s3-slider-wrap');
+  let s3tx = 0;
+  s3wrap.addEventListener('touchstart', e => { s3tx = e.touches[0].clientX; }, {passive:true});
+  s3wrap.addEventListener('touchend', e => {
+    const diff = s3tx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) { clearInterval(s3timer); s3go(diff > 0 ? s3idx + 1 : s3idx - 1); s3startAuto(); }
+  });
+
+  const s4slides = document.querySelectorAll('.s4-slide');
+  const s4dots   = document.querySelectorAll('.s4-dot');
+  let s4idx = 0, s4timer;
+
+  function s4go(n) {
+    s4slides[s4idx].classList.remove('active');
+    s4dots[s4idx].classList.remove('active');
+    s4idx = ((n % s4slides.length) + s4slides.length) % s4slides.length;
+    s4slides[s4idx].classList.add('active');
+    s4dots[s4idx].classList.add('active');
+  }
+  function s4startAuto() { s4timer = setInterval(() => s4go(s4idx + 1), 3500); }
+  s4startAuto();
+
+  document.querySelector('.s4-prev').addEventListener('click', () => { clearInterval(s4timer); s4go(s4idx - 1); s4startAuto(); });
+  document.querySelector('.s4-next').addEventListener('click', () => { clearInterval(s4timer); s4go(s4idx + 1); s4startAuto(); });
+
+  const s4wrap = document.querySelector('.s4-slider-wrap');
+  let s4tx = 0;
+  s4wrap.addEventListener('touchstart', e => { s4tx = e.touches[0].clientX; }, {passive:true});
+  s4wrap.addEventListener('touchend', e => {
+    const diff = s4tx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) { clearInterval(s4timer); s4go(diff > 0 ? s4idx + 1 : s4idx - 1); s4startAuto(); }
+  });
 
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
