@@ -57,7 +57,7 @@
   }
   .page-header::before{
     content:"";position:absolute;inset:0;
-    background:rgba(6,24,12,.74);z-index:1;
+    background:rgba(6,24,12,.44);z-index:1;
   }
   .header-strips{
     position:absolute;inset:0;
@@ -322,6 +322,15 @@
   .s4-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2}
   .s4-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:background .3s}
   .s4-dot.active{background:#fff}
+  .s1-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
+  .s1-slide.active{opacity:1}
+  .s1-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2}
+  .s1-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:background .3s}
+  .s1-dot.active{background:#fff}
+  .s1-arrow{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:rgba(6,24,12,.55);border:none;color:#fff;font-size:20px;cursor:pointer;z-index:3;display:flex;align-items:center;justify-content:center;transition:background .2s;line-height:1}
+  .s1-arrow:hover{background:rgba(6,24,12,.88)}
+  .s1-prev{left:12px}
+  .s1-next{right:12px}
 </style>
 </head>
 <body>
@@ -409,8 +418,15 @@
             <li class="adv-item">CPRI Shimla-accredited protocols at every step</li>
           </ul>
         </div>
-        <div class="panel-photo">
-          <img src="Old_lab_edited.jpg" alt="Tissue culture laboratory" />
+        <div class="panel-photo s1-slider-wrap" style="position:relative">
+          <img src="lab-firefly.png" alt="Tissue culture laboratory" class="s1-slide active" />
+          <img src="lab1.png" alt="Lab team" class="s1-slide" />
+          <button class="s1-arrow s1-prev" aria-label="Previous">&#8249;</button>
+          <button class="s1-arrow s1-next" aria-label="Next">&#8250;</button>
+          <div class="s1-dots">
+            <span class="s1-dot active"></span>
+            <span class="s1-dot"></span>
+          </div>
         </div>
       </div>
     </div>
@@ -610,6 +626,26 @@
       btn.setAttribute('aria-selected', 'true');
       document.querySelector(`.stage-panel[data-panel="${target}"]`).classList.add('active');
     });
+  });
+
+  const s1slides = document.querySelectorAll('.s1-slide');
+  const s1dots   = document.querySelectorAll('.s1-dot');
+  let s1idx = 0, s1timer;
+  function s1go(n) {
+    s1slides[s1idx].classList.remove('active'); s1dots[s1idx].classList.remove('active');
+    s1idx = ((n % s1slides.length) + s1slides.length) % s1slides.length;
+    s1slides[s1idx].classList.add('active'); s1dots[s1idx].classList.add('active');
+  }
+  function s1startAuto() { s1timer = setInterval(() => s1go(s1idx + 1), 3500); }
+  s1startAuto();
+  document.querySelector('.s1-prev').addEventListener('click', () => { clearInterval(s1timer); s1go(s1idx - 1); s1startAuto(); });
+  document.querySelector('.s1-next').addEventListener('click', () => { clearInterval(s1timer); s1go(s1idx + 1); s1startAuto(); });
+  const s1wrap = document.querySelector('.s1-slider-wrap');
+  let s1tx = 0;
+  s1wrap.addEventListener('touchstart', e => { s1tx = e.touches[0].clientX; }, {passive:true});
+  s1wrap.addEventListener('touchend', e => {
+    const diff = s1tx - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) { clearInterval(s1timer); s1go(diff > 0 ? s1idx + 1 : s1idx - 1); s1startAuto(); }
   });
 
   const toggle = document.getElementById('mobileToggle');
