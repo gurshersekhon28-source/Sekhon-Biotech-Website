@@ -503,16 +503,20 @@
         headers: { 'Accept': 'application/json' }
       });
 
-      if (res.ok) {
+      const json = await res.json();
+
+      if (json.success) {
         form.style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
       } else {
         btn.textContent = 'Something went wrong — try again';
         btn.disabled = false;
+        console.error('Web3Forms error:', json.message);
       }
-    } catch {
+    } catch (err) {
       btn.textContent = 'Network error — try again';
       btn.disabled = false;
+      console.error('Submit error:', err);
     }
   }
 </script>
