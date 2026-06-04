@@ -439,14 +439,6 @@
           <label for="message">Tell us about yourself</label>
           <textarea id="message" name="message" placeholder="A brief introduction — your background, why Sekhon Biotech, and what you'd bring to the team."></textarea>
         </div>
-        <div class="form-group">
-          <label>Resume / CV</label>
-          <label class="file-label" for="resume">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            <span id="fileLabel">Upload PDF or Word doc — max 5 MB</span>
-          </label>
-          <input type="file" id="resume" name="attachment" accept=".pdf,.doc,.docx" />
-        </div>
         <button type="submit" class="submit-btn">Send application
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </button>
@@ -464,10 +456,6 @@
 
 <script>
   // file input label update
-  document.getElementById('resume').addEventListener('change', function() {
-    const label = document.getElementById('fileLabel');
-    label.textContent = this.files[0] ? this.files[0].name : 'Upload PDF or Word doc — max 5 MB';
-  });
 
   // scroll "Apply now" role links into form and pre-select
   document.querySelectorAll('.role-apply').forEach(link => {
@@ -511,7 +499,6 @@
       } else {
         btn.textContent = 'Something went wrong — try again';
         btn.disabled = false;
-        alert('Error: ' + json.message);
       }
     } catch (err) {
       btn.textContent = 'Network error — try again';
