@@ -445,7 +445,7 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
             <span id="fileLabel">Upload PDF or Word doc — max 5 MB</span>
           </label>
-          <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" />
+          <input type="file" id="resume" name="attachment" accept=".pdf,.doc,.docx" />
         </div>
         <button type="submit" class="submit-btn">Send application
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -511,7 +511,7 @@
       } else {
         btn.textContent = 'Something went wrong — try again';
         btn.disabled = false;
-        console.error('Web3Forms error:', json.message);
+        alert('Error: ' + json.message);
       }
     } catch (err) {
       btn.textContent = 'Network error — try again';
