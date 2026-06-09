@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our Story — Sekhon Biotech | Seed Potato Pioneers Since 1995</title>
+<meta name="description" content="Sekhon Biotech's journey from a flower farm in the Shivalik foothills to India's leading tissue-culture seed potato producer — 30 years of agriculture done differently." />
+<meta name="keywords" content="Sekhon Biotech history, seed potato Punjab story, tissue culture India 2003, agri biotech Punjab, Shivalik foothills farm" />
+<link rel="canonical" href="https://www.sekhonbiotech.com/about.html" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Our Story — Sekhon Biotech" />
+<meta property="og:description" content="From a flower farm in 1995 to 15 million certified seed potato mini-tubers a year. Thirty years of agriculture done differently in the Shivalik foothills." />
+<meta property="og:url" content="https://www.sekhonbiotech.com/about.html" />
+<meta property="og:image" content="https://www.sekhonbiotech.com/about-nethouse-2.png" />
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --leaf:#0f3a2e;--leaf-deep:#061812;--moss:#345e4a;
+    --wheat:#d9c79a;--cream:#f4efe6;--paper:#fbf8f1;
+    --ink:#0d1612;--accent:#b85431;
+    --line:rgba(13,22,18,.1);--line-mid:rgba(13,22,18,.15);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  /* ── nav ── */
+  nav{
+    position:sticky;top:0;z-index:100;
+    background:rgba(251,248,241,.94);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1400px;margin:0 auto;
+    padding:18px 40px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .logo img{height:44px;width:auto;display:block}
+  .nav-links{display:flex;gap:32px;align-items:center;list-style:none}
+  .nav-links > li > a{font-size:14px;font-weight:500;position:relative;transition:color .2s}
+  .nav-links > li > a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1.5px;background:var(--leaf);transition:width .3s ease}
+  .nav-links > li > a:hover::after,.nav-links > li > a.active::after{width:100%}
+  .cta-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--leaf);color:var(--cream) !important;border-radius:4px;font-size:13px;font-weight:600;transition:background .2s}
+  .cta-btn:hover{background:var(--moss)}
+  .cta-btn::after{display:none !important}
+  .mobile-toggle{display:none;background:none;border:none;cursor:pointer;color:var(--ink);padding:4px}
+  @media(max-width:880px){
+    .nav-links{display:none}
+    .mobile-toggle{display:flex}
+  }
+  .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;background:var(--paper);flex-direction:column;padding:24px;border-bottom:1px solid var(--line);gap:18px;align-items:flex-start;z-index:200}
+
+  /* ── hero ── */
+  .about-hero{
+    position:relative;
+    min-height:88vh;
+    display:flex;align-items:center;
+    overflow:hidden;
+    background:var(--leaf-deep);
+  }
+  .hero-video{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+    opacity:.68;
+  }
+  .hero-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(to bottom, rgba(6,24,12,.55) 0%, rgba(6,24,12,.75) 100%);
+    z-index:1;
+  }
+  .hero-content{
+    position:relative;z-index:2;
+    max-width:1200px;margin:0 auto;
+    padding:100px 40px 80px;
+    color:var(--cream);
+  }
+  .hero-eyebrow{
+    font-size:11px;letter-spacing:.25em;text-transform:uppercase;
+    color:var(--wheat);font-weight:600;margin-bottom:24px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .hero-eyebrow::before{content:"";width:32px;height:1px;background:var(--wheat)}
+  .hero-content h1{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(44px,6vw,88px);
+    line-height:.94;letter-spacing:-.03em;
+    margin-bottom:28px;
+  }
+  .hero-content h1 em{font-style:italic;color:var(--wheat);font-weight:300}
+  .hero-lede{
+    font-size:18px;line-height:1.75;opacity:.78;
+    max-width:560px;
+  }
+
+  /* ── section shared ── */
+  section{padding:100px 40px}
+  .section-inner{max-width:1200px;margin:0 auto}
+  .section-eyebrow{
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--moss);font-weight:600;margin-bottom:18px;
+  }
+  h2.section-title{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(34px,4vw,56px);
+    line-height:1.02;letter-spacing:-.025em;
+    color:var(--leaf-deep);margin-bottom:28px;
+  }
+  h2.section-title em{font-style:italic;color:var(--accent)}
+  .body-text{font-size:16px;color:#444;line-height:1.82;margin-bottom:20px}
+
+  /* ── origin split ── */
+  .origin{background:var(--paper)}
+  .origin-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:80px;align-items:center;
+  }
+  .origin-img{
+    aspect-ratio:4/3;overflow:hidden;
+    position:relative;
+  }
+  .origin-img img{width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.05)}
+  .origin-caption{
+    font-size:12px;color:#888;margin-top:12px;
+    letter-spacing:.04em;
+  }
+
+  /* ── timeline ── */
+  .timeline-section{
+    background:var(--leaf-deep);
+    color:var(--cream);
+    padding:100px 40px;
+  }
+  .timeline-inner{max-width:1200px;margin:0 auto}
+  .timeline-head{margin-bottom:64px}
+  .timeline-head .section-eyebrow{color:var(--wheat)}
+  .timeline-head h2{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(32px,4vw,52px);
+    line-height:1.04;letter-spacing:-.025em;
+    color:var(--cream);
+  }
+  .timeline{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:0;
+    border-top:1px solid rgba(244,239,230,.15);
+  }
+  .tl-item{
+    padding:36px 28px 36px 0;
+    border-right:1px solid rgba(244,239,230,.12);
+    position:relative;
+  }
+  .tl-item:last-child{border-right:none;padding-right:0}
+  .tl-item::before{
+    content:"";
+    position:absolute;top:-5px;left:0;
+    width:9px;height:9px;border-radius:50%;
+    background:var(--wheat);
+  }
+  .tl-year{
+    font-family:'Fraunces',serif;
+    font-size:36px;font-weight:400;
+    color:var(--wheat);letter-spacing:-.02em;
+    margin-bottom:12px;
+  }
+  .tl-label{
+    font-size:13px;font-weight:600;
+    color:var(--cream);margin-bottom:8px;
+    letter-spacing:.01em;
+  }
+  .tl-desc{font-size:13px;color:rgba(244,239,230,.6);line-height:1.6}
+
+  /* ── then now ── */
+  .then-now{background:var(--cream);padding:100px 40px}
+  .then-now-inner{max-width:1200px;margin:0 auto}
+  .then-now-head{margin-bottom:56px}
+  .then-now-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:3px;
+  }
+  .tn-panel{position:relative;overflow:hidden}
+  .tn-panel img{width:100%;height:480px;object-fit:cover;display:block;transition:transform .7s ease}
+  .tn-panel:hover img{transform:scale(1.03)}
+  .tn-label{
+    position:absolute;bottom:0;left:0;right:0;
+    padding:24px 28px;
+    background:linear-gradient(to top, rgba(6,24,12,.85) 0%, transparent 100%);
+    color:var(--cream);
+  }
+  .tn-tag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--wheat);font-weight:600;margin-bottom:6px}
+  .tn-text{font-size:15px;font-weight:500}
+
+  /* ── stats ── */
+  .stats-band{
+    background:var(--leaf);
+    padding:72px 40px;
+  }
+  .stats-inner{
+    max-width:1200px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:0;
+  }
+  .stat-block{
+    padding:0 40px 0 0;
+    border-right:1px solid rgba(244,239,230,.2);
+  }
+  .stat-block:last-child{border-right:none;padding-right:0}
+  .stat-block:not(:first-child){padding-left:40px}
+  .stat-num{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(42px,5vw,64px);
+    color:var(--wheat);letter-spacing:-.03em;
+    line-height:1;margin-bottom:10px;
+  }
+  .stat-label{font-size:13px;color:rgba(244,239,230,.7);font-weight:500;letter-spacing:.02em}
+
+  /* ── net houses today ── */
+  .today{background:var(--paper);padding:100px 40px}
+  .today-inner{max-width:1200px;margin:0 auto}
+  .today-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
+  .today-img{overflow:hidden;aspect-ratio:16/10}
+  .today-img img{width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.1)}
+
+  /* ── drone video ── */
+  .drone-section{
+    position:relative;overflow:hidden;
+    height:520px;
+    background:var(--leaf-deep);
+  }
+.drone-overlay{
+    position:absolute;inset:0;
+    background:rgba(6,24,12,.45);
+    display:flex;align-items:center;justify-content:center;
+    flex-direction:column;gap:16px;
+    color:var(--cream);text-align:center;
+    padding:40px;
+  }
+  .drone-label{font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--wheat);font-weight:600}
+  .drone-title{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(28px,4vw,52px);
+    line-height:1.06;letter-spacing:-.025em;
+  }
+  .drone-title em{font-style:italic;color:var(--wheat)}
+
+  /* ── cta ── */
+  .about-cta{
+    background:var(--cream);
+    padding:100px 40px;
+    text-align:center;
+  }
+  .about-cta .section-eyebrow{justify-content:center;display:flex;gap:14px;align-items:center;margin-bottom:18px}
+  .about-cta .section-eyebrow::before{content:"";width:32px;height:1px;background:var(--moss)}
+  .about-cta h2{
+    font-family:'Fraunces',serif;font-weight:400;
+    font-size:clamp(34px,4.5vw,60px);
+    line-height:1.02;letter-spacing:-.025em;
+    color:var(--leaf-deep);margin-bottom:18px;
+  }
+  .about-cta h2 em{font-style:italic;color:var(--accent)}
+  .about-cta p{font-size:16px;color:#555;line-height:1.75;max-width:520px;margin:0 auto 40px}
+  .cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:16px 32px;background:var(--leaf);color:var(--cream);
+    font-size:14px;font-weight:600;letter-spacing:.02em;
+    border-radius:4px;transition:background .2s;
+  }
+  .btn-primary:hover{background:var(--moss)}
+  .btn-secondary{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:15px 32px;background:transparent;color:var(--leaf);
+    border:1.5px solid var(--leaf);
+    font-size:14px;font-weight:600;letter-spacing:.02em;
+    border-radius:4px;transition:all .2s;
+  }
+  .btn-secondary:hover{background:var(--leaf);color:var(--cream)}
+
+  /* ── footer ── */
+  .foot-strip{
+    background:var(--cream);color:var(--ink);
+    padding:28px 40px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:13px;border-top:1px solid var(--line);
+  }
+  .foot-strip a{opacity:.6;color:var(--ink);transition:opacity .2s}
+  .foot-strip a:hover{opacity:1}
+
+  /* ── reveal ── */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  /* ── responsive ── */
+  @media(max-width:900px){
+    .origin-grid,.today-grid{grid-template-columns:1fr;gap:48px}
+    .timeline{grid-template-columns:1fr 1fr;gap:0}
+    .tl-item{border-right:none;border-bottom:1px solid rgba(244,239,230,.12);padding:28px 0}
+    .tl-item:last-child{border-bottom:none}
+    .tl-item::before{top:auto;bottom:-5px}
+    .stats-inner{grid-template-columns:1fr 1fr;gap:40px 0}
+    .stat-block{border-right:none;border-bottom:1px solid rgba(244,239,230,.15);padding:0 0 32px;margin-bottom:8px}
+    .stat-block:last-child{border-bottom:none}
+    .stat-block:not(:first-child){padding-left:0}
+    .then-now-grid{grid-template-columns:1fr}
+    .tn-panel img{height:320px}
+    .drone-section{height:380px}
+  }
+  @media(max-width:560px){
+    section,.timeline-section,.then-now,.stats-band,.today,.about-cta{padding:64px 24px}
+    .hero-content{padding:80px 24px 60px}
+    .nav-inner{padding:16px 20px}
+    .timeline{grid-template-columns:1fr}
+    .foot-strip{flex-direction:column;gap:12px;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="Sekhon Biotech" />
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#about" class="active">About</a></li>
+      <li><a href="varieties.html">Varieties</a></li>
+      <li><a href="process.html">Technology</a></li>
+      <li><a href="careers.html">Careers</a></li>
+      <li><a href="index.html#contact" class="cta-btn">Contact
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- hero -->
+<section class="about-hero">
+  <video class="hero-video" autoplay muted playsinline preload="metadata" loop>
+    <source src="drone-720.mov" type="video/quicktime">
+    <source src="Drone_edited.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Our story</div>
+    <h1>Agriculture<br>done <em>differently.</em></h1>
+    <p class="hero-lede">Thirty years ago a family acquired land at the foot of the Shivalik Hills with a simple conviction — that Indian agriculture deserved better inputs. What followed was an unusual journey: from flowers to science, and from science to seed.</p>
+  </div>
+</section>
+
+<!-- origin -->
+<section class="origin">
+  <div class="section-inner">
+    <div class="origin-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">Where it started</div>
+        <h2 class="section-title">The Shivalik foothills,<br><em>1995.</em></h2>
+        <p class="body-text">The journey began when the Sekhon family acquired agricultural land in the Shivalik foothills of Punjab — one of India's most naturally fertile corridors, shaped by river tributaries and rich alluvial soil.</p>
+        <p class="body-text">The goal was not conventional farming. The ambition was to bring a scientific edge to agriculture — to do something that would genuinely move the needle for Indian growers.</p>
+        <p class="body-text">The early years, from 1999 to 2007, were spent in floriculture — growing Gladiolus, Gerbera, Carnations and Lilium in net houses on the property. These crops demanded precision, discipline and controlled environments. They were the training ground.</p>
+        <p class="body-text">In 2003, a Plant Tissue Culture Laboratory was established on-site — initially to produce cost-effective Oriental Lilium planting material. It was the first time tissue culture had been set up at this scale in the region for a commercial farm.</p>
+      </div>
+      <div class="reveal">
+        <div class="origin-img">
+          <img src="about-early-nethouse.jpg" alt="Early net house, Sekhon Biotech" loading="lazy" />
+        </div>
+        <p class="origin-caption">Early net house infrastructure — the foundation of what would become our seed potato operation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- timeline -->
+<section class="timeline-section">
+  <div class="timeline-inner">
+    <div class="timeline-head reveal">
+      <div class="section-eyebrow">Milestones</div>
+      <h2>Thirty years.<br>One direction.</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-year">1995</div>
+        <div class="tl-label">Land Acquired</div>
+        <div class="tl-desc">Family acquires agricultural land in the Shivalik foothills of SBS Nagar, Punjab.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">1999</div>
+        <div class="tl-label">Floriculture Begins</div>
+        <div class="tl-desc">Net house cultivation of Gladiolus, Gerbera, Carnations and Lilium — building controlled-environment expertise.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">2003</div>
+        <div class="tl-label">Tissue Culture Lab</div>
+        <div class="tl-desc">Plant Tissue Culture Laboratory established on-site — the scientific foundation of everything that followed.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">2005</div>
+        <div class="tl-label">Potato Pivot</div>
+        <div class="tl-desc">Transition from floriculture to potato mini-tuber production — applying tissue culture to a crop at the heart of Indian agriculture.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-year">Today</div>
+        <div class="tl-label">At Scale</div>
+        <div class="tl-desc">15 million+ certified G-0 mini-tubers per season. 29 varieties. Supplying growers and state corporations across 10+ states.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- then & now -->
+<section class="then-now">
+  <div class="then-now-inner">
+    <div class="then-now-head reveal">
+      <div class="section-eyebrow">Then &amp; now</div>
+      <h2 class="section-title">Same land.<br><em>Different scale.</em></h2>
+    </div>
+    <div class="then-now-grid">
+      <div class="tn-panel reveal">
+        <img src="about-early-nethouse.jpg" alt="Early net house infrastructure" loading="lazy" />
+        <div class="tn-label">
+          <div class="tn-tag">Earlier infrastructure</div>
+          <div class="tn-text">The first generation of net houses — where the learning happened.</div>
+        </div>
+      </div>
+      <div class="tn-panel reveal">
+        <img src="about-nethouse-2.png" alt="Modern net houses with potato crop" loading="lazy" />
+        <div class="tn-label">
+          <div class="tn-tag">Today</div>
+          <div class="tn-text">Modern, climate-controlled net houses producing millions of certified mini-tubers per season.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- today -->
+<section class="today">
+  <div class="today-inner">
+    <div class="today-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">What we do today</div>
+        <h2 class="section-title">Science at the<br><em>start of the chain.</em></h2>
+        <p class="body-text">Every seed potato we produce begins as a single, virus-indexed mother plant in our tissue culture laboratory — the same facility established in 2003, now running CPRI Shimla-accredited protocols.</p>
+        <p class="body-text">Plantlets move from the sterile lab environment into two parallel production pathways: our coco peat greenhouses and CPRI-developed aeroponic chambers. Both converge at the same certified G-0 mini-tuber — the cleanest possible starting point for any seed multiplication chain.</p>
+        <p class="body-text">We work with 29 varieties covering table, fries, chips and specialty segments, supplying growers, processors and state seed corporations across India. Every lot is traceable to a single certified mother plant.</p>
+        <a href="process.html" class="btn-secondary" style="margin-top:12px;display:inline-flex">
+          See how we do it
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="today-img reveal">
+        <img src="about-nethouse-1.png" alt="Interior of modern net house facility" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="about-cta">
+  <div class="section-eyebrow">Work with us</div>
+  <h2>Built on science.<br><em>Grown for India.</em></h2>
+  <p>Whether you are a commercial grower looking for certified seed, a processor sourcing consistent varieties, or someone who wants to join our team — we would like to hear from you.</p>
+  <div class="cta-actions">
+    <a href="varieties.html" class="btn-primary">
+      View varieties
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <a href="index.html#contact" class="btn-secondary">
+      Get in touch
+    </a>
+  </div>
+</section>
+
+<!-- aerial photo band -->
+<div class="drone-section">
+  <img src="DJI_0645_edited.JPG" alt="Aerial view of Sekhon Biotech facility" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.8" />
+  <div class="drone-overlay">
+    <div class="drone-title">Built on the land.<br><em>Season after season.</em></div>
+  </div>
+</div>
+
+<!-- stats -->
+<div class="stats-band">
+  <div class="stats-inner">
+    <div class="stat-block reveal">
+      <div class="stat-num">30<sup style="font-size:.45em;vertical-align:super">+</sup></div>
+      <div class="stat-label">Years on the same land</div>
+    </div>
+    <div class="stat-block reveal">
+      <div class="stat-num">15M<sup style="font-size:.45em;vertical-align:super">+</sup></div>
+      <div class="stat-label">Mini-tubers per season</div>
+    </div>
+    <div class="stat-block reveal">
+      <div class="stat-num">29</div>
+      <div class="stat-label">Certified varieties</div>
+    </div>
+    <div class="stat-block reveal">
+      <div class="stat-num">10<sup style="font-size:.45em;vertical-align:super">+</sup></div>
+      <div class="stat-label">States supplied across India</div>
+    </div>
+  </div>
+</div>
+
+<div class="foot-strip">
+  <p>© 2026 Sekhon Biotech Pvt. Ltd. All rights reserved.</p>
+  <a href="index.html">← Back to home</a>
+</div>
+
+<script>
+  const toggle = document.getElementById('mobileToggle');
+  const navLinks = document.getElementById('navLinks');
+  toggle?.addEventListener('click', () => {
+    const isOpen = navLinks.classList.contains('open');
+    navLinks.classList.toggle('open', !isOpen);
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+  document.addEventListener('click', e => {
+    if (!navLinks.contains(e.target) && e.target !== toggle) navLinks.classList.remove('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => io.observe(r));
+</script>
+</body>
+</html>
