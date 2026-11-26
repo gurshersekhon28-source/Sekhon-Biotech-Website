@@ -667,6 +667,11 @@
   /* ─── recognition ─── */
   .recog{background:var(--paper);padding:140px 40px}
   .recog-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:100px;align-items:start}
+  .recog-left{position:sticky;top:110px;align-self:start}
+  .recog-facts{margin-top:36px;border-top:1px solid var(--line-mid)}
+  .recog-fact{display:flex;align-items:baseline;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .recog-fact b{font-family:'Fraunces',serif;font-weight:400;font-size:34px;line-height:1;color:var(--accent);min-width:72px;letter-spacing:-.02em}
+  .recog-fact span{font-size:14px;color:#555;line-height:1.5}
   .recog-left h2{
     font-family:'Fraunces',serif;font-weight:400;
     font-size:clamp(36px,4.5vw,56px);
@@ -786,6 +791,7 @@
     .nav-links{display:none}
     .mobile-toggle{display:flex}
     .hero-bottom, .story-inner, .segments-head, .recog-inner, .cta-inner{grid-template-columns:1fr;gap:40px}
+    .recog-left{position:static}
     .feature-content{grid-template-columns:1fr}
     .feature-img-col{min-height:320px}
     .feature-text-col{padding:48px 24px 56px}
@@ -1410,8 +1416,27 @@
       <div class="story-eyebrow">Recognition</div>
       <h2>Honoured by those who <em>set the standard.</em></h2>
       <p>Over 20 years, our work has been recognised by national research institutions, scientific bodies, and the Government of India and Punjab.</p>
+      <div class="recog-facts">
+        <div class="recog-fact"><b>DBT</b><span>Recognised tissue culture facility under NCS-TCP</span></div>
+        <div class="recog-fact"><b>ISO</b><span>9001:2015 certified quality management</span></div>
+        <div class="recog-fact"><b>20+</b><span>Years of research-backed seed potato production</span></div>
+      </div>
     </div>
     <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">—</div>
+        <div class="tl-text">
+          <strong>DBT Recognition — NCS-TCP, Government of India</strong>
+          <div class="tl-cert">
+            <div class="tl-cert-text">
+              <p>Our tissue culture laboratory is recognised by the Department of Biotechnology (DBT), Ministry of Science &amp; Technology, Government of India, to produce tissue culture raised plants for certification under the National Certification System for Tissue Culture Raised Plants (NCS-TCP). Recognition valid August 20, 2026 – August 19, 2028.</p>
+            </div>
+            <div class="cert-thumb-wrap" id="certThumb3" title="View certificate">
+              <img src="dbt_cert.jpg" alt="DBT NCS-TCP Certificate of Recognition" />
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="tl-item">
         <div class="tl-year">—</div>
         <div class="tl-text">
@@ -1719,8 +1744,18 @@
   <img src="scan_cert.jpg" alt="ICAR CPRI Certificate" />
 </div>
 
+<!-- cert lightbox 3 — DBT NCS-TCP -->
+<div class="cert-lightbox" id="certLightbox3">
+  <button class="cert-lightbox-close" id="certLightboxClose3">&#x2715;</button>
+  <img src="dbt_cert.jpg" alt="DBT NCS-TCP Certificate of Recognition" />
+</div>
+
 <script>
-  const certLightbox = document.getElementById('certLightbox');
+  const certLightbox3 = document.getElementById('certLightbox3');
+  document.getElementById('certThumb3')?.addEventListener('click', () => certLightbox3.classList.add('open'));
+  document.getElementById('certLightboxClose3')?.addEventListener('click', () => certLightbox3.classList.remove('open'));
+  certLightbox3?.addEventListener('click', e => { if (e.target === certLightbox3) certLightbox3.classList.remove('open'); });
+  const certLightbox =document.getElementById('certLightbox');
   document.getElementById('certThumb')?.addEventListener('click', () => certLightbox.classList.add('open'));
   document.getElementById('certLightboxClose')?.addEventListener('click', () => certLightbox.classList.remove('open'));
   certLightbox?.addEventListener('click', e => { if (e.target === certLightbox) certLightbox.classList.remove('open'); });
@@ -1730,7 +1765,7 @@
   document.getElementById('certLightboxClose2')?.addEventListener('click', () => certLightbox2.classList.remove('open'));
   certLightbox2?.addEventListener('click', e => { if (e.target === certLightbox2) certLightbox2.classList.remove('open'); });
 
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') { certLightbox?.classList.remove('open'); certLightbox2?.classList.remove('open'); } });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { certLightbox?.classList.remove('open'); certLightbox2?.classList.remove('open'); certLightbox3?.classList.remove('open'); } });
 
   // count-up animation for stats strip
   const statNums = document.querySelectorAll('.stat-num');
